@@ -1,12 +1,13 @@
-"""Processed demo checks kept as seed data, so a fresh database shows real, reviewed checks without
+"""Processed checks kept as seed data, so a fresh database shows the same real, reviewed checks without
 running the pipeline (which costs model calls).
 
-    python -m isnad_worker.seed demo-checks-export --titles "t1|t2"   write seed_data/demo_checks.json.gz
-    python -m isnad_worker.seed demo-checks                          restore them (idempotent; part of `make seed`)
+    python -m isnad_worker.seed demo-checks-export [--titles "t1|t2"]   write seed_data/demo_checks.json.gz
+                                                                      (default: every finished check)
+    python -m isnad_worker.seed demo-checks                            restore them (idempotent; part of `make seed`)
 
-Rows reference newsrooms, users, desks, indicators and entities by slug/email/name. Media checks are
-restored from the real clips in testdata/files/media (download them with `make media`); without the
-clip the check is skipped. Restored checks are never re-queued for processing.
+Rows reference newsrooms, users, desks, indicators and entities by slug/email/name; check, claim and
+result ids are kept. Media checks are restored from the clips in sample-data/media; without the clip
+the check is skipped. Restored checks are never re-queued for processing.
 """
 
 from __future__ import annotations
@@ -19,13 +20,13 @@ from pathlib import Path
 
 from isnad_worker import db, storage
 from isnad_worker.pipeline import media
-from isnad_worker.seed.catalog import SEED_DATA
+from isnad_worker.seed.catalog import SAMPLE_DATA, SEED_DATA
 from isnad_worker.seed.registry_snapshot import _plain
 
 log = logging.getLogger("isnad.seed")
 
 DATA = SEED_DATA / "demo_checks.json.gz"
-MEDIA_DIR = Path(__file__).resolve().parents[4] / "testdata" / "files" / "media"
+MEDIA_DIR = SAMPLE_DATA / "media"
 
 CHECK_COLUMNS = [
     "id", "title", "input_kind", "channel", "input_text", "input_url", "original_filename", "mime_type",
@@ -53,17 +54,32 @@ def _select(table: str, columns: list[str], where: str, params: tuple) -> list[d
     return [{k: _plain(v) for k, v in r.items()} for r in rows]
 
 
-def export(titles: list[str]) -> Path:
+def _fixture(row: dict) -> str | None:
+    """The clip in sample-data/media a check was made from: same size, or its former file name."""
+    former = {
+        m["former_file"]: m["file"].removeprefix("media/")
+        for m in json.loads((SAMPLE_DATA / "manifest.json").read_text(encoding="utf-8"))["media"]
+        if m.get("former_file") and m.get("file")
+    }
+    for f in sorted(MEDIA_DIR.rglob("*")):
+        if f.is_file() and f.stat().st_size == row["size_bytes"]:
+            return f.relative_to(MEDIA_DIR).as_posix()
+    return former.get(row.get("original_filename") or "")
+
+
+def export(titles: list[str] | None = None) -> Path:
     checks = db.fetch_all(
         """
-        select c.id, n.slug as newsroom, p.email as author, e.email as editor, d.name as desk
+        select c.id, n.slug as newsroom, n.name as newsroom_name, n.internal as newsroom_internal,
+               p.email as author, e.email as editor, d.name as desk
         from public.checks c join public.newsrooms n on n.id = c.newsroom_id
         left join public.profiles p on p.id = c.created_by
         left join public.profiles e on e.id = c.assigned_editor_id
         left join public.desks d on d.id = c.desk_id
-        where c.title = any(%s) and c.status <> 'processing'
+        where (cardinality(%s::text[]) = 0 or c.title = any(%s)) and c.status <> 'processing'
+        order by c.created_at
         """,
-        (titles,),
+        (titles or [], titles or []),
     )
     out = []
     for c in checks:
@@ -79,7 +95,18 @@ def export(titles: list[str]) -> Path:
         )
         slugs = {str(x["id"]): x for x in claims}
         entry = {
-            "check": row | {k: c[k] for k in ("newsroom", "author", "editor", "desk")},
+            "check": row
+            | {
+                k: c[k]
+                for k in (
+                    "newsroom",
+                    "newsroom_name",
+                    "newsroom_internal",
+                    "author",
+                    "editor",
+                    "desk",
+                )
+            },
             "segments": _select("segments", SEGMENT_COLUMNS, "check_id = %s", (cid,)),
             "claims": [
                 cl
@@ -101,6 +128,28 @@ def export(titles: list[str]) -> Path:
                     (cid,),
                 )
             ],
+            "comments": [
+                {k: _plain(v) for k, v in x.items()}
+                for x in db.fetch_all(
+                    """
+                    select x.id, x.claim_id, p.email as user_email, x.body, x.created_at
+                    from public.comments x left join public.profiles p on p.id = x.user_id
+                    where x.check_id = %s order by x.created_at
+                    """,
+                    (cid,),
+                )
+            ],
+            "publications": [
+                {k: _plain(v) for k, v in x.items()}
+                for x in db.fetch_all(
+                    """
+                    select x.id, x.url, x.published_at, p.email as user_email
+                    from public.publications x left join public.profiles p on p.id = x.created_by
+                    where x.check_id = %s order by x.published_at
+                    """,
+                    (cid,),
+                )
+            ],
             "media": None,
         }
         m = db.fetch_one(
@@ -108,15 +157,7 @@ def export(titles: list[str]) -> Path:
             (cid,),
         )
         if m:
-            fixture = next(
-                (
-                    f.relative_to(MEDIA_DIR).as_posix()
-                    for f in MEDIA_DIR.rglob("*")
-                    if f.is_file() and f.stat().st_size == row["size_bytes"]
-                ),
-                None,
-            )
-            entry["media"] = {k: _plain(v) for k, v in m.items()} | {"fixture": fixture}
+            entry["media"] = {k: _plain(v) for k, v in m.items()} | {"fixture": _fixture(row)}
         out.append(entry)
     with gzip.open(DATA, "wt", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
@@ -196,6 +237,13 @@ def restore() -> None:
     restored = 0
     for e in entries:
         c = e["check"]
+        if c["newsroom"] not in newsrooms and c.get("newsroom_name"):
+            # A newsroom the demo seed does not create (the evaluation runs' internal newsroom).
+            row = db.fetch_one(
+                "insert into public.newsrooms (slug, name, internal) values (%s, %s, %s) on conflict (slug) do update set name = excluded.name returning id",
+                (c["newsroom"], c["newsroom_name"], bool(c.get("newsroom_internal"))),
+            )
+            newsrooms[c["newsroom"]] = str(row["id"])
         newsroom_id = newsrooms.get(c["newsroom"])
         if not newsroom_id or db.fetch_one("select 1 from public.checks where id = %s", (c["id"],)):
             continue
@@ -261,10 +309,18 @@ def restore() -> None:
                     "insert into public.decisions (check_id, claim_id, user_id, action, note, wording, created_at) values (%s, %s, %s, %s, %s, %s, %s)",
                     (c["id"], d["claim_id"], users.get(d["user_email"] or ""), d["action"], d["note"], d["wording"], d["created_at"]),
                 )  # fmt: skip
-            if c["status"] == "published" and c["published_url"]:
+            for x in e.get("comments", []):
                 conn.execute(
-                    "insert into public.publications (check_id, url, created_by) values (%s, %s, %s)",
-                    (c["id"], c["published_url"], users.get(c["editor"] or c["author"])),
-                )
+                    "insert into public.comments (id, check_id, claim_id, user_id, body, created_at) values (%s, %s, %s, %s, %s, %s) on conflict do nothing",
+                    (x["id"], c["id"], x["claim_id"], users.get(x["user_email"] or ""), x["body"], x["created_at"]),
+                )  # fmt: skip
+            publications = e.get("publications")
+            if publications is None and c["status"] == "published" and c["published_url"]:
+                publications = [{"id": None, "url": c["published_url"], "published_at": c["published_at"], "user_email": c["editor"] or c["author"]}]  # fmt: skip
+            for x in publications or []:
+                conn.execute(
+                    "insert into public.publications (id, check_id, url, published_at, created_by) values (coalesce(%s, gen_random_uuid()), %s, %s, coalesce(%s, now()), %s) on conflict do nothing",
+                    (x["id"], c["id"], x["url"], x["published_at"], users.get(x["user_email"] or "")),
+                )  # fmt: skip
         restored += 1
     log.info("demo checks restored: %d of %d", restored, len(entries))

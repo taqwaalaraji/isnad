@@ -1,32 +1,45 @@
-"""A snapshot of the seeded registry (corpus documents, their versions and extracted figures), so a
-fresh database gets a working registry without paying for figure extraction again.
+"""A snapshot of the shared registry: every official document read so far (the test corpus and the
+documents the search agent found during checks), their versions and extracted figures, so a fresh
+database gets the same registry without paying for extraction or search again.
 
     python -m isnad_worker.seed snapshot      write seed_data/registry_snapshot.json.gz from the database
     python -m isnad_worker.seed registry      restore it (idempotent; part of `make seed`)
 
-Rows reference sources, indicators and entities by slug (their ids change between databases). The
-stored document files come from the test corpus (testdata/files/documents, matched by URL through
-testdata/manifest.json); without them the registry still works, only "open the original copy" is
-unavailable for those documents.
+Rows reference sources, indicators and entities by slug (their ids change between databases); document,
+version and figure ids are kept, so checks restored afterwards link to the same evidence. Each version's
+stored copy is kept in sample-data/documents/ (`file` in the snapshot): the corpus files under corpus/,
+the others written there by the export under discovered/.
 """
 
 from __future__ import annotations
 
 import gzip
+import hashlib
 import json
 import logging
 from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
 
+import httpx2 as httpx
+
 from isnad_worker import db, storage
-from isnad_worker.seed.catalog import SEED_DATA
+from isnad_worker.seed.catalog import SAMPLE_DATA, SEED_DATA
 
 log = logging.getLogger("isnad.seed")
 
 SNAPSHOT = SEED_DATA / "registry_snapshot.json.gz"
-ROOT = Path(__file__).resolve().parents[4]
-CORPUS = ROOT / "testdata"
+CORPUS = SAMPLE_DATA
+EXTENSIONS = {
+    "text/html": ".html",
+    "application/pdf": ".pdf",
+    "application/json": ".json",
+    "text/csv": ".csv",
+    "text/plain": ".txt",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": ".xlsx",
+    "application/vnd.ms-excel": ".xls",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
+}
 
 DOCUMENT_COLUMNS = ["id", "title", "url", "kind", "language", "published_at", "watch"]
 VERSION_COLUMNS = [
@@ -88,26 +101,57 @@ def _rows(query: str) -> list[dict]:
     return [{k: _plain(v) for k, v in row.items()} for row in db.fetch_all(query)]
 
 
+def _sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _keep_file(doc: dict, version: dict, corpus: dict[str, str]) -> str | None:
+    """Writes a version's stored copy into sample-data/documents/ (unless it is a corpus file) and
+    returns its path relative to sample-data/."""
+    if not version.get("storage_path"):
+        return None
+    try:
+        data = storage.download(storage.DOCUMENTS, version["storage_path"])
+    except httpx.HTTPError as exc:  # a missing object should not stop the export
+        log.warning("no stored copy for %s v%s: %s", doc["url"], version["version"], exc)
+        return None
+    known = corpus.get(_sha256(data))
+    if known:
+        return known
+    ext = Path(version["storage_path"]).suffix or EXTENSIONS.get(version["mime_type"] or "", "")
+    day = str(doc["published_at"] or version["fetched_at"] or "")[:10] or "undated"
+    group = "corpus" if version["fetched_via"] == "seed" else "discovered"
+    rel = f"documents/{group}/{day}_{doc['source_slug']}_{doc['id'][:8]}-v{version['version']}{ext}"
+    dest = CORPUS / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_bytes(data)
+    return rel
+
+
 def export() -> Path:
-    """Shared-registry documents read by the seed (fetched_via = 'seed'), with their figures."""
+    """Every shared-registry document with a stored version, its versions and figures."""
     documents = _rows(
         f"""
         select {", ".join("d." + c for c in DOCUMENT_COLUMNS)}, s.slug as source_slug
         from public.documents d join public.sources s on s.id = d.source_id
         where d.newsroom_id is null
-          and exists (select 1 from public.document_versions v
-                      where v.document_id = d.id and v.fetched_via = 'seed')
+          and exists (select 1 from public.document_versions v where v.document_id = d.id)
         order by d.created_at
         """
     )
     ids = [d["id"] for d in documents]
     versions = _rows(
         f"""
-        select {", ".join(VERSION_COLUMNS)} from public.document_versions
-        where fetched_via = 'seed' and document_id = any('{{{",".join(ids)}}}'::uuid[])
+        select {", ".join(VERSION_COLUMNS)}, storage_path from public.document_versions
+        where document_id = any('{{{",".join(ids)}}}'::uuid[])
         order by document_id, version
         """
     )
+    corpus = _corpus_by_hash()
+    by_id = {d["id"]: d for d in documents}
+    for v in versions:
+        v["file"] = _keep_file(by_id[v["document_id"]], v, corpus)
+        v.pop("storage_path")
     version_ids = {v["id"] for v in versions}
     figures = [
         f
@@ -119,7 +163,7 @@ def export() -> Path:
             join public.sources s on s.id = f.source_id
             left join public.indicators i on i.id = f.indicator_id
             left join public.entities e on e.id = f.entity_id
-            where f.newsroom_id is null and f.review_status in ('approved', 'pending')
+            where f.newsroom_id is null
             order by f.created_at
             """
         )
@@ -136,22 +180,35 @@ def export() -> Path:
     with gzip.open(SNAPSHOT, "wt", encoding="utf-8") as out:
         json.dump(payload, out, ensure_ascii=False, separators=(",", ":"))
     log.info(
-        "snapshot: %d documents, %d versions, %d figures → %s",
+        "snapshot: %d documents, %d versions (%d files), %d figures → %s",
         len(documents),
         len(versions),
+        sum(1 for v in versions if v["file"]),
         len(figures),
         SNAPSHOT.name,
     )
     return SNAPSHOT
 
 
-def _corpus_files() -> dict[str, Path]:
+def _manifest_documents() -> list[dict]:
     manifest = CORPUS / "manifest.json"
     if not manifest.exists():
-        return {}
+        return []
+    return json.loads(manifest.read_text(encoding="utf-8"))["documents"]
+
+
+def _corpus_by_hash() -> dict[str, str]:
+    """sha256 of each corpus file → its path relative to sample-data/."""
+    return {
+        d["sha256"]: d["file"] for d in _manifest_documents() if d.get("sha256") and d.get("file")
+    }
+
+
+def _corpus_files() -> dict[str, Path]:
+    """Corpus files by document URL (for snapshots written before versions carried `file`)."""
     files = {}
-    for doc in json.loads(manifest.read_text(encoding="utf-8"))["documents"]:
-        path = CORPUS / "files" / "documents" / Path(doc.get("file", "")).name
+    for doc in _manifest_documents():
+        path = CORPUS / doc.get("file", "")
         if doc.get("url") and path.is_file():
             files[doc["url"]] = path
     return files
@@ -269,23 +326,28 @@ def restore() -> None:
                     (f["supersedes_id"], f["id"]),
                 )
 
-    # The original copies, from the local corpus when present.
+    # The stored copies, from sample-data/documents/.
     for d in data["documents"]:
-        v = latest.get(d["id"])
         source = source_by_slug.get(d["source_slug"])
-        file = files.get(d["url"] or "")
-        if not v or not source or not file:
+        if not source:
             continue
-        path = f"{source['id']}/{d['id']}/v{v['version']}{file.suffix.lower()}"
-        try:
-            storage.upload_file(storage.DOCUMENTS, path, file, v["mime_type"])
-        except Exception as exc:  # already there after a previous restore
-            if "Duplicate" not in str(exc) and "409" not in str(exc):
-                raise
-        db.execute(
-            "update public.document_versions set storage_path = %s where id = %s", (path, v["id"])
-        )
-        uploaded += 1
+        for v in (x for x in data["versions"] if x["document_id"] == d["id"]):
+            file = CORPUS / v["file"] if v.get("file") else None
+            if file is None and v is latest.get(d["id"]):
+                file = files.get(d["url"] or "")
+            if not file or not file.is_file():
+                continue
+            path = f"{source['id']}/{d['id']}/v{v['version']}{file.suffix.lower()}"
+            try:
+                storage.upload_file(storage.DOCUMENTS, path, file, v["mime_type"])
+            except Exception as exc:  # already there after a previous restore
+                if "Duplicate" not in str(exc) and "409" not in str(exc):
+                    raise
+            db.execute(
+                "update public.document_versions set storage_path = %s where id = %s",
+                (path, v["id"]),
+            )
+            uploaded += 1
     log.info(
         "registry restored: %d documents (%d skipped), %d figures, %d original files",
         restored,

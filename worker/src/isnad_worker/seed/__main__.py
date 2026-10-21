@@ -1,22 +1,31 @@
-"""`python -m isnad_worker.seed [catalog|demo|registry|snapshot|documents|admin|showcase|all] [options]`
-(default: all).
+"""`python -m isnad_worker.seed <what> [options]` (default: base).
 
-registry: restore the committed registry snapshot (no model calls); snapshot: write it from the database.
-demo-checks: restore processed demo checks (no model calls); demo-checks-export --titles "a|b": write them.
+Two seeds:
+  base        the shared catalog: topics, indicators, entities and official sources (`make seed`;
+              every deployment needs it). Same as `catalog`.
+  demo-data   the demo, exactly as it was recorded (`make seed-demo`; local and demo installs only):
+              demo accounts and newsrooms, the registry (documents, stored copies, figures), every
+              check with its decisions, and the rest of the state (alerts, activity, usage, briefs,
+              evaluation runs). No model calls; idempotent.
+  all         base, then demo-data.
 
-showcase (demo checks the running worker processes; costs model calls; not part of "all"):
+Parts of demo-data: demo (accounts and newsrooms), registry, demo-checks, state.
+Writing the demo data from a database (`make seed-export`): export = snapshot + demo-checks-export
+(every finished check, or --titles "a|b") + state-export, and sample-data/README.md.
+
+showcase (demo checks the running worker processes; costs model calls):
   --no-wait         create the checks without waiting for them or applying review states
 
-admin options (first Isnad administrator on a new deployment; not part of "all"):
+admin options (first Isnad administrator on a new deployment):
   --email EMAIL --name NAME   the password is read from ISNAD_ADMIN_PASSWORD or asked for
 
-documents options:
+documents (read the corpus documents into the registry; costs model calls) options:
   --review          leave extracted figures for curator review instead of approving verified ones
   --force           read documents again even when their content is unchanged
   --reverify        re-check unchanged documents' figures against their stored text (no model calls)
   --only ID[,ID]    seed only these manifest document ids
   --concurrency N   documents read in parallel (default 3)
-The corpus folder defaults to testdata/ in the repository; set ISNAD_CORPUS_DIR to use another.
+The corpus folder defaults to sample-data/ in the repository; set ISNAD_CORPUS_DIR to use another.
 """
 
 import argparse
@@ -50,18 +59,24 @@ def main() -> None:
     parser.add_argument(
         "what",
         nargs="?",
-        default="all",
+        default="base",
         choices=[
+            "base",
             "catalog",
+            "demo-data",
             "demo",
             "registry",
             "demo-checks",
+            "state",
+            "all",
+            "export",
             "snapshot",
             "demo-checks-export",
+            "state-export",
+            "readme",
             "documents",
             "admin",
             "showcase",
-            "all",
         ],
     )
     parser.add_argument("--no-wait", action="store_true")
@@ -81,34 +96,46 @@ def main() -> None:
     if args.what == "admin":
         bootstrap_admin(args.email, args.name)
         return
-    if args.what == "snapshot":
+    what = args.what
+    if what in ("snapshot", "export"):
         from isnad_worker.seed import registry_snapshot
 
         registry_snapshot.export()
-        return
-    if args.what == "demo-checks-export":
+    if what in ("demo-checks-export", "export"):
         from isnad_worker.seed import demo_checks
 
         demo_checks.export([t for t in args.titles.split("|") if t])
-        return
-    if args.what == "showcase":
+    if what in ("state-export", "export"):
+        from isnad_worker.seed import state
+
+        state.export()
+    if what in ("readme", "export"):
+        from isnad_worker.seed import sample_readme
+
+        sample_readme.write()
+    if what == "showcase":
         from isnad_worker.seed import showcase
 
         showcase.run(wait=not args.no_wait)
         return
-    if args.what in ("catalog", "all"):
+    demo_data = what in ("demo-data", "all")
+    if what in ("base", "catalog", "all"):
         catalog.run()
-    if args.what in ("demo", "all"):
+    if what == "demo" or demo_data:
         demo.run()
-    if args.what in ("registry", "all"):
+    if what == "registry" or demo_data:
         from isnad_worker.seed import registry_snapshot
 
         registry_snapshot.restore()
-    if args.what in ("demo-checks", "all"):
+    if what == "demo-checks" or demo_data:
         from isnad_worker.seed import demo_checks
 
         demo_checks.restore()
-    if args.what in ("documents", "all"):
+    if what == "state" or demo_data:
+        from isnad_worker.seed import state
+
+        state.restore()
+    if what == "documents":
         from isnad_worker.seed import documents
 
         documents.run(

@@ -11,7 +11,7 @@
 make setup      # npm install in web/, uv sync in worker/
 make db         # start local Supabase
 make env        # write web/.env.local and worker/.env
-make db-reset   # migrations + catalog + demo accounts
+make db-reset   # migrations + base seed + demo data
 make dev        # web, worker API and pipeline worker together
 ```
 
@@ -24,9 +24,11 @@ Then sign in at http://localhost:3000 with a demo account ([testing.md](testing.
 | `make help` | List targets |
 | `make setup` | Install web and worker dependencies |
 | `make db` / `make db-stop` | Start / stop local Supabase |
-| `make db-reset` | Recreate the database from migrations, then `make seed` |
-| `make seed` | Catalog (topics, indicators, entities, sources) and demo accounts; idempotent |
-| `make seed-showcase` | Demo checks from the test corpus, processed by the running worker |
+| `make db-reset` | Recreate the database from migrations, then `make seed` and `make seed-demo` |
+| `make seed` | Base seed: catalog (topics, indicators, entities, sources); idempotent |
+| `make seed-demo` | Demo data as recorded: accounts, registry with stored documents, checks with clips, alerts, activity, usage, briefs, evaluation runs; idempotent, no model calls |
+| `make seed-export` | Write the demo data (`worker/seed_data/*.json.gz`, `sample-data/documents/discovered/`, `sample-data/README.md`) from the local database |
+| `make seed-showcase` | Demo checks from the test corpus and clips, processed again by the running worker (model calls) |
 | `make env` | Write env files from the running Supabase and `../credentials` (prints names only) |
 | `make types` | Regenerate `web/src/lib/database.types.ts` after a schema change |
 | `make web` | Next.js dev server on :3000 |

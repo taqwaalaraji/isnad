@@ -24,20 +24,22 @@ There are no automated browser tests yet; web flows are tested by hand (below).
 
 ## Test data
 
-All in `testdata/` (the downloaded files under `testdata/files/` are git-ignored):
+All in `sample-data/` ([sample-data/README.md](../../sample-data/README.md) lists every item with its original link):
 
 | File | What it is |
 |---|---|
 | `manifest.json` | The UAE test corpus: 29 official documents (PDF, XLSX, HTML and WAM article JSON from statistics centres, ministries, the central bank, media offices and the land department; about 49 MB), 60 real claims from Emirati newspapers with the expected verdict and the official evidence quote (29 match, 9 context, 9 differs, 13 no source), 15 YouTube links mentioning 31 numbers (links only; nothing downloaded), and 7 real Arabic clips with direct file URLs (Sky News Arabia reports and interviews, a CNN Business Arabic interview with a minister, the Dubai Police podcast, a Sky News podcast) used for transcription tests and the media demo checks |
-| `files/documents/` | The corpus documents (re-download from the URLs in the manifest; each has a sha256) |
-| `files/media/real/` | The real clips, downloaded with `make media`. Publishers' content without an open licence: local testing only, never committed or redistributed |
+| `documents/corpus/` | The corpus documents (each with its URL and sha256 in the manifest) |
+| `documents/discovered/` | The official documents the search agent found and stored during the demo checks (written by `make seed-export`) |
+| `media/video/`, `media/audio/` | The real clips used by the media checks (`date_publisher_topic`). Publishers' copyright: included only to test the prototype and reproduce its demo; `make media` downloads them again |
+| `inputs/` | The texts submitted as the demo text checks |
 
 Every quote in the manifest was found verbatim in its file, and every claim text was found in a saved copy of its article.
 
 ## Demo data
 
-- `make seed` — catalog plus demo accounts. Demo users (password in `worker/seed_data/demo.json`): `admin@isnad.ae` (platform admin), `curator@isnad.ae` (curator); newsroom «غرفة المدار» (`almadar`): `laila@almadar.news` (admin), `sara@almadar.news` (editor), `omar@almadar.news` and `khaled@almadar.news` (journalists); «صحيفة الأفق» (`alufuq`): `rana@alufuq.ae` (admin).
-- `make seed-showcase` — nine demo checks processed by the real pipeline, with realistic review states ([worker.md](worker.md#seeds)).
+- `make seed` — the base seed (catalog). `make seed-demo` — the demo data exactly as recorded (accounts, registry with stored documents, 208 checks with their clips, alerts, activity, usage, briefs, evaluation runs). Demo users (password in `worker/seed_data/demo.json`): `admin@isnad.ae` (platform admin), `curator@isnad.ae` (curator); newsroom «غرفة المدار» (`almadar`): `laila@almadar.news` (admin), `sara@almadar.news` (editor), `omar@almadar.news` and `khaled@almadar.news` (journalists); «صحيفة الأفق» (`alufuq`): `rana@alufuq.ae` (admin).
+- `make seed-showcase` — the demo checks processed again by the real pipeline, with realistic review states ([worker.md](worker.md#seeds)).
 
 ## Evaluation runs
 

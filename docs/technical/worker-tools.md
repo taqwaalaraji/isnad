@@ -40,9 +40,9 @@ Commands are registered in Arabic (default) and English on start.
 
 ## Test corpus
 
-`testdata/manifest.json` lists official UAE documents (`documents`), labelled claims from UAE
-outlets (`claims`) and media links (`media`). The document files live in `testdata/files/`
-(not in git; ~50 MB). Each claim has its `expected_verdict` and a `target`: the labelled number
+`sample-data/manifest.json` lists official UAE documents (`documents`), labelled claims from UAE
+outlets (`claims`) and media links (`media`). The document files live in `sample-data/documents/corpus/`
+(~50 MB). Each claim has its `expected_verdict` and a `target`: the labelled number
 as written in `text_ar`.
 
 `make corpus` (`python -m isnad_worker.seed documents`) stores each document under the trusted

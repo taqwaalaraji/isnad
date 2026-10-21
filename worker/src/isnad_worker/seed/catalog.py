@@ -14,6 +14,8 @@ from isnad_worker import db
 log = logging.getLogger("isnad.seed")
 
 SEED_DATA = Path(__file__).resolve().parents[3] / "seed_data"
+# The documents, clips and labelled claims the platform was tested with (see sample-data/README.md).
+SAMPLE_DATA = Path(__file__).resolve().parents[4] / "sample-data"
 
 
 def _load(name: str) -> dict:

@@ -14,8 +14,6 @@ __pycache__/
 # Node
 node_modules/
 
-# Downloaded test media and documents (see testdata/manifest.json)
-testdata/files/
 
 # Deployment secrets and backups on the VM
 deploy/secrets/

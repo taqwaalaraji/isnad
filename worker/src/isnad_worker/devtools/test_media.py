@@ -1,8 +1,8 @@
-"""Download the real test clips listed in testdata/manifest.json (`media` entries with a `file_url`).
+"""Download the real test clips listed in sample-data/manifest.json (`media` entries with a `file_url`).
 
 The clips are real Arabic broadcasts and podcasts with UAE statistics, used by the showcase and the
-demo checks. They are publishers' content: kept in testdata/files/ (ignored by git) for local
-testing only, never committed or redistributed. Run with `make media`.
+demo checks. They are kept in sample-data/media/ (the publishers' copyright; see sample-data/README.md);
+this fetches them again from the publishers, for example to refresh one. Run with `make media`.
 
     uv run python -m isnad_worker.devtools.test_media [--only media-016,media-017]
 """
@@ -19,8 +19,8 @@ import httpx2 as httpx
 from isnad_worker.jobs import PermanentError
 from isnad_worker.pipeline import content
 
-ROOT = Path(__file__).resolve().parents[4]
-MANIFEST = ROOT / "testdata" / "manifest.json"
+ROOT = Path(__file__).resolve().parents[4] / "sample-data"
+MANIFEST = ROOT / "manifest.json"
 MAX_BYTES = 150 * 1024 * 1024
 MEDIA_TYPES = ("audio/", "video/", "application/octet-stream", "binary/octet-stream")
 
@@ -36,7 +36,7 @@ def _playable(path: Path) -> bool:
 
 
 def fetch(entry: dict) -> str:
-    dest = ROOT / "testdata" / entry["file"]
+    dest = ROOT / entry["file"]
     if dest.exists():
         return "present"
     dest.parent.mkdir(parents=True, exist_ok=True)

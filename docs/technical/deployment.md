@@ -76,12 +76,14 @@ docker compose run --rm worker python -m isnad_worker.seed catalog
 docker compose run --rm -it worker python -m isnad_worker.seed admin --email you@example.com --name "Your Name"
 ```
 
-- `seed catalog` loads topics, indicators, entities and the trusted UAE sources (idempotent).
+- `seed catalog` (the base seed, same as `seed base`) loads topics, indicators, entities and the
+  trusted UAE sources (idempotent).
 - `seed admin` creates the platform administrator (asks for a 12+ character password), who then
   creates newsrooms and invites their admins from the console.
-- Don't run `seed demo` in production: it creates demo accounts with a known password.
-- To load the test corpus into the registry (for demos), copy `testdata/` with its `files/` to
-  the VM and run `docker compose run --rm -v /opt/isnad/testdata:/corpus -e ISNAD_CORPUS_DIR=/corpus worker python -m isnad_worker.seed documents`
+- Don't run `seed demo-data` (or `seed demo`) in production: it creates demo accounts with a known
+  password. For a public demo server, run it and then change the demo passwords.
+- To load the test corpus into the registry, copy `sample-data/` to the VM and run
+  `docker compose run --rm -v /opt/isnad/sample-data:/corpus -e ISNAD_CORPUS_DIR=/corpus worker python -m isnad_worker.seed documents`
   (it reads the documents with the model: a few dollars).
 
 The bot service registers its webhook (`https://SITE_DOMAIN/telegram/webhook`, with the secret

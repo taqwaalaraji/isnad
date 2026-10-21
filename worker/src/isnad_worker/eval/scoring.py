@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 
 VERDICTS = ("match", "context", "differs", "none")
 
-# The corpus labels (testdata/manifest.json) → the product's verdicts.
+# The corpus labels (sample-data/manifest.json) → the product's verdicts.
 LABELS = {
     "match": "match",
     "different_context": "context",

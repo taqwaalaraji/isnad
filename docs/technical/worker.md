@@ -87,17 +87,22 @@ The worker needs `ffmpeg` and `ffprobe` on the path.
 
 | Command | Loads |
 |---|---|
-| `catalog` | Topics, indicators, entities and sources from `seed_data/` (idempotent upserts) |
-| `demo` | Demo staff and newsrooms from `seed_data/demo.json` (password in that file) — never for production |
-| `documents` | The official documents of the test corpus into the registry, with automatic approval of verified figures (`--review` leaves them pending). Requires `isnad_worker.seed.documents`. |
-| `all` (default) | `catalog`, `demo`, `documents` |
-| `showcase` | Demo checks from `seed_data/showcase.json`: real newspaper claims grouped as drafts, and real clips (download them with `make media`). Needs the worker running; waits for processing, then applies review states (one published, escalations, matches approved, one sent for review), including checks the newsroom policy escalated. `--no-wait` only creates them. Never part of `all`. |
+| `base` (default) = `catalog` | Topics, indicators, entities and sources from `seed_data/` (idempotent upserts); every deployment |
+| `demo-data` | The demo as recorded, in order: `demo`, `registry`, `demo-checks`, `state` — never for production (known passwords) |
+| `demo` | Demo staff and newsrooms from `seed_data/demo.json` (password in that file) |
+| `registry` | `seed_data/registry_snapshot.json.gz`: every shared document (corpus and discovered), its versions with stored copies from `sample-data/documents/`, and figures; ids kept |
+| `demo-checks` | `seed_data/demo_checks.json.gz`: every finished check with segments, claims, results, decisions, comments and publications; clips from `sample-data/media/`; creates the evaluation newsroom when missing; never re-queued |
+| `state` | `seed_data/demo_state.json.gz`: newsroom settings, profile preferences, source health, alerts, activity log, usage events, briefs, evaluation runs, follows, invitations |
+| `all` | `base`, then `demo-data` |
+| `export` | `snapshot` + `demo-checks-export` (every finished check, or `--titles "a\|b"`) + `state-export` + `readme` (`make seed-export`) |
+| `documents` | The official documents of the test corpus into the registry, with automatic approval of verified figures (`--review` leaves them pending); model calls |
+| `showcase` | Demo checks from `seed_data/showcase.json`: real newspaper claims grouped as drafts, and the clips in `sample-data/media/`. Needs the worker running; waits for processing, then applies review states (one published, escalations, matches approved, one sent for review), including checks the newsroom policy escalated. `--no-wait` only creates them. |
 
-`make seed` runs `catalog` and `demo`; `make seed-showcase` runs `showcase`.
+`make seed` runs `base`, `make seed-demo` runs `demo-data`, `make seed-export` runs `export`, `make seed-showcase` runs `showcase`.
 
 ## Devtools
 
 | Command | What it does |
 |---|---|
 | `python -m isnad_worker.devtools.env` (`make env`) | Writes `web/.env.local` and `worker/.env` from `supabase status` and the provider keys in `../credentials/*.env`; keeps generated secrets stable; prints names only |
-| `python -m isnad_worker.devtools.test_media [--only IDS]` (`make media`) | Downloads the real test clips listed in `testdata/manifest.json` (`media` entries with `file_url`) into `testdata/files/media/real/`; checks each is a media file with an audio track; skips clips already present |
+| `python -m isnad_worker.devtools.test_media [--only IDS]` (`make media`) | Downloads the real test clips listed in `sample-data/manifest.json` again (`media` entries with `file_url`) into `sample-data/media/` (the manifest `file`); checks each is a media file with an audio track; skips clips already present |

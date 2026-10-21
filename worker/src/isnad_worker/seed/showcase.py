@@ -14,16 +14,14 @@ import mimetypes
 import time
 import uuid
 from contextlib import contextmanager
-from pathlib import Path
 
 from isnad_worker import db, storage
-from isnad_worker.seed.catalog import SEED_DATA
+from isnad_worker.seed.catalog import SAMPLE_DATA, SEED_DATA
 
 log = logging.getLogger("isnad.seed")
 
-ROOT = Path(__file__).resolve().parents[4]
-MANIFEST = ROOT / "testdata" / "manifest.json"
-MEDIA_DIR = ROOT / "testdata" / "files" / "media"
+MANIFEST = SAMPLE_DATA / "manifest.json"
+MEDIA_DIR = SAMPLE_DATA / "media"
 WAIT_SECONDS = 30 * 60
 
 KIND_BY_SUFFIX = {

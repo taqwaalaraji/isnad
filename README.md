@@ -26,30 +26,35 @@ The database is the contract between `web/` and `worker/`: the web app writes ro
 make setup      # install web and worker dependencies
 make db         # start local Supabase (the first run downloads Docker images)
 make env        # write web/.env.local and worker/.env (local Supabase + keys from ../credentials)
-make db-reset   # build the database from migrations and load the seed data (no model calls)
+make db-reset   # build the database from migrations, then load the base seed and the demo data (no model calls)
 make dev        # run web, api, worker, and the Telegram bot together
 ```
 
-Open http://localhost:3000 and sign in with a demo account (below). The seed loads:
+Open http://localhost:3000 and sign in with a demo account (below). There are two seeds:
 
-- the catalog: 21 topics, 78 indicators, 97 UAE entities and 140 trusted official sources;
-- demo newsrooms and accounts;
-- the registry: 32 official documents from the test corpus with 683 extracted figures (a committed
-  snapshot, so no extraction cost); the original files are attached when `testdata/files/` is present;
-- 16 processed demo checks in realistic review states (two published with public evidence pages,
-  escalations, matches approved): newspaper articles and six real Arabic clips (broadcast reports and
-  interviews, a minister's radio interview, the Dubai Police podcast).
+- **`make seed` (base)**: the catalog every installation needs: 21 topics, 78 indicators, 97 UAE
+  entities and 140 trusted official sources.
+- **`make seed-demo` (demo data)**: the demo exactly as it was recorded, with no model calls:
+  - the demo newsrooms and their 7 accounts;
+  - the registry: 97 official documents (29 from the test corpus, 68 found by the search agent during
+    checks) with their stored copies and 828 extracted figures;
+  - 208 processed checks: 18 newsroom checks in realistic review states (newspaper articles, a link,
+    and 8 checks of real Arabic clips: broadcast reports and interviews, a minister's radio interview,
+    the Dubai Police podcast; two published with public evidence pages) and 190 evaluation checks;
+  - alerts, the activity log, model usage and cost, an interview brief and the evaluation runs.
 
-Media demo checks use real Arabic clips (broadcast reports, interviews, a podcast) listed in
-`testdata/manifest.json`. They are publishers' content, so they stay out of git: download them once
-with `make media` (about 200 MB) before `make seed`, or the media demo checks are skipped.
+`make db-reset` runs both. The documents, clips and texts come from [sample-data/](sample-data/README.md),
+which lists every item with its original link. `make seed-export` writes the demo data again from your
+local database.
+
+Viewing the demo needs no API key. To run new checks, add `GEMINI_API_KEY` to `worker/.env`
+(see `worker/.env.example`).
 
 For more demo checks, built from real newspaper claims and the real clips and processed by the real
 pipeline (about $0.50 of model tokens, plus Google Search queries that the free monthly allowance
 covers; the worker must be running):
 
 ```bash
-make media
 make seed-showcase
 ```
 
@@ -90,7 +95,10 @@ All use the password in `worker/seed_data/demo.json` (local development only).
 ```bash
 make help                          # list all targets
 make test                          # worker tests + lint, web lint + type check
-make db-reset                      # rebuild the local database from migrations and seed
+make db-reset                      # rebuild the local database from migrations, base seed and demo data
+make seed                          # base seed only: topics, indicators, entities, official sources
+make seed-demo                     # demo data: accounts, registry, checks, alerts, usage (no model calls)
+make seed-export                   # write the demo data and sample-data/README.md from the local database
 make types                         # regenerate web/src/lib/database.types.ts after a schema change
 make smoke                         # request every page as each demo role against the running app
 make seed-showcase                 # more demo checks through the real pipeline (model cost)

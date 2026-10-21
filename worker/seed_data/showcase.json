@@ -1,5 +1,5 @@
 {
-  "note": "Demo checks built from real newspaper claims in testdata/manifest.json (grouped as newsroom drafts) and real Arabic clips with UAE statistics (testdata/manifest.json media; download them with `make media`). Run after the registry is seeded: python -m isnad_worker.seed showcase",
+  "note": "Demo checks built from real newspaper claims in sample-data/manifest.json (grouped as newsroom drafts) and real Arabic clips with UAE statistics (sample-data/manifest.json media; download them with `make media`). Run after the registry is seeded: python -m isnad_worker.seed showcase",
   "published_url_base": "https://almadar.news/economy/2026/",
   "checks": [
     {
@@ -64,7 +64,7 @@
       "author": "omar@almadar.news",
       "desk": "الاقتصاد",
       "recorded_at": "2026-07-20",
-      "media": "real/sna-1881855-nonoil-trade/sna-1881855-nonoil-trade.mp4",
+      "media": "video/2026-07-20_sky-news-arabia_uae-non-oil-foreign-trade-h1-2026.mp4",
       "filename": "تقرير-التجارة-غير-النفطية.mp4",
       "speakers": "معلّق التقرير",
       "review": "approve_matches",
@@ -76,7 +76,7 @@
       "author": "khaled@almadar.news",
       "desk": "الاقتصاد",
       "recorded_at": "2026-10-01",
-      "media": "real/sna-1895652-adrec-fdi/sna-1895652-adrec-fdi.mp4",
+      "media": "video/2026-10-01_sky-news-arabia_abu-dhabi-real-estate-foreign-investment.mp4",
       "filename": "مقابلة-مركز-أبوظبي-العقاري.mp4",
       "speakers": "المذيع، راشد العميرة (مركز أبوظبي العقاري)",
       "review": "send_for_review",
@@ -88,7 +88,7 @@
       "author": "omar@almadar.news",
       "desk": "الأخبار العاجلة",
       "recorded_at": "2026-08-27",
-      "media": "real/sna-1888300-by-the-numbers/sna-1888300-by-the-numbers.mp4",
+      "media": "video/2026-08-27_sky-news-arabia_uae-by-the-numbers.mp4",
       "filename": "الإمارات-بالأرقام.mp4",
       "speakers": "معلّق التقرير",
       "review": "escalate",
@@ -100,7 +100,7 @@
       "author": "khaled@almadar.news",
       "desk": "الاقتصاد",
       "recorded_at": "2026-10-12",
-      "media": "real/sna-1897849-diversification/sna-1897849-diversification.mp4",
+      "media": "video/2026-10-12_sky-news-arabia_economic-diversification-interview.mp4",
       "filename": "حوار-التنويع-الاقتصادي.mp4",
       "speakers": "المذيعة، علي العدو (ضيف)"
     },
@@ -110,7 +110,7 @@
       "author": "omar@almadar.news",
       "desk": "التحقق",
       "recorded_at": "2026-04-17",
-      "media": "real/cnn-71398028-mazrouei/cnn-71398028-mazrouei.mp3",
+      "media": "audio/2026-04-17_cnn-business-arabic_shamma-al-mazrouei-social-investment.mp3",
       "filename": "مقابلة-شما-المزروعي.mp3",
       "speakers": "المذيع، شما المزروعي"
     },
@@ -119,7 +119,7 @@
       "title": "بودكاست: القمة الشرطية العالمية في دبي",
       "author": "rana@alufuq.ae",
       "recorded_at": "2025-05-15",
-      "media": "real/dubai-police-17158486/dubai-police-17158486.mp3",
+      "media": "audio/2025-05-15_dubai-police-podcast_world-police-summit.mp3",
       "filename": "بودكاست-القمة-الشرطية.mp3",
       "speakers": "مقدّم البودكاست، الأمين العام للقمة"
     },

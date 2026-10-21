@@ -1,4 +1,4 @@
-"""Load the official documents of the test corpus (`testdata/manifest.json`) into the registry.
+"""Load the official documents of the test corpus (`sample-data/manifest.json`) into the registry.
 
 Each document is stored as a versioned snapshot under the trusted source that publishes it, then
 read into figures by the same ingestion the scheduled fetcher uses. Re-running is cheap: unchanged
@@ -21,11 +21,11 @@ from urllib.parse import urlparse
 from isnad_worker import db
 from isnad_worker.pipeline.content import wam_article_html
 from isnad_worker.registry import ingest, store
+from isnad_worker.seed.catalog import SAMPLE_DATA
 
 log = logging.getLogger("isnad.seed")
 
-REPO_ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_CORPUS = REPO_ROOT / "testdata"
+DEFAULT_CORPUS = SAMPLE_DATA
 
 # Manifest entity shorthands → catalog entity slugs (used when no source covers the URL's host).
 ENTITY_ALIASES = {
