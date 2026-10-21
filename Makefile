@@ -1,6 +1,6 @@
 # Isnad — local development. Run `make help` for the list of targets.
 
-.PHONY: help setup db db-stop db-reset seed seed-demo seed-export seed-showcase media corpus env types web api worker bot dev eval smoke test
+.PHONY: help setup db db-stop db-reset seed seed-demo seed-export seed-showcase media corpus env types web api worker bot dev eval smoke screenshots test
 
 help: ## Show this help
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-14s %s\n", $$1, $$2}'
@@ -65,6 +65,9 @@ eval: ## Evaluate the check pipeline on the labelled corpus claims (costs model 
 
 smoke: ## Request every page as each demo role against the running app (needs `make web` and the demo seed)
 	cd web && node scripts/smoke.mjs
+
+screenshots: ## Take the product screenshots in screenshots/ from the running app (needs the demo data)
+	cd web && node scripts/screenshots.mjs
 
 test: ## Run worker tests and lint, web lint and type check
 	cd worker && uv run pytest && uv run ruff check . && uv run ruff format --check .

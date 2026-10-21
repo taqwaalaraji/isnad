@@ -35,6 +35,7 @@ Then sign in at http://localhost:3000 with a demo account ([testing.md](testing.
 | `make api` | Worker API on :8000 (auto-reload) |
 | `make worker` | Pipeline worker |
 | `make dev` | `web`, `api` and `worker` in parallel |
+| `make screenshots` | Product screenshots in `screenshots/` from the running app with the demo data (`web/scripts/screenshots.mjs`) |
 | `make test` | Worker tests and lint, web lint and type check |
 
 New migrations go in `supabase/migrations/` with a timestamped name; apply them with `make db-reset` (or `psql -f` on a running database), then run `make types`.
