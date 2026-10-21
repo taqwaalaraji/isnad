@@ -14,6 +14,7 @@ Traces the numbers in Arabic media content back to their official sources: every
 | `sample-data/` | The clips, official documents and texts the platform was tested with ([list](sample-data/README.md)) |
 | `presentation/` | The submission video, the full walkthrough, the presentation and the brand identity ([list](presentation/README.md)) |
 | `screenshots/` | The product's main screens with the demo data ([gallery](screenshots/README.md)) |
+| `designs/` | Logos, icons and the product UI design in FigCraft ([guide](designs/README.md)) |
 
 The database is the contract between `web/` and `worker/`: the web app writes rows, the worker picks them up and writes results back.
 
