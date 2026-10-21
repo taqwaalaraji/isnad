@@ -3,7 +3,7 @@ running the pipeline (which costs model calls).
 
     python -m isnad_worker.seed demo-checks-export [--titles "t1|t2"]   write seed_data/demo_checks.json.gz
                                                                       (default: every finished check)
-    python -m isnad_worker.seed demo-checks                            restore them (idempotent; part of `make seed`)
+    python -m isnad_worker.seed demo-checks                            restore them (idempotent; part of `make seed-demo`)
 
 Rows reference newsrooms, users, desks, indicators and entities by slug/email/name; check, claim and
 result ids are kept. Media checks are restored from the clips in sample-data/media; without the clip

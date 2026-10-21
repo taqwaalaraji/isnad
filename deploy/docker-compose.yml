@@ -2,7 +2,7 @@
 #
 # Supabase runs from its own compose project (github.com/supabase/supabase, docker/ folder),
 # started first; this project joins its network to reach `db` (Postgres) and `kong` (the API
-# gateway). See docs/technical/deployment.md.
+# gateway). See docs/technical/11-deployment.md.
 #
 #   cp .env.example .env    # fill it in
 #   docker compose up -d --build

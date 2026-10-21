@@ -3,7 +3,7 @@ documents the search agent found during checks), their versions and extracted fi
 database gets the same registry without paying for extraction or search again.
 
     python -m isnad_worker.seed snapshot      write seed_data/registry_snapshot.json.gz from the database
-    python -m isnad_worker.seed registry      restore it (idempotent; part of `make seed`)
+    python -m isnad_worker.seed registry      restore it (idempotent; part of `make seed-demo`)
 
 Rows reference sources, indicators and entities by slug (their ids change between databases); document,
 version and figure ids are kept, so checks restored afterwards link to the same evidence. Each version's

@@ -2,18 +2,22 @@
 
 How Isnad is built and operated. Each document describes what exists in the code today; update it in the same change that changes the behavior.
 
-| Document | Covers |
-|---|---|
-| [architecture.md](architecture.md) | Components, data flow, job queue, realtime, storage, the AI gateway |
-| [data-model.md](data-model.md) | Tables by area, statuses, the shared-registry vs newsroom-private rule, text normalization |
-| [security.md](security.md) | Sign-in, invitations, roles, row-level security, workflow functions, storage access, safe fetching, secrets |
-| [pipeline.md](pipeline.md) | How a check is processed: preparing, transcription, extraction, comparison, discovery, evidence, verifier, wording, chain, failures |
-| [registry.md](registry.md) | Sources and tiers, document versions, figure extraction, review, revisions and alerts, watching, Ask Isnad |
-| [web-app.md](web-app.md) | Routes, rendering patterns, server actions, realtime, i18n, design system, env vars |
-| [worker.md](worker.md) | Modules, job kinds, configuration, seeds, devtools |
-| [testing.md](testing.md) | Automated checks, test corpus, demo data, evaluation, manual verification |
-| [operations.md](operations.md) | Local development: setup, make targets, services, the Gemini API, practical notes |
-| [worker-tools.md](worker-tools.md) | Telegram bot, test corpus seeding, evaluation harness |
-| [deployment.md](deployment.md) | Single-VM deployment, secrets, migrations, backups, upgrades |
+| # | Document | Covers |
+|---|---|---|
+| 01 | [Architecture](01-architecture.md) | Components, data flow, the job queue, realtime, storage, the AI gateway and model choices |
+| 02 | [Data model](02-data-model.md) | Tables by area, check statuses, the shared-registry and newsroom-private rule, text normalization |
+| 03 | [The check pipeline](03-pipeline.md) | Lifecycle, job modes, preparing and transcription, extraction, comparison, discovery, evidence, verifier, wording, chain, failures, cost |
+| 04 | [The Isnad Registry](04-registry.md) | Catalog, source tiers, document versions, figure extraction, review, revisions and alerts, watching, private sources, Ask Isnad |
+| 05 | [The worker](05-worker.md) | Modules, job kinds, configuration, seeds, devtools |
+| 06 | [Worker tools](06-worker-tools.md) | The Telegram bot, the test corpus, the evaluation harness |
+| 07 | [The web app](07-web-app.md) | Layout, routes, rendering patterns, Supabase clients, i18n, design system, environment variables |
+| 08 | [Security](08-security.md) | Sign-in, invitations, roles, row-level security, workflow functions, storage, safe fetching, secrets, headers, Telegram |
+| 09 | [Testing](09-testing.md) | Automated checks, test and demo data, evaluation runs, manual verification |
+| 10 | [Local development and operations](10-operations.md) | Prerequisites, first run, make targets, local services, the Gemini API |
+| 11 | [Deployment](11-deployment.md) | One VM: Supabase, settings and secrets, first start, checks, backups and restore, upgrades |
 
-Product documentation (features, roles, guides, glossary) is in [../product/](../product/).
+New to the code? Read 01 to 04 first. Product documentation (features, roles, guides, glossary) is in [product docs](../product/README.md).
+
+---
+
+[← Glossary](../product/07-glossary.md) · [Documentation](../README.md) · [Architecture →](01-architecture.md)

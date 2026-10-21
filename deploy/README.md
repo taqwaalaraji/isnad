@@ -2,7 +2,7 @@
 
 Single-VM deployment: the official self-hosted Supabase stack, then this compose project (web,
 worker, worker API, Telegram bot, Caddy for HTTPS). The full runbook is
-[docs/technical/deployment.md](../docs/technical/deployment.md).
+[docs/technical/11-deployment.md](../docs/technical/11-deployment.md).
 
 | File | What it is |
 |---|---|

@@ -2,7 +2,8 @@
 
 The model writes the answer from approved figures we retrieve; code then checks that every cited
 figure was among them and that every number in the answer is one of the cited figures (or a date
-or period of theirs). An answer that fails the check is retried once, then replaced by "no evidence".
+or period of theirs). A wrong number is retried on the escalation model, a missing citation on the
+same model first; after three attempts the answer is replaced by "no evidence".
 """
 
 from __future__ import annotations

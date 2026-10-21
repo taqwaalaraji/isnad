@@ -2,20 +2,24 @@
 
 A check is one submission: a video, an audio clip, a document, a link or pasted text. The `process_check` job (`worker/src/isnad_worker/pipeline/check.py`) turns it into numbers with verdicts and evidence. An editor then reviews them.
 
+![The check pipeline: prepare, extract, check each number, finish](../img/pipeline.png)
+
 ## Lifecycle
+
+![A check's statuses and what moves it between them](../img/check-lifecycle.png)
 
 | Status | Meaning | Who moves it |
 |---|---|---|
 | `processing` | The worker is running (stages below) | Created by `createCheck`; also set by a re-check or a transcript correction |
 | `awaiting_review` | Results ready, nothing decided yet | Worker (`_finish`) |
 | `in_review` | At least one decision was made | `decide_claim`, `approve_matches`, `send_for_review` (from approved) |
-| `escalated` | At least one number is escalated | Recomputed by `refresh_check_counts` after decisions |
-| `approved` | Every checkable number decided, none escalated | `approve_check` |
+| `escalated` | At least one number is escalated | Recomputed by `refresh_check_counts` after decisions; also set when processing finishes if the newsroom escalates the numbers the verifier objects to |
+| `approved` | Nothing escalated and, under the newsroom's policy, no `differs` number still pending; the remaining pending numbers are approved with the check | `approve_check` |
 | `published` | Publication recorded; public evidence page live | `publish_check` |
 | `failed` | Processing stopped with a reason code | Worker (`_fail`) |
 | `archived` | Hidden from lists; cancels processing | `archive_check` |
 
-Stages while processing (`checks.stage`): `queued` → `preparing` → `transcribing` (media only) → `extracting` → `checking` → `done`. `checks.progress` holds timings (`<stage>_started_at`), `claims_total`, `claims_checked`, `transcribed_ms` and, for media, `transcript_source` (`captions` when the clip's own captions were used).
+Stages while processing (`checks.stage`): `queued` → `preparing` → `transcribing` (media only) → `extracting` → `checking` → `done`. `checks.progress` holds timings (`<stage>_started_at`), `claims_total`, `claims_checked`, `transcribed_ms`, `duration_ms`, `finished_at` and, for media, `transcript_source` (`captions` when the clip's own captions were used).
 
 A new check is also limited by the newsroom's `monthly_check_limit`, checked in the `createCheck` server action.
 
@@ -24,9 +28,9 @@ A new check is also limited by the newsroom's `monthly_check_limit`, checked in 
 | Mode | Started by | Does |
 |---|---|---|
 | `full` | New check (trigger); retry of a check that failed before it had any text | Prepare → extract → check |
-| `recheck` | `request_recheck` | Deletes results, resets decisions to pending, checks every number again against today's registry. Keeps the transcript and claims. |
+| `recheck` | `request_recheck` | Deletes the results, resets every number's review state to pending (the decision history stays, with a `recheck` entry) and checks every number again against today's registry. Keeps the transcript and claims. |
 | `segment` | `update_segment` (a corrected transcript line) | Re-extracts and re-checks that segment only; other numbers keep their results |
-| `claim` | `request_claim_search` | Checks one number again with web search allowed; the check stays in review |
+| `claim` | `request_claim_search` | Checks one number again with web search allowed, ignoring the per-check search budget (priority 20; the card shows `comparison.search = queued` until it runs); the check stays in review |
 
 ## 1. Preparing
 
@@ -34,7 +38,7 @@ A new check is also limited by the newsroom's `monthly_check_limit`, checked in 
 |---|---|
 | Video, audio | Download the original from Storage; `ffprobe` (must have audio, at most 2 hours); extract 16 kHz mono FLAC; make a web copy (H.264/AAC MP4 at most 1280 px wide, or AAC M4A) and a poster; compute a waveform; write the `media` row. Then transcribe (below). |
 | Document | PDF (text per page), DOCX, HTML or plain text read into paragraphs. A PDF without a text layer fails with `no_text`. |
-| Link | Video platforms (YouTube, TikTok, Instagram, X) are refused with `link_video`. Otherwise the page is downloaded safely ([security.md](security.md#fetching-from-the-internet-ssrf)) and read: HTML pages through a readability-style main-content pick that drops link-heavy blocks such as menus; PDFs and DOCX by type. The page title replaces a title that was just the URL. |
+| Link | Video platforms (YouTube, TikTok, Instagram, X) are refused with `link_video`. Otherwise the page is downloaded safely ([08-security.md](08-security.md#fetching-from-the-internet-ssrf): at most 30 MB, 120 s for the whole download, six redirects, each re-checked for private addresses) and read: HTML pages through a readability-style main-content pick that drops link-heavy blocks such as menus; PDFs and DOCX by type. The page title replaces a title that was just the URL. |
 | Text | Split into paragraphs. |
 
 Each paragraph or transcript line becomes a `segments` row.
@@ -42,7 +46,7 @@ Each paragraph or transcript line becomes a `segments` row.
 ### Transcription
 
 1. **Caption track first.** If the clip carries a text caption track (`mov_text`, `subrip`, `webvtt`, `ass`), the worker extracts it and uses the cues as segments. No speech-to-text is called.
-2. **Otherwise Gemini 3.5 Transcribe** (`pipeline/transcribe.py`), verbatim, with word timings and speaker labels. The audio is sent as mono 16 kHz Opus through the Gemini Files API (deleted after the call). The model detects the language itself (MSA, Gulf, Levantine, code-switching); Egyptian Arabic is passed as an `ar-EG` hint. Recordings longer than 10 minutes are cut into parts at a pause (ffmpeg `silencedetect`, within 60 seconds before each cut) and the parts' timings shifted back; a 25-minute request was dropped by the server. A part is retried twice after a dropped connection, a server error or a rate limit; a rejected request fails the check with `speech_unavailable`. Word times keep reading order and stay inside their part. Speaker labels are per part, so on recordings over 10 minutes the same voice can get a different label after a cut. Words become sentence-sized lines: a line ends at a sentence mark after 4 seconds, at a comma after 20, at a change of speaker, or at a pause of 1.2 seconds. Speakers are labelled S1, S2, … when there is more than one voice.
+2. **Otherwise Gemini 3.5 Transcribe** (`pipeline/transcribe.py`), verbatim, with word timings and speaker labels. The audio is uploaded as mono 16 kHz Opus with the Gemini Files API (the worker waits up to 120 s for the file to become active; it is deleted after the call) and transcribed by an Interactions API call (`client.interactions.create` with a verbatim `transcription_config`, speaker diarization and word timestamps). The model detects the language itself (MSA, Gulf, Levantine, code-switching); Egyptian Arabic is passed as an `ar-EG` hint. Recordings longer than 10 minutes are cut into parts at a pause (ffmpeg `silencedetect`, within 60 seconds before each cut) and the parts' timings shifted back; a 25-minute request was dropped by the server. A part is retried twice after a dropped connection, a server error or a rate limit; a rejected request fails the check with `speech_unavailable`. Word times keep reading order and stay inside their part. Speaker labels are per part, so on recordings over 10 minutes the same voice can get a different label after a cut. Words become sentence-sized lines: a line ends at a sentence mark after 4 seconds, at a comma after 20, at a change of speaker, at a pause of 1.2 seconds, and in any case at about 30 seconds. Gemini returns no word confidence, so `segments.low_confidence` stays false for transcripts. Speakers are labelled S1, S2, … when there is more than one voice.
 
 If the key is missing or the API rejects the request, the check fails with `speech_unavailable`; rate limits are retried.
 
@@ -89,7 +93,7 @@ A claim without a period is read against the latest current figure for its scope
 When the registry has no answer, discovery (`pipeline/discovery.py`, task `discover_source`) runs in two steps:
 
 1. **Search.** Code writes the question: the statistic, the place and the period, with a `site:` filter for the four best-ranked producers and the two best relays (tier 3: WAM, the emirate's media office); the relays are always on the allowlist. Sources are ranked by entity match, topic, emirate or federal level, then tier. Flash-Lite runs it with Google Search grounding. Only the pages the search really returned (resolved from Google's redirect links) are kept, filtered to `allowed_domains` (up to 60 domains of active sources), without bare home pages, at most three. The question asks for the figure with citations, not for links: asked for links only, the model answers from memory without searching. A call that didn't search is asked once more.
-2. **Read.** Code downloads each candidate itself (re-checking the allowlist after redirects) and extracts its text. A short document is read whole; a long one keeps its pages or paragraphs that mention the indicator, the claim's numbers or the period's years (up to 40,000 characters). Flash-Lite returns the figure and a verbatim quote; when its figure disagrees with the claim by more than 2% (which would make the claim `differs`), Flash reads the same passages again, since the cheap model sometimes takes a related number from the page. Code accepts the figure only if the quote and value are really in the downloaded copy; a quote copied imperfectly is replaced by the document's own sentence that holds the value and most of the quote's words. WAM articles (rendered in the browser) are read through WAM's article API. Some producers block automated downloads (FCSC, Dubai DET and the Central Bank answer 403; ADREC's certificate had expired in October 2026): their figures are found through the relays that republish them (WAM, the media offices). Only then is the copy stored as a document version (`fetched_via = discovery`).
+2. **Read.** Code downloads each candidate itself (re-checking the allowlist after redirects) and extracts its text. A short document is read whole; a long one keeps its pages or paragraphs that mention the indicator, the claim's numbers or the period's years (up to 40,000 characters). Flash-Lite returns the figure and a verbatim quote; when its figure disagrees with the claim by more than 2% (which would make the claim `differs`), Flash reads the same passages again, since the cheap model sometimes takes a related number from the page. Code accepts the figure only if the quote and value are really in the downloaded copy; a quote copied imperfectly is replaced by the document's own sentence that holds the value and most of the quote's words. WAM articles (rendered in the browser) are read through WAM's article API. Some producers block automated downloads (FCSC, Dubai DET and the Central Bank answer 403; ADREC's certificate had expired in October 2026): their figures are found through the relays that republish them (WAM, the media offices). The page must also belong to an active source (`store.source_for_url`), whose document it becomes. Only then is the copy stored as a document version (`fetched_via = discovery`).
 
 The figure is saved as **pending**: it is evidence for this check, and joins the shared registry only after a curator approves it.
 
@@ -118,7 +122,7 @@ Values are written from the figure with normalized units (`%`, AED, USD, or the 
 
 ## 4. Finishing
 
-`_finish` sets `stage = done`, `status = awaiting_review`, recomputes the counters, creates a `check_ready` alert for the creator, and queues a Telegram summary for checks that came from Telegram.
+`_finish` sets `stage = done`, `status = awaiting_review` and `registry_checked_at`, and applies the newsroom's `escalate_on_verifier_objection` policy: numbers the verifier flagged (`needs_review`) are escalated, with an `escalate` decision noted `verifier_objection`, so the check can open as `escalated`. It then recomputes the counters, creates a `check_ready` alert for the creator, and queues a Telegram summary for checks that came from Telegram.
 
 ## Failures
 
@@ -129,7 +133,7 @@ Values are written from the figure with normalized units (`%`, AED, USD, or the 
 | `file_missing` | The uploaded file isn't in Storage |
 | `no_audio` | The file has no audio track |
 | `too_long` | Longer than two hours |
-| `speech_unavailable` | Speech-to-text isn't configured or was refused |
+| `speech_unavailable` | Transcription isn't configured (`GEMINI_API_KEY`) or the request was refused |
 | `no_speech` | No speech recognized |
 | `no_text` | No readable text |
 | `link_video` | A video-platform link (download and upload the clip instead) |
@@ -144,4 +148,8 @@ Archiving a processing check cancels it. The worker checks the status before eac
 
 ## Cost
 
-Every model call is recorded in `usage_events` with the check id. Typical costs observed in testing: extraction $0.10–0.30 per check, verifier about $0.01 per number, discovery $0.05–0.20 per searched number.
+Every model call is recorded in `usage_events` with the check id. Measured on the local stack with the Gemini models: a seven-number text check $0.0098, a check with one source search $0.02, a 37-second audio check $0.039 including two searches. Across the 205 checks of the demo data the average was about $0.05. Google Search queries are recorded at the paid rate ($0.014 each) even inside the free monthly allowance, and they are most of the cost.
+
+---
+
+[← Data model](02-data-model.md) · [Documentation](../README.md) · [The Isnad Registry →](04-registry.md)

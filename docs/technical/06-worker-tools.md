@@ -10,7 +10,7 @@
 | `messages.py` | Everything the bot says, Arabic and English, and the summary/progress formatting (HTML parse mode, escaped) |
 | `bot.py` | Linking, intake, commands, progress edits, summaries, alerts |
 | `notify.py` | Job handlers `telegram_check_done` and `deliver_alerts` (run by the pipeline worker) |
-| `__main__.py` | The bot process: long polling in development, webhook registration in production |
+| `__main__.py` | The bot process: long polling in development; in production it registers the webhook (updates then arrive at the worker API's `/telegram/webhook`) and runs the progress loop, which edits each reply every 4 seconds while a check runs |
 
 Flow:
 
@@ -35,7 +35,7 @@ Every update is recorded in `telegram_updates` first, so a retried webhook or a 
 never handles one twice. Group chats are ignored. Links to the report are buttons only when
 `SITE_URL` is public (Telegram rejects localhost buttons); locally they're printed in the text.
 
-Run locally: `make bot` (polling with the development bot from `../credentials/telegram.env`).
+Run locally: `make bot` (polling, with `TELEGRAM_BOT_TOKEN` from `worker/.env`, which `make env` fills from `../credentials/*.env`).
 Commands are registered in Arabic (default) and English on start.
 
 ## Test corpus
@@ -43,7 +43,11 @@ Commands are registered in Arabic (default) and English on start.
 `sample-data/manifest.json` lists official UAE documents (`documents`), labelled claims from UAE
 outlets (`claims`) and media links (`media`). The document files live in `sample-data/documents/corpus/`
 (~50 MB). Each claim has its `expected_verdict` and a `target`: the labelled number
-as written in `text_ar`.
+as written in `text_ar`. The rest of `sample-data/` serves the demo: `documents/discovered/` (the
+documents the search agent stored during the demo checks, ~28 MB), `media/video|audio` (the clips)
+and `inputs/` (the texts of the text checks), all restored by `make seed-demo`
+([sample-data/README.md](../../sample-data/README.md)). WAM pages and the corpus's WAM `.json`
+files are read through WAM's article API (`pipeline/content.py`).
 
 `make corpus` (`python -m isnad_worker.seed documents`) stores each document under the trusted
 source that publishes it (by host, then tier, outlet type and language), and reads it into
@@ -54,10 +58,11 @@ Re-running is cheap: unchanged files map to their stored version. Options: `--re
 
 What the reading does with official files:
 
-- PDFs: text by layout block, Arabic lines rebuilt right to left from word positions; long
-  documents are read on their most relevant pages (up to 40, 20 per model call); quotes are
-  checked against the page, tolerating split lam-alef ligatures, letter-spaced infographics and
-  moved punctuation.
+- PDFs: the model reads the pages natively (long documents on their most relevant pages, up to
+  40, 20 per call). The text, by layout block with Arabic lines rebuilt right to left from word
+  positions, is used to rank pages and to check quotes against the page (tolerating split
+  lam-alef ligatures, letter-spaced infographics and moved punctuation), and is sent instead of
+  the pages only above 18 MB.
 - Spreadsheets: each cell as the sheet shows it (rounded to its number format, percent cells
   ×100), so figures keep their published precision.
 - Web pages: the largest `<article>` (or `<main>`), even inside a `<header>` or an ASP.NET
@@ -81,7 +86,12 @@ reasons, cost and latency. Per-claim results are on `eval_runs.results`.
 |---|---|
 | `--limit N`, `--only claim-001,…` | a subset |
 | `--no-discovery` | registry only (no searching official sites) |
+| `--concurrency N` | claims checked in parallel (default 3) |
 | `--recheck RUN_ID` | re-run comparison on a finished run's checks (same extracted claims): isolates rule and registry changes from extraction variance |
 | `--rescore RUN_ID` | score a finished run again after a label fix (no model calls) |
 
-A full run costs about $9 and takes 15–45 minutes depending on concurrency.
+A full run on the Gemini models costs about $1.60–3.20 (most of it Google Search queries at the paid rate, inside the free monthly allowance) and takes 15–45 minutes depending on concurrency.
+
+---
+
+[← The worker](05-worker.md) · [Documentation](../README.md) · [The web app →](07-web-app.md)

@@ -38,7 +38,7 @@ The terms used in the interface, Arabic first.
 | إعادة فتح | Reopen | Undo a decision |
 | إرسال للمراجعة | Send for review | Ask an editor to review a check |
 | اعتماد كل المطابق | Approve all matches | Approve every matching number without a verifier objection |
-| اعتماد التحقق | Approve check | Final approval once every number is decided |
+| اعتماد التحقق | Approve check | Final approval of a check: possible when no number is escalated and (under the default policy) no "Differs" number is pending; other pending numbers are approved with it |
 | تسجيل النشر | Record publication | Save the published link; creates the public evidence page |
 | ملاحظة الإسناد | Isnad note | The sources block to paste under a story |
 | صفحة الشاهد العامة | Public evidence page | The readers' page for a published check |
@@ -46,7 +46,7 @@ The terms used in the interface, Arabic first.
 | التفريغ | Transcript | The text of a clip, line by line with times |
 | تتبّع التشغيل | Follow playback | Keep the current number in view while playing |
 | توقف عند كل ملاحظة | Pause at each issue | Stop playback at numbers that differ or have a different context |
-| تعديل رقم رسمي | Official figure revised | Alert when a figure behind a published number changes |
+| تعديل رقم رسمي | Official figure revised | Alert when a figure behind an approved or published number changes |
 | إصدار جديد / رقم جديد | New release / new figure | Alerts for what you follow |
 | متابعة | Follow | Get alerts for an indicator or entity |
 | الإحاطات | Briefs | Pre-interview sheets from the registry |
@@ -59,4 +59,28 @@ The terms used in the interface, Arabic first.
 | مشرف المنصة | Platform admin | Isnad staff who run the platform |
 | منصة إسناد | Isnad console | The staff workspace |
 | مراجعة الأرقام | Figure review | Curators approving extracted figures |
-| صندوق الوارد | Inbox | Documents added by hand to the registry |
+| صندوق الوارد | Inbox | Every document version in the registry, uploaded by hand or fetched automatically, with its extraction status |
+| سلسلة الإسناد | Isnad chain | The heading of the chain on the check page |
+| تصدير | Export | The isnad note, subtitles (SRT) and the public evidence page link |
+| إلغاء التحقق | Cancel check | Stop a check while it processes |
+| أرشفة | Archive | Hide a check from the lists |
+| ابحث في المصادر الرسمية | Search official sources | Search for one number on official websites |
+| عُثر عليه بالبحث في المصادر الرسمية | Found by searching official sources | Evidence the search agent found while checking |
+| أولي / نهائي / مُعدَّل | Preliminary / Final / Revised | A figure's status as published |
+| بانتظار القرار · عُدّلت الصياغة · محال | Pending · Wording edited · Escalated | A number's review state |
+| قيد المعالجة · بانتظار المراجعة · قيد المراجعة · محال للمحرر · معتمد · منشور · مؤرشف · تعذّر | Processing · Awaiting review · In review · Escalated · Approved · Published · Archived · Failed | A check's status |
+| التنبيهات | Alerts | Revisions, releases, checks ready and review requests |
+| القنوات | Channels | Where Telegram is linked, in the settings |
+| السجل العام | Shared registry | Sources and figures every newsroom uses |
+| المصادر الرسمية | Official sources | The shared sources, in the console |
+| المصادر الخاصة | Private sources | A newsroom's own sources |
+| اقتراحات المصادر | Source proposals | Sources newsrooms proposed for the shared registry, and proposed indicators |
+| الفهرس | Catalog | Indicators and entities |
+| التغطية | Coverage | What the registry covers, by topic |
+| حداثة السجل | Registry freshness | How many sources were fetched within their update cycle |
+| الجودة والنماذج | Quality and models | Model settings, evaluation runs, model usage and cost |
+| النظام | System | The job queue and the worker's activity |
+
+---
+
+[← Guide for curators and platform admins](06-guide-curator.md) · [Documentation](../README.md) · [Technical docs →](../technical/README.md)

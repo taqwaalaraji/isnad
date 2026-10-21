@@ -7,6 +7,8 @@ There are two kinds of roles:
 
 These rules are enforced in the database (row-level security and workflow functions), not only in the interface.
 
+![Who does what: the newsroom roles and Isnad's team](../img/roles.png)
+
 ## Who sees which check
 
 A member of the newsroom can open a check when any of these is true:
@@ -19,6 +21,8 @@ A member of the newsroom can open a check when any of these is true:
 
 A check marked «خاص بي» (private) is visible only to its creator, the assigned reviewer, and the newsroom's editors and admins. People outside the newsroom never see it, and neither do Isnad staff.
 
+The new-check form calls the three choices «الغرفة كلها» / «قسمي» / «خاص بي»; the newsroom's policy page names the same choices «كل الغرفة» / «القسم فقط» / «صاحبه والمحررون».
+
 ## Newsroom permissions
 
 | Action | Journalist | Editor | Newsroom admin |
@@ -26,7 +30,7 @@ A check marked «خاص بي» (private) is visible only to its creator, the ass
 | Create a check (within the monthly limit) | ✓ | ✓ | ✓ |
 | Read checks (per the visibility rules) | ✓ | ✓ | ✓ |
 | Comment on a number | ✓ | ✓ | ✓ |
-| On own checks: rename, change visibility or desk, correct the transcript, re-check, search official sources for a number, send for review, archive or cancel | ✓ | ✓ | ✓ |
+| On own checks: correct the transcript, re-check, search official sources for a number, send for review, archive or cancel | ✓ | ✓ | ✓ |
 | The same on other people's checks | — | ✓ | ✓ |
 | Decide on a number: approve, edit wording, escalate, reopen | — | ✓ | ✓ |
 | Approve all matches | — | ✓ | ✓ |
@@ -41,7 +45,11 @@ A check marked «خاص بي» (private) is visible only to its creator, the ass
 | Private sources, proposing a source to the shared registry | — | — | ✓ |
 | Activity log and usage (and CSV export) | — | — | ✓ |
 
-Limits set by Isnad (the monthly check limit, suspending a newsroom) can't be changed by newsroom admins. A newsroom always keeps at least one active admin.
+Visibility and desk are chosen when the check is created (the database would also let the author change them later; the app doesn't offer that yet).
+
+Limits set by Isnad (the monthly check limit, suspending a newsroom) can't be changed by newsroom admins. A suspended newsroom disappears from its members' newsroom list, in the app and in Telegram. A newsroom always keeps at least one active admin.
+
+Checks sent through Telegram follow the same rules: they are created as the linked member, count towards the monthly limit, and are accepted only when the newsroom's Telegram policy is on.
 
 ## Platform permissions
 
@@ -50,17 +58,23 @@ Limits set by Isnad (the monthly check limit, suspending a newsroom) can't be ch
 | Official sources: add, edit, pause, fetch now | ✓ | ✓ |
 | Inbox: upload documents, retry extraction | ✓ | ✓ |
 | Figure review: approve, correct, reject | ✓ | ✓ |
-| Catalog: topics, indicators, entities | ✓ | ✓ |
+| Catalog: indicators and entities (the 21 topics are fixed) | ✓ | ✓ |
 | Proposals: newsroom source proposals, proposed indicators | ✓ | ✓ |
 | Newsrooms: view with counts and costs | ✓ (read only) | ✓ |
 | Newsrooms: create, set limits, suspend, invite the first admin | — | ✓ |
-| Quality: view model settings and evaluation runs; start an evaluation run | ✓ | ✓ |
+| Quality and models: model settings, evaluation runs, model usage and cost by day and task; start an evaluation run | ✓ | ✓ |
 | Quality: change model settings | — | ✓ |
-| System: job queue, retry or cancel jobs, usage | ✓ | ✓ |
+| System: the job queue, running jobs (cancel), recent failures (retry), worker activity | ✓ | ✓ |
 
-Staff see the registry in full (including pending and rejected figures). They never see newsroom content (checks, claims, comments); the console shows counts and costs only.
+Staff see the registry in full (including pending and rejected figures, and newsrooms' private sources, documents and figures) and newsrooms' activity logs. They never see newsroom content (checks, claims, comments); the console shows counts and costs only.
+
+![The Isnad team console: newsrooms, their usage and cost](../../screenshots/35-console-newsrooms.jpg)
 
 ## What anyone can see without signing in
 
 - The public evidence page of a published check (`/n/<code>`).
 - The invitation page, which shows only the newsroom name, the role and a masked email address.
+
+---
+
+[← Overview](01-overview.md) · [Documentation](../README.md) · [Guide for journalists →](03-guide-journalist.md)

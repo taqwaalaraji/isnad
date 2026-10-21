@@ -6,10 +6,10 @@
 
 | Suite | Command | Covers |
 |---|---|---|
-| Worker unit tests | `cd worker && uv run pytest` | See below (48 tests) |
+| Worker unit tests | `cd worker && uv run pytest` | See below (156 tests: 138 test functions in 14 files, some parametrized) |
 | Worker lint and format | `uv run ruff check .` and `uv run ruff format --check .` | Style, imports, common bugs (line length 100) |
 | Web lint | `cd web && npm run lint` | ESLint with the Next.js and React Hooks rules (purity, effects) |
-| Web types | `npx tsc --noEmit` | Includes typed routes and typed dictionary keys |
+| Web types | `npx tsc --noEmit` | Includes the generated route types (`PageProps`) and typed dictionary keys; on a fresh clone run `npx next typegen` (or `next dev`/`next build`) once first |
 
 Worker tests:
 
@@ -18,9 +18,27 @@ Worker tests:
 | `tests/test_text.py` | Normalization matches the SQL rules; verbatim matching tolerates typography; spans map back to original offsets; digit and spoken-number parsing, decimal commas, scale words; number formatting; SRT caption parsing; period labels and unit normalization |
 | `tests/test_compare.py` | The verdict rules: rounding tolerance, "about" and one-sided qualifiers, measure and scope mismatches, period relations, the latest-figure rule for claims without a period, preferring current figures over superseded ones |
 | `tests/test_ask.py` | Ask Isnad's number verification (cited numbers, rounded restatements, computed rates rejected, unknown ids) and that the endpoint requires the internal token |
-| `tests/test_api.py` | `/health` |
+| `tests/test_api.py` | `/health`, and the Telegram webhook: requires the secret, accepts updates, off without a secret |
+| `tests/test_cascade.py` | Cheap model first, escalation only when code rejects the answer |
+| `tests/test_discovery.py` | The domain allowlist, the candidate cap, the search question |
+| `tests/test_document_reading.py` | PDF text with Arabic lines right to left, HTML main-content extraction, WAM's article API |
+| `tests/test_eval_scoring.py` | Evaluation scoring: verdict accuracy, false alarms, false reassurance |
+| `tests/test_extract_numbers.py` | Code's reading of the digits against the model's |
+| `tests/test_gemini_gateway.py` | The gateway: escalation, refusals, usage and cost recording |
+| `tests/test_registry_precision.py` | Published precision and when a new figure is a revision |
+| `tests/test_seed_documents.py` | Source by host, lookalike hosts refused, WAM files, dates |
+| `tests/test_telegram.py` | The Bot API client's retries, messages, linking, the intake guard |
+| `tests/test_transcribe.py` | Cutting at pauses, word timings, speakers, retries |
 
-There are no automated browser tests yet; web flows are tested by hand (below).
+Outside `make test`, because they need the running app or model calls:
+
+| Command | What it checks |
+|---|---|
+| `make smoke` | Signs in as each demo role and requests every page in Arabic and English: status codes, 404 where a role has no access, no error digests in the streamed HTML (213 pages) |
+| `make eval` | The labelled claims through the real pipeline (model cost; below) |
+| `make screenshots` | Takes the product screenshots in `screenshots/` from the running app |
+
+There are no browser interaction tests yet; web flows are tested by hand (below).
 
 ## Test data
 
@@ -39,11 +57,11 @@ Every quote in the manifest was found verbatim in its file, and every claim text
 ## Demo data
 
 - `make seed` — the base seed (catalog). `make seed-demo` — the demo data exactly as recorded (accounts, registry with stored documents, 208 checks with their clips, alerts, activity, usage, briefs, evaluation runs). Demo users (password in `worker/seed_data/demo.json`): `admin@isnad.ae` (platform admin), `curator@isnad.ae` (curator); newsroom «غرفة المدار» (`almadar`): `laila@almadar.news` (admin), `sara@almadar.news` (editor), `omar@almadar.news` and `khaled@almadar.news` (journalists); «صحيفة الأفق» (`alufuq`): `rana@alufuq.ae` (admin).
-- `make seed-showcase` — the demo checks processed again by the real pipeline, with realistic review states ([worker.md](worker.md#seeds)).
+- `make seed-showcase` — the demo checks processed again by the real pipeline, with realistic review states ([05-worker.md](05-worker.md#seeds)).
 
 ## Evaluation runs
 
-Staff start an evaluation from the console (**Quality and models** → run the test set). Inserting an `eval_runs` row queues `run_eval`, whose handler calls `isnad_worker.eval.harness.run`. **That harness module isn't in this branch yet**, so a run fails with an import error until it lands.
+Staff start an evaluation from the console (**Quality and models** → run the test set): the `eval_runs` row is inserted as `queued`, which queues `run_eval`, and the worker runs `isnad_worker.eval.harness.run`. `make eval` (`python -m isnad_worker.eval`) runs the same harness in-process: the labelled claims of `sample-data/manifest.json` become text checks in the internal `isnad-eval` newsroom, go through `process_check`, and are scored into `eval_runs` ([06-worker-tools.md](06-worker-tools.md)).
 
 ## Manual verification (current state)
 
@@ -57,3 +75,7 @@ Tested in the browser against the local stack, in Arabic and English, light and 
 - Registry pages and Ask Isnad; newsroom admin (invitations end to end through the local mail inbox, members, policies, private sources, activity export); settings; alerts; briefs; the console pages and their permission edges.
 
 Live model runs (October 2026, Gemini): a seven-number text check ($0.0098, one Flash call for a verifier objection), a check needing source search ($0.02, one Google Search query; the Sharjah population was found on u.ae and verified verbatim), and an audio check transcribed by Gemini 3.5 Transcribe.
+
+---
+
+[← Security](08-security.md) · [Documentation](../README.md) · [Local development and operations →](10-operations.md)

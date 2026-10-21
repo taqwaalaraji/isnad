@@ -3,11 +3,14 @@
 Isnad runs on one VM: the official self-hosted Supabase stack, and next to it the `deploy/`
 compose project (web app, pipeline worker, worker API, Telegram bot, Caddy for HTTPS).
 
+![Deployment on one VM: Caddy, the Isnad services and the Supabase stack](../img/deployment.png)
+
 ```
 VM (4 vCPU, 8–16 GB RAM, 100 GB disk; a UAE region if available)
 ├── /opt/supabase/docker   Supabase (Postgres, Auth, REST, Realtime, Storage, Kong; Studio private)
 └── /opt/isnad             this repository
-    └── deploy/            web · worker · api · bot · caddy   (network: supabase_default)
+    └── deploy/            web · worker · api · bot · caddy
+                           (network isnad for all; worker, api, bot and caddy also join supabase_default)
 ```
 
 Two public hostnames, both on Caddy with automatic TLS:
@@ -17,7 +20,7 @@ Two public hostnames, both on Caddy with automatic TLS:
 | `SITE_DOMAIN` (e.g. `isnad.ae`) | the web app; `/telegram/webhook` to the worker API |
 | `SUPABASE_DOMAIN` (e.g. `api.isnad.ae`) | Supabase's gateway (auth, REST, realtime, storage) |
 
-Studio, Postgres and the worker API's other routes are not exposed.
+Studio, Postgres and the worker API's other routes are not exposed. The web app reaches Supabase through `SUPABASE_DOMAIN` (the public URL, also used server-side) and the worker API (`/internal/ask`) over the private `isnad` network.
 
 ## 1. Provision
 
@@ -61,7 +64,16 @@ cp .env.example .env && chmod 600 .env     # fill in every value
 - `TELEGRAM_BOT_TOKEN`: the production bot's token (not the development bot's); revoke and
   reissue it in BotFather if it was ever shared in chat or committed anywhere.
 - `GEMINI_API_KEY`: a Google AI Studio key on a project with billing enabled (every model task,
-  transcription included). Set a budget alert on that project.
+  transcription included). Set a budget alert on that project, and check its rate limits
+  ([10-operations.md](10-operations.md#gemini-api)).
+- `SITE_DOMAIN`, `SUPABASE_DOMAIN`, `ACME_EMAIL`: the two hostnames, and the address for Let's
+  Encrypt.
+- `TELEGRAM_BOT_USERNAME`: becomes `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` (the link on the settings
+  page). Without `TELEGRAM_BOT_TOKEN`, set `TELEGRAM_MODE=off`, or the bot service exits and
+  restarts in a loop.
+- `SUPABASE_NETWORK` (default `supabase_default`), the worker's tuning (`WORKER_CONCURRENCY`,
+  `JOB_TIMEOUT_MINUTES`, `DISCOVERY_ENABLED`, `WATCH_INTERVAL_HOURS`) and `ISNAD_VERSION` (the
+  image tag) keep their defaults unless you need otherwise.
 
 `NEXT_PUBLIC_*` values are compiled into the browser bundle, so changing the Supabase domain,
 the anon key or the bot username needs a web rebuild.
@@ -78,11 +90,14 @@ docker compose run --rm -it worker python -m isnad_worker.seed admin --email you
 
 - `seed catalog` (the base seed, same as `seed base`) loads topics, indicators, entities and the
   trusted UAE sources (idempotent).
-- `seed admin` creates the platform administrator (asks for a 12+ character password), who then
+- `seed admin` creates the platform administrator (asks for a 12+ character password, or reads
+  `ISNAD_ADMIN_PASSWORD`), who then
   creates newsrooms and invites their admins from the console.
-- Don't run `seed demo-data` (or `seed demo`) in production: it creates demo accounts with a known
-  password. For a public demo server, run it and then change the demo passwords.
-- To load the test corpus into the registry, copy `sample-data/` to the VM and run
+- Don't run `seed demo-data`, `seed demo` or `seed all` in production: they create demo accounts
+  with a known password. For a public demo server, run `seed demo-data` with the repository's
+  `sample-data/` mounted at `/sample-data` (`-v /opt/isnad/sample-data:/sample-data:ro`; without
+  it the stored documents and the clips are skipped), then change the demo passwords.
+- To load the test corpus into the registry (it is already in the clone, under `sample-data/`), run
   `docker compose run --rm -v /opt/isnad/sample-data:/corpus -e ISNAD_CORPUS_DIR=/corpus worker python -m isnad_worker.seed documents`
   (it reads the documents with the model: a few dollars).
 
@@ -93,7 +108,7 @@ updates without the secret.
 ## 5. Checks after deploying
 
 - `https://SITE_DOMAIN/ar/sign-in` loads; sign in as the administrator.
-- `docker compose ps`: all services up; `api` healthy.
+- `docker compose ps`: all services up; `web` and `api` healthy.
 - Submit a short text check with a number; it should reach "awaiting review" within a minute.
 - Message the bot `/help`; link a test account from Settings → Link Telegram.
 - `docker compose logs -f worker` shows jobs starting and finishing, with no tracebacks.
@@ -112,15 +127,20 @@ select kind, count(*), max(finished_at) from public.jobs
 where status = 'failed' and finished_at > now() - interval '1 day' group by kind;
 ```
 
-Model spend is in `public.usage_events` (`sum(cost_usd)` per day and task); the console's
-quality page shows it per newsroom.
+Model spend is in `public.usage_events` (`sum(cost_usd)` per day and task); the console shows it
+by day and task (**Quality and models**) and this month's cost per newsroom (**Newsrooms**).
 
 **Backups**: `deploy/backup.sh` (cron, nightly) writes a `pg_dump` and a storage archive to
 `/var/backups/isnad` and keeps 14 days. Copy that folder off the VM (rclone or restic to object
 storage); test a restore on a scratch VM every quarter.
 
-**Restore**: `deploy/restore.sh db-<stamp>.dump storage-<stamp>.tar.gz` stops Isnad, restores
-the database (and storage files), and starts it again.
+**Restore**: `deploy/restore.sh /var/backups/isnad/db-<stamp>.dump /var/backups/isnad/storage-<stamp>.tar.gz`
+(absolute paths: the script changes directory first) asks you to type `RESTORE`, stops Isnad and
+Supabase Storage, restores the database, moves the old `volumes/storage` aside and unpacks the
+archive, then starts everything again. `backup.sh` and `restore.sh` read `DB_CONTAINER`,
+`SUPABASE_DIR`, `BACKUP_DIR` and `KEEP_DAYS`; the cron line is in `backup.sh`'s header.
+`deploy/migrate.sh` records applied migrations in `supabase_migrations.schema_migrations`, so
+`supabase migration list --db-url …` agrees with it.
 
 ## 7. Upgrades
 
@@ -144,3 +164,7 @@ docker build -f deploy/web.Dockerfile -t isnad-web \
 
 Each Dockerfile has its own `.dockerignore` (`deploy/*.Dockerfile.dockerignore`) that sends
 only the code it needs, never env files, `node_modules` or the test corpus.
+
+---
+
+[← Local development and operations](10-operations.md) · [Documentation](../README.md)

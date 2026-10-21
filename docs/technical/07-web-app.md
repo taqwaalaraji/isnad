@@ -15,9 +15,11 @@
 | `src/app/auth/` | Route handlers: `confirm` (email links), `sign-out`, `session-ended` |
 | `src/app/api/admin/activity/` | CSV export of a newsroom's activity log (admins) |
 | `src/features/<area>/` | Screen logic per area: `queries.ts` (server reads), `actions.ts` (server actions), components |
-| `src/components/ui/`, `src/components/shell/` | Design-system primitives and the app frame |
-| `src/lib/` | Auth (`auth.ts`), Supabase clients, i18n, formatting, shared types, errors |
-| `src/proxy.ts` | Locale and session gate ([security.md](security.md#proxy)) |
+| `src/components/ui/`, `src/components/shell/`, `src/components/states/` | Design-system primitives, the app frame, and the shared state panels (`StatePanel`, `NotFoundState`) |
+| `src/lib/` | Auth (`auth.ts`), Supabase clients, i18n, formatting, shared types, errors, `env.ts` (environment checks that fail with "run `make env`"), `redirects.ts` (`safeNext`, `inLocale`) |
+| `src/proxy.ts` | Locale and session gate ([08-security.md](08-security.md#proxy)) |
+| `next.config.ts` | `output: "standalone"` (the Docker image), `partialPrefetching`, no `X-Powered-By`, and security headers ([08-security.md](08-security.md)) |
+| `scripts/` | `smoke.mjs` (`make smoke`: every page as every demo role, both locales) and `screenshots.mjs` (`make screenshots`: the images in `screenshots/`) |
 
 ## Routes
 
@@ -33,7 +35,7 @@
 | `/console`, `/console/sources[/new, /[id], /[id]/edit]`, `/console/inbox`, `/console/review`, `/console/catalog`, `/console/proposals`, `/console/newsrooms`, `/console/quality`, `/console/system` | Isnad console |
 | `/n/[slug]` | Public evidence page |
 
-Unknown paths render the localized not-found page (`[...rest]` route). The workspace has its own not-found and error boundaries so the sidebar stays.
+Unknown paths render the localized not-found page (`[...rest]` route). The workspace has its own not-found page, so the sidebar stays; errors fall back to the locale's `error.tsx` (without the sidebar) and `app/global-error.tsx`.
 
 ## Rendering patterns
 
@@ -41,7 +43,7 @@ The app uses `cacheComponents` (Partial Prerendering):
 
 - Pages are thin: they render a `<Suspense>` with a skeleton and an async `Content` component that awaits `params`/`searchParams` and loads data. Dynamic `params` are only read inside Suspense.
 - `getViewer()` (React `cache`, one per request) calls `connection()` first, because session checks read the clock. Everything behind a viewer renders per request.
-- `requireNewsroom(locale)` resolves the active newsroom: the `isnad_newsroom` cookie, then the user's last newsroom, then the first membership. Staff without a newsroom go to the console; others go to `/no-newsroom`.
+- `requireNewsroom(locale)` resolves the active newsroom: the `isnad_newsroom` cookie, then the user's last newsroom, then the first membership. Staff without a newsroom go to the console (`/console/sources`); others go to `/no-newsroom`.
 - Pages declare breadcrumbs with `<SetBreadcrumbs items={…} />`; the top bar shows them.
 
 ### Server actions
@@ -62,7 +64,7 @@ Client components subscribe with `subscribeAsUser(name, configure)` (`lib/supaba
 
 ### Public evidence page
 
-`/n/[slug]` uses a cookie-free anonymous client (`lib/supabase/public.ts`) and a `"use cache"` function with `cacheLife("minutes")` and the tag `public-note:<slug>`. A missing note throws instead of being cached, so a page published a moment ago isn't stuck as not found.
+`/n/[slug]` uses a cookie-free anonymous client (`lib/supabase/public.ts`) and a `"use cache"` function with `cacheLife("minutes")` and the tag `public-note:<slug>`. A missing note throws instead of being cached, so a page published a moment ago isn't stuck as not found. Nothing invalidates the tag yet, so a revision shows on the page when the cached copy expires (minutes).
 
 ## Supabase clients
 
@@ -99,3 +101,9 @@ Client components subscribe with `subscribeAsUser(name, configure)` (`lib/supaba
 | `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` | The Telegram deep link on the settings page |
 
 `make env` writes `web/.env.local` for local development.
+
+Staff upload documents to the console inbox the same way as check media: `createInboxUploadUrl` (`features/console/actions.ts`) issues a signed upload URL in the `documents` bucket under `inbox/` (100 MB at most).
+
+---
+
+[← Worker tools](06-worker-tools.md) · [Documentation](../README.md) · [Security →](08-security.md)

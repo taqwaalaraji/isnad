@@ -7,10 +7,10 @@ Traces the numbers in Arabic media content back to their official sources: every
 | Path | What it is |
 |---|---|
 | `web/` | Next.js app (TypeScript): screens, server actions, admin pages |
-| `worker/` | Python: the processing pipeline worker, the Telegram bot, and a FastAPI app for webhooks |
-| `supabase/` | Local Supabase config, SQL migrations, seed data |
-| `deploy/` | VM deployment: Dockerfiles, Compose next to self-hosted Supabase, Caddy, backups ([runbook](docs/technical/deployment.md)) |
-| `docs/` | Technical and product documentation |
+| `worker/` | Python: the processing pipeline worker, the Telegram bot, and a FastAPI app (Ask Isnad for the web app, the Telegram webhook) |
+| `supabase/` | Local Supabase config, SQL migrations, email templates (the seed data is in `worker/seed_data/` and `sample-data/`) |
+| `deploy/` | VM deployment: Dockerfiles, Compose next to self-hosted Supabase, Caddy, backups ([runbook](docs/technical/11-deployment.md)) |
+| `docs/` | Product and technical documentation ([index](docs/README.md)) |
 | `sample-data/` | The clips, official documents and texts the platform was tested with ([list](sample-data/README.md)) |
 | `presentation/` | The submission video, the full walkthrough, the presentation and the brand identity ([list](presentation/README.md)) |
 | `screenshots/` | The product's main screens with the demo data ([gallery](screenshots/README.md)) |
@@ -22,7 +22,7 @@ The database is the contract between `web/` and `worker/`: the web app writes ro
 
 - Docker, running
 - Node.js 22+
-- [uv](https://docs.astral.sh/uv/) and the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started): `brew install uv supabase/tap/supabase`
+- [uv](https://docs.astral.sh/uv/) (it fetches Python 3.12), the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) and ffmpeg: `brew install uv supabase/tap/supabase ffmpeg`
 
 ## First run
 
@@ -51,8 +51,9 @@ Open http://localhost:3000 and sign in with a demo account (below). There are tw
 which lists every item with its original link. `make seed-export` writes the demo data again from your
 local database.
 
-Viewing the demo needs no API key. To run new checks, add `GEMINI_API_KEY` to `worker/.env`
-(see `worker/.env.example`).
+Viewing the demo needs no API key. To run new checks, put `GEMINI_API_KEY=…` in a `.env` file in a
+`credentials/` folder next to the repository (for example `../credentials/gemini.env`) and run
+`make env` again: it rewrites `worker/.env` and keeps only keys from that folder.
 
 For more demo checks, built from real newspaper claims and the real clips and processed by the real
 pipeline (about $0.50 of model tokens, plus Google Search queries that the free monthly allowance
@@ -79,7 +80,7 @@ All use the password in `worker/seed_data/demo.json` (local development only).
 
 | Service | Used for | Notes |
 |---|---|---|
-| Gemini API (Google AI Studio key) | every model task: transcription, extraction, verification, wording, source search (Google Search grounding), figure extraction, Ask Isnad, briefs | one key, `GEMINI_API_KEY`, on a project with billing; models per task in [docs/technical/architecture.md](docs/technical/architecture.md#ai-gateway) |
+| Gemini API (Google AI Studio key) | every model task: transcription, extraction, verification, wording, source search (Google Search grounding), figure extraction, Ask Isnad, briefs | one key, `GEMINI_API_KEY`, on a project with billing; models per task in [docs/technical/01-architecture.md](docs/technical/01-architecture.md#ai-gateway) |
 | Telegram Bot API | the bot | development bot by polling; webhook in production |
 
 ## Local services
@@ -87,7 +88,7 @@ All use the password in `worker/seed_data/demo.json` (local development only).
 | Service | URL |
 |---|---|
 | Web app | http://localhost:3000 |
-| Worker API | http://localhost:8000 (`/health`, `/telegram/webhook`) |
+| Worker API | http://localhost:8000 (`/health`, `/internal/ask`, `/telegram/webhook`) |
 | Telegram bot | the development bot, by long polling (`make bot`) |
 | Supabase API | http://127.0.0.1:54321 |
 | Supabase Studio | http://127.0.0.1:54323 |
@@ -98,6 +99,7 @@ All use the password in `worker/seed_data/demo.json` (local development only).
 
 ```bash
 make help                          # list all targets
+make env                           # write web/.env.local and worker/.env (local Supabase + ../credentials)
 make test                          # worker tests + lint, web lint + type check
 make db-reset                      # rebuild the local database from migrations, base seed and demo data
 make seed                          # base seed only: topics, indicators, entities, official sources
@@ -108,14 +110,18 @@ make smoke                         # request every page as each demo role agains
 make seed-showcase                 # more demo checks through the real pipeline (model cost)
 make bot                           # run only the Telegram bot (polling)
 make corpus                        # read the test corpus documents into the registry (model cost)
+make media                         # download the clips again from their publishers
+make screenshots                   # take the product screenshots in screenshots/ (app running)
 make eval                          # evaluate the pipeline on the labelled corpus claims (model cost)
 supabase migration new <name>      # create a new migration in supabase/migrations
 ```
 
 ## Documentation
 
-- Technical: [docs/technical](docs/technical/README.md) — architecture, data model, security, pipeline, registry, web app, worker, testing, operations, deployment.
-- Product: [docs/product](docs/product/README.md) — overview, roles and permissions, guides per role, glossary.
+The full, ordered index is in [docs/README.md](docs/README.md):
+
+- [Product docs](docs/product/README.md): overview, roles and permissions, a guide per role, glossary.
+- [Technical docs](docs/technical/README.md): architecture, data model, pipeline, registry, worker, web app, security, testing, operations, deployment.
 
 ## Team
 
