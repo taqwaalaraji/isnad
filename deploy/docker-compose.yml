@@ -1,0 +1,99 @@
+# Isnad on one VM, next to the official self-hosted Supabase stack.
+#
+# Supabase runs from its own compose project (github.com/supabase/supabase, docker/ folder),
+# started first; this project joins its network to reach `db` (Postgres) and `kong` (the API
+# gateway). See docs/technical/deployment.md.
+#
+#   cp .env.example .env    # fill it in
+#   docker compose up -d --build
+
+name: isnad
+
+x-worker: &worker
+  build:
+    context: ..
+    dockerfile: deploy/worker.Dockerfile
+  image: isnad-worker:${ISNAD_VERSION:-latest}
+  restart: unless-stopped
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/postgres
+    SUPABASE_URL: http://kong:8000
+    SUPABASE_SECRET_KEY: ${SERVICE_ROLE_KEY}
+    SITE_URL: https://${SITE_DOMAIN}
+  networks: [isnad, supabase]
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/web.Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: https://${SUPABASE_DOMAIN}
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${ANON_KEY}
+        NEXT_PUBLIC_TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-}
+    image: isnad-web:${ISNAD_VERSION:-latest}
+    restart: unless-stopped
+    environment:
+      # Read at runtime by server code too (the build only inlines them into the browser bundle).
+      NEXT_PUBLIC_SUPABASE_URL: https://${SUPABASE_DOMAIN}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${ANON_KEY}
+      NEXT_PUBLIC_TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-}
+      SUPABASE_SECRET_KEY: ${SERVICE_ROLE_KEY}
+      SITE_URL: https://${SITE_DOMAIN}
+      WORKER_API_URL: http://api:8000
+      INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
+    networks: [isnad]
+
+  worker:
+    <<: *worker
+    command: ["python", "-m", "isnad_worker.runner"]
+    stop_grace_period: 2m
+
+  api:
+    <<: *worker
+    command: ["uvicorn", "isnad_worker.api:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  bot:
+    <<: *worker
+    command: ["python", "-m", "isnad_worker.telegram"]
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/postgres
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_SECRET_KEY: ${SERVICE_ROLE_KEY}
+      SITE_URL: https://${SITE_DOMAIN}
+      TELEGRAM_MODE: webhook
+      TELEGRAM_WEBHOOK_URL: https://${SITE_DOMAIN}/telegram/webhook
+
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN}
+      SUPABASE_DOMAIN: ${SUPABASE_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks: [isnad, supabase]
+    depends_on: [web, api]
+
+volumes:
+  caddy-data:
+  caddy-config:
+
+networks:
+  isnad:
+  supabase:
+    external: true
+    name: ${SUPABASE_NETWORK:-supabase_default}

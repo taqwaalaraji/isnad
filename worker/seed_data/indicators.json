@@ -1,0 +1,1194 @@
+{
+  "indicators": [
+    {
+      "slug": "gdp-nominal",
+      "topic": "economy",
+      "name_ar": "الناتج المحلي الإجمالي بالأسعار الجارية",
+      "name_en": "GDP at current prices",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "الناتج المحلي الإجمالي",
+        "الناتج المحلي",
+        "حجم الاقتصاد",
+        "GDP",
+        "gross domestic product",
+        "nominal GDP"
+      ],
+      "definition_ar": "القيمة الإجمالية للسلع والخدمات النهائية المنتجة داخل الدولة خلال فترة محددة بأسعار السوق الجارية."
+    },
+    {
+      "slug": "gdp-real",
+      "topic": "economy",
+      "name_ar": "الناتج المحلي الإجمالي الحقيقي",
+      "name_en": "Real GDP (constant prices)",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "الناتج المحلي بالأسعار الثابتة",
+        "النمو الاقتصادي",
+        "نمو الاقتصاد",
+        "real GDP",
+        "economic growth"
+      ],
+      "definition_ar": "الناتج المحلي الإجمالي مقاساً بأسعار سنة أساس ثابتة، ويستخدم لقياس النمو الاقتصادي الحقيقي."
+    },
+    {
+      "slug": "gdp-non-oil",
+      "topic": "economy",
+      "name_ar": "الناتج المحلي الإجمالي غير النفطي",
+      "name_en": "Non-oil GDP",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "الاقتصاد غير النفطي",
+        "القطاعات غير النفطية",
+        "الناتج غير النفطي",
+        "non-oil economy",
+        "non-oil sectors"
+      ],
+      "definition_ar": "قيمة الناتج المحلي الإجمالي باستثناء الأنشطة النفطية."
+    },
+    {
+      "slug": "gdp-per-capita",
+      "topic": "economy",
+      "name_ar": "نصيب الفرد من الناتج المحلي الإجمالي",
+      "name_en": "GDP per capita",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "متوسط دخل الفرد",
+        "نصيب الفرد من الناتج",
+        "GDP per capita"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "fdi-inflows",
+      "topic": "business",
+      "name_ar": "تدفقات الاستثمار الأجنبي المباشر الواردة",
+      "name_en": "Foreign direct investment inflows",
+      "unit_kind": "currency",
+      "unit": "USD",
+      "frequency": "annual",
+      "aliases": [
+        "الاستثمار الأجنبي المباشر",
+        "الاستثمارات الأجنبية المباشرة",
+        "FDI",
+        "foreign direct investment"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "population-total",
+      "topic": "population",
+      "name_ar": "إجمالي عدد السكان",
+      "name_en": "Total population",
+      "unit_kind": "count",
+      "unit": "person",
+      "frequency": "annual",
+      "aliases": [
+        "عدد السكان",
+        "السكان",
+        "تعداد السكان",
+        "population"
+      ],
+      "definition_ar": "العدد الإجمالي للمقيمين في الدولة أو الإمارة في تاريخ مرجعي محدد."
+    },
+    {
+      "slug": "population-citizens",
+      "topic": "population",
+      "name_ar": "عدد المواطنين",
+      "name_en": "Number of citizens",
+      "unit_kind": "count",
+      "unit": "person",
+      "frequency": "annual",
+      "aliases": [
+        "المواطنون",
+        "السكان المواطنون",
+        "Emirati population",
+        "citizens"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "births",
+      "topic": "population",
+      "name_ar": "عدد المواليد",
+      "name_en": "Live births",
+      "unit_kind": "count",
+      "unit": "birth",
+      "frequency": "annual",
+      "aliases": [
+        "المواليد",
+        "المواليد الأحياء",
+        "births"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "deaths",
+      "topic": "population",
+      "name_ar": "عدد الوفيات",
+      "name_en": "Deaths",
+      "unit_kind": "count",
+      "unit": "death",
+      "frequency": "annual",
+      "aliases": [
+        "الوفيات",
+        "deaths"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "international-visitors",
+      "topic": "tourism",
+      "name_ar": "إجمالي الزوار الدوليين",
+      "name_en": "International overnight visitors",
+      "unit_kind": "count",
+      "unit": "visitor",
+      "frequency": "quarterly",
+      "aliases": [
+        "الزوار الدوليون",
+        "عدد الزوار",
+        "السياح",
+        "عدد السياح",
+        "الزوار من الخارج",
+        "القادمون الدوليون",
+        "international visitors",
+        "tourists",
+        "overnight visitors"
+      ],
+      "definition_ar": "عدد القادمين من خارج الدولة لأغراض السياحة أو العمل أو الزيارة الذين أقاموا ليلة واحدة على الأقل في المنشآت الفندقية."
+    },
+    {
+      "slug": "hotel-guests",
+      "topic": "tourism",
+      "name_ar": "نزلاء المنشآت الفندقية",
+      "name_en": "Hotel establishment guests",
+      "unit_kind": "count",
+      "unit": "guest",
+      "frequency": "quarterly",
+      "aliases": [
+        "النزلاء",
+        "نزلاء الفنادق",
+        "ضيوف الفنادق",
+        "hotel guests"
+      ],
+      "definition_ar": "عدد النزلاء الذين أقاموا في المنشآت الفندقية خلال الفترة."
+    },
+    {
+      "slug": "hotel-occupancy",
+      "topic": "tourism",
+      "name_ar": "نسبة إشغال الغرف الفندقية",
+      "name_en": "Hotel room occupancy rate",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "monthly",
+      "aliases": [
+        "الإشغال الفندقي",
+        "نسبة الإشغال",
+        "معدل الإشغال",
+        "occupancy rate",
+        "hotel occupancy"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hotel-revenue",
+      "topic": "tourism",
+      "name_ar": "إيرادات المنشآت الفندقية",
+      "name_en": "Hotel establishment revenues",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "إيرادات الفنادق",
+        "العائدات الفندقية",
+        "hotel revenues"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hotel-nights",
+      "topic": "tourism",
+      "name_ar": "عدد الليالي الفندقية",
+      "name_en": "Hotel guest nights",
+      "unit_kind": "count",
+      "unit": "night",
+      "frequency": "quarterly",
+      "aliases": [
+        "الليالي الفندقية",
+        "ليالي الإقامة",
+        "guest nights"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "average-length-of-stay",
+      "topic": "tourism",
+      "name_ar": "متوسط مدة الإقامة",
+      "name_en": "Average length of stay",
+      "unit_kind": "duration",
+      "unit": "night",
+      "frequency": "quarterly",
+      "aliases": [
+        "مدة الإقامة",
+        "متوسط الإقامة",
+        "average length of stay"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hotel-rooms",
+      "topic": "tourism",
+      "name_ar": "عدد الغرف الفندقية",
+      "name_en": "Hotel rooms",
+      "unit_kind": "count",
+      "unit": "room",
+      "frequency": "annual",
+      "aliases": [
+        "الغرف الفندقية",
+        "الطاقة الاستيعابية الفندقية",
+        "hotel rooms"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hotel-establishments",
+      "topic": "tourism",
+      "name_ar": "عدد المنشآت الفندقية",
+      "name_en": "Hotel establishments",
+      "unit_kind": "count",
+      "unit": "establishment",
+      "frequency": "annual",
+      "aliases": [
+        "المنشآت الفندقية",
+        "عدد الفنادق",
+        "hotel establishments"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "non-oil-trade",
+      "topic": "trade",
+      "name_ar": "التجارة الخارجية غير النفطية",
+      "name_en": "Non-oil foreign trade",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "التجارة غير النفطية",
+        "حجم التجارة الخارجية غير النفطية",
+        "التجارة الخارجية",
+        "non-oil trade",
+        "foreign trade"
+      ],
+      "definition_ar": "مجموع الواردات والصادرات غير النفطية وإعادة التصدير."
+    },
+    {
+      "slug": "non-oil-exports",
+      "topic": "trade",
+      "name_ar": "الصادرات غير النفطية",
+      "name_en": "Non-oil exports",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "الصادرات",
+        "الصادرات الوطنية غير النفطية",
+        "non-oil exports",
+        "exports"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "re-exports",
+      "topic": "trade",
+      "name_ar": "إعادة التصدير",
+      "name_en": "Re-exports",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "قيمة إعادة التصدير",
+        "re-exports"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "non-oil-imports",
+      "topic": "trade",
+      "name_ar": "الواردات غير النفطية",
+      "name_en": "Non-oil imports",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "الواردات",
+        "imports",
+        "non-oil imports"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "unemployment-rate",
+      "topic": "labour",
+      "name_ar": "معدل البطالة",
+      "name_en": "Unemployment rate",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "quarterly",
+      "aliases": [
+        "البطالة",
+        "نسبة البطالة",
+        "unemployment"
+      ],
+      "definition_ar": "نسبة العاطلين عن العمل الباحثين عنه إلى إجمالي القوى العاملة."
+    },
+    {
+      "slug": "labour-force-participation",
+      "topic": "labour",
+      "name_ar": "معدل المشاركة في القوى العاملة",
+      "name_en": "Labour force participation rate",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "annual",
+      "aliases": [
+        "المشاركة في القوى العاملة",
+        "participation rate"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "private-sector-workers",
+      "topic": "labour",
+      "name_ar": "عدد العاملين في القطاع الخاص",
+      "name_en": "Private sector employees",
+      "unit_kind": "count",
+      "unit": "worker",
+      "frequency": "annual",
+      "aliases": [
+        "العاملون في القطاع الخاص",
+        "العمالة في القطاع الخاص",
+        "private sector workers"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "emiratis-in-private-sector",
+      "topic": "labour",
+      "name_ar": "عدد المواطنين العاملين في القطاع الخاص",
+      "name_en": "Emiratis working in the private sector",
+      "unit_kind": "count",
+      "unit": "worker",
+      "frequency": "quarterly",
+      "aliases": [
+        "التوطين",
+        "المواطنون في القطاع الخاص",
+        "نافس",
+        "Emiratisation"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "employed-persons",
+      "topic": "labour",
+      "name_ar": "عدد المشتغلين",
+      "name_en": "Employed persons",
+      "unit_kind": "count",
+      "unit": "person",
+      "frequency": "annual",
+      "aliases": [
+        "المشتغلون",
+        "العاملون",
+        "employed persons"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "cpi-inflation",
+      "topic": "prices",
+      "name_ar": "معدل التضخم",
+      "name_en": "Inflation rate (CPI)",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "monthly",
+      "aliases": [
+        "التضخم",
+        "ارتفاع الأسعار",
+        "أسعار المستهلك",
+        "inflation",
+        "CPI inflation"
+      ],
+      "definition_ar": "التغير النسبي في الرقم القياسي لأسعار المستهلك مقارنة بالفترة نفسها من العام السابق."
+    },
+    {
+      "slug": "cpi-index",
+      "topic": "prices",
+      "name_ar": "الرقم القياسي لأسعار المستهلك",
+      "name_en": "Consumer price index",
+      "unit_kind": "index",
+      "unit": "index",
+      "frequency": "monthly",
+      "aliases": [
+        "مؤشر أسعار المستهلك",
+        "CPI"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "federal-budget",
+      "topic": "public-finance",
+      "name_ar": "الميزانية العامة للاتحاد",
+      "name_en": "Federal budget",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "الميزانية الاتحادية",
+        "ميزانية الاتحاد",
+        "federal budget"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "government-revenue",
+      "topic": "public-finance",
+      "name_ar": "الإيرادات الحكومية",
+      "name_en": "Government revenues",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "إيرادات الحكومة",
+        "الإيرادات العامة",
+        "government revenue"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "government-expenditure",
+      "topic": "public-finance",
+      "name_ar": "النفقات الحكومية",
+      "name_en": "Government expenditure",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "الإنفاق الحكومي",
+        "المصروفات الحكومية",
+        "government spending"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "banking-assets",
+      "topic": "banking",
+      "name_ar": "إجمالي أصول القطاع المصرفي",
+      "name_en": "Total banking sector assets",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "monthly",
+      "aliases": [
+        "أصول البنوك",
+        "الأصول المصرفية",
+        "banking assets"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "bank-deposits",
+      "topic": "banking",
+      "name_ar": "إجمالي الودائع المصرفية",
+      "name_en": "Total bank deposits",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "monthly",
+      "aliases": [
+        "الودائع",
+        "ودائع البنوك",
+        "bank deposits"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "bank-credit",
+      "topic": "banking",
+      "name_ar": "إجمالي الائتمان المصرفي",
+      "name_en": "Gross bank credit",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "monthly",
+      "aliases": [
+        "الائتمان المصرفي",
+        "القروض المصرفية",
+        "bank credit"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "cbuae-foreign-assets",
+      "topic": "banking",
+      "name_ar": "الأصول الأجنبية للمصرف المركزي",
+      "name_en": "Central bank foreign assets",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "monthly",
+      "aliases": [
+        "الاحتياطيات الأجنبية",
+        "احتياطيات المصرف المركزي",
+        "foreign reserves"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "adx-market-cap",
+      "topic": "banking",
+      "name_ar": "القيمة السوقية لسوق أبوظبي للأوراق المالية",
+      "name_en": "ADX market capitalisation",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "daily",
+      "aliases": [
+        "القيمة السوقية لسوق أبوظبي",
+        "ADX market cap"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "dfm-market-cap",
+      "topic": "banking",
+      "name_ar": "القيمة السوقية لسوق دبي المالي",
+      "name_en": "DFM market capitalisation",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "daily",
+      "aliases": [
+        "القيمة السوقية لسوق دبي",
+        "DFM market cap"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "real-estate-transactions-value",
+      "topic": "real-estate",
+      "name_ar": "قيمة التصرفات العقارية",
+      "name_en": "Value of real estate transactions",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "quarterly",
+      "aliases": [
+        "التصرفات العقارية",
+        "الصفقات العقارية",
+        "تداولات العقارات",
+        "real estate transactions"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "real-estate-transactions-count",
+      "topic": "real-estate",
+      "name_ar": "عدد التصرفات العقارية",
+      "name_en": "Number of real estate transactions",
+      "unit_kind": "count",
+      "unit": "transaction",
+      "frequency": "quarterly",
+      "aliases": [
+        "عدد الصفقات العقارية",
+        "number of property transactions"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "residential-units-completed",
+      "topic": "real-estate",
+      "name_ar": "الوحدات السكنية المنجزة",
+      "name_en": "Residential units completed",
+      "unit_kind": "count",
+      "unit": "unit",
+      "frequency": "annual",
+      "aliases": [
+        "الوحدات السكنية الجديدة",
+        "new residential units"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "crude-oil-production",
+      "topic": "energy",
+      "name_ar": "إنتاج النفط الخام",
+      "name_en": "Crude oil production",
+      "unit_kind": "volume",
+      "unit": "barrels per day",
+      "frequency": "monthly",
+      "aliases": [
+        "إنتاج النفط",
+        "النفط الخام",
+        "oil production"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "electricity-generation",
+      "topic": "energy",
+      "name_ar": "إنتاج الطاقة الكهربائية",
+      "name_en": "Electricity generation",
+      "unit_kind": "energy",
+      "unit": "GWh",
+      "frequency": "annual",
+      "aliases": [
+        "إنتاج الكهرباء",
+        "توليد الكهرباء",
+        "electricity generation"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "clean-energy-capacity",
+      "topic": "energy",
+      "name_ar": "القدرة الإنتاجية للطاقة النظيفة",
+      "name_en": "Clean energy capacity",
+      "unit_kind": "energy",
+      "unit": "MW",
+      "frequency": "annual",
+      "aliases": [
+        "الطاقة المتجددة",
+        "الطاقة النظيفة",
+        "الطاقة الشمسية",
+        "clean energy capacity",
+        "renewable capacity"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "ghg-emissions",
+      "topic": "environment",
+      "name_ar": "انبعاثات الغازات الدفيئة",
+      "name_en": "Greenhouse gas emissions",
+      "unit_kind": "weight",
+      "unit": "tonnes CO2e",
+      "frequency": "annual",
+      "aliases": [
+        "الانبعاثات الكربونية",
+        "انبعاثات الكربون",
+        "GHG emissions",
+        "carbon emissions"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "waste-recycling-rate",
+      "topic": "environment",
+      "name_ar": "نسبة تدوير النفايات",
+      "name_en": "Waste recycling rate",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "annual",
+      "aliases": [
+        "تدوير النفايات",
+        "معالجة النفايات",
+        "recycling rate"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "airport-passengers",
+      "topic": "transport",
+      "name_ar": "عدد المسافرين عبر المطارات",
+      "name_en": "Airport passengers",
+      "unit_kind": "count",
+      "unit": "passenger",
+      "frequency": "monthly",
+      "aliases": [
+        "المسافرون",
+        "حركة المسافرين",
+        "مسافرو المطارات",
+        "airport passengers"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "dxb-passengers",
+      "topic": "transport",
+      "name_ar": "عدد المسافرين عبر مطار دبي الدولي",
+      "name_en": "Dubai International (DXB) passengers",
+      "unit_kind": "count",
+      "unit": "passenger",
+      "frequency": "quarterly",
+      "aliases": [
+        "مطار دبي الدولي",
+        "مسافرو مطار دبي",
+        "DXB passengers"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "auh-passengers",
+      "topic": "transport",
+      "name_ar": "عدد المسافرين عبر مطار زايد الدولي",
+      "name_en": "Zayed International (AUH) passengers",
+      "unit_kind": "count",
+      "unit": "passenger",
+      "frequency": "quarterly",
+      "aliases": [
+        "مطار زايد الدولي",
+        "مطار أبوظبي",
+        "AUH passengers"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "air-cargo",
+      "topic": "transport",
+      "name_ar": "حجم الشحن الجوي",
+      "name_en": "Air cargo volume",
+      "unit_kind": "weight",
+      "unit": "tonnes",
+      "frequency": "annual",
+      "aliases": [
+        "الشحن الجوي",
+        "air cargo"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "public-transport-ridership",
+      "topic": "transport",
+      "name_ar": "ركاب وسائل النقل العام",
+      "name_en": "Public transport ridership",
+      "unit_kind": "count",
+      "unit": "rider",
+      "frequency": "annual",
+      "aliases": [
+        "ركاب المترو",
+        "ركاب النقل الجماعي",
+        "مترو دبي",
+        "public transport ridership",
+        "metro riders"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "registered-vehicles",
+      "topic": "transport",
+      "name_ar": "عدد المركبات المسجلة",
+      "name_en": "Registered vehicles",
+      "unit_kind": "count",
+      "unit": "vehicle",
+      "frequency": "annual",
+      "aliases": [
+        "المركبات المسجلة",
+        "عدد السيارات",
+        "registered vehicles"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "container-throughput",
+      "topic": "transport",
+      "name_ar": "مناولة الحاويات",
+      "name_en": "Container throughput",
+      "unit_kind": "count",
+      "unit": "TEU",
+      "frequency": "annual",
+      "aliases": [
+        "الحاويات المناولة",
+        "حركة الحاويات",
+        "container throughput",
+        "TEU"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "students-enrolled",
+      "topic": "education",
+      "name_ar": "عدد الطلبة الملتحقين بالمدارس",
+      "name_en": "School students enrolled",
+      "unit_kind": "count",
+      "unit": "student",
+      "frequency": "annual",
+      "aliases": [
+        "الطلبة",
+        "عدد الطلاب",
+        "طلاب المدارس",
+        "students"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "schools-count",
+      "topic": "education",
+      "name_ar": "عدد المدارس",
+      "name_en": "Number of schools",
+      "unit_kind": "count",
+      "unit": "school",
+      "frequency": "annual",
+      "aliases": [
+        "المدارس",
+        "schools"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "higher-education-students",
+      "topic": "education",
+      "name_ar": "عدد طلبة التعليم العالي",
+      "name_en": "Higher education students",
+      "unit_kind": "count",
+      "unit": "student",
+      "frequency": "annual",
+      "aliases": [
+        "طلبة الجامعات",
+        "طلاب التعليم العالي",
+        "university students"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "teachers-count",
+      "topic": "education",
+      "name_ar": "عدد المعلمين",
+      "name_en": "Number of teachers",
+      "unit_kind": "count",
+      "unit": "teacher",
+      "frequency": "annual",
+      "aliases": [
+        "المعلمون",
+        "teachers"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hospitals-count",
+      "topic": "health",
+      "name_ar": "عدد المستشفيات",
+      "name_en": "Number of hospitals",
+      "unit_kind": "count",
+      "unit": "hospital",
+      "frequency": "annual",
+      "aliases": [
+        "المستشفيات",
+        "hospitals"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "physicians-count",
+      "topic": "health",
+      "name_ar": "عدد الأطباء",
+      "name_en": "Number of physicians",
+      "unit_kind": "count",
+      "unit": "physician",
+      "frequency": "annual",
+      "aliases": [
+        "الأطباء",
+        "physicians",
+        "doctors"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "hospital-beds",
+      "topic": "health",
+      "name_ar": "عدد الأسرّة في المستشفيات",
+      "name_en": "Hospital beds",
+      "unit_kind": "count",
+      "unit": "bed",
+      "frequency": "annual",
+      "aliases": [
+        "الأسرة",
+        "hospital beds"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "life-expectancy",
+      "topic": "health",
+      "name_ar": "متوسط العمر المتوقع عند الولادة",
+      "name_en": "Life expectancy at birth",
+      "unit_kind": "duration",
+      "unit": "years",
+      "frequency": "annual",
+      "aliases": [
+        "متوسط العمر المتوقع",
+        "العمر المتوقع",
+        "life expectancy"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "internet-penetration",
+      "topic": "technology",
+      "name_ar": "نسبة انتشار الإنترنت",
+      "name_en": "Internet penetration",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "annual",
+      "aliases": [
+        "مستخدمو الإنترنت",
+        "انتشار الإنترنت",
+        "internet penetration"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "mobile-subscriptions",
+      "topic": "technology",
+      "name_ar": "اشتراكات الهاتف المتحرك",
+      "name_en": "Mobile subscriptions",
+      "unit_kind": "count",
+      "unit": "subscription",
+      "frequency": "quarterly",
+      "aliases": [
+        "اشتراكات الهواتف",
+        "الهاتف المتحرك",
+        "mobile subscriptions"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "digital-economy-share",
+      "topic": "technology",
+      "name_ar": "مساهمة الاقتصاد الرقمي في الناتج المحلي",
+      "name_en": "Digital economy share of GDP",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "annual",
+      "aliases": [
+        "الاقتصاد الرقمي",
+        "digital economy"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "farms-count",
+      "topic": "agriculture",
+      "name_ar": "عدد المزارع",
+      "name_en": "Number of farms",
+      "unit_kind": "count",
+      "unit": "farm",
+      "frequency": "annual",
+      "aliases": [
+        "المزارع",
+        "الحيازات الزراعية",
+        "farms"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "fish-production",
+      "topic": "agriculture",
+      "name_ar": "الإنتاج السمكي",
+      "name_en": "Fish production",
+      "unit_kind": "weight",
+      "unit": "tonnes",
+      "frequency": "annual",
+      "aliases": [
+        "الثروة السمكية",
+        "صيد الأسماك",
+        "fish production"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "food-self-sufficiency",
+      "topic": "agriculture",
+      "name_ar": "نسبة الاكتفاء الذاتي الغذائي",
+      "name_en": "Food self-sufficiency ratio",
+      "unit_kind": "percent",
+      "unit": "%",
+      "frequency": "annual",
+      "aliases": [
+        "الأمن الغذائي",
+        "الاكتفاء الذاتي",
+        "food self-sufficiency"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "manufacturing-gdp",
+      "topic": "industry",
+      "name_ar": "الناتج المحلي لقطاع الصناعة التحويلية",
+      "name_en": "Manufacturing GDP",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "القطاع الصناعي",
+        "الصناعة التحويلية",
+        "مساهمة الصناعة",
+        "manufacturing"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "industrial-exports",
+      "topic": "industry",
+      "name_ar": "الصادرات الصناعية",
+      "name_en": "Industrial exports",
+      "unit_kind": "currency",
+      "unit": "AED",
+      "frequency": "annual",
+      "aliases": [
+        "صادرات الصناعة",
+        "industrial exports"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "new-companies",
+      "topic": "business",
+      "name_ar": "الشركات الجديدة المسجلة",
+      "name_en": "New companies registered",
+      "unit_kind": "count",
+      "unit": "company",
+      "frequency": "quarterly",
+      "aliases": [
+        "الشركات الجديدة",
+        "الرخص التجارية الجديدة",
+        "تأسيس الشركات",
+        "new companies",
+        "new business licences"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "active-licences",
+      "topic": "business",
+      "name_ar": "الرخص الاقتصادية السارية",
+      "name_en": "Active economic licences",
+      "unit_kind": "count",
+      "unit": "licence",
+      "frequency": "annual",
+      "aliases": [
+        "الرخص التجارية",
+        "الرخص السارية",
+        "active licences"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "smes-count",
+      "topic": "business",
+      "name_ar": "عدد الشركات الصغيرة والمتوسطة",
+      "name_en": "Number of SMEs",
+      "unit_kind": "count",
+      "unit": "company",
+      "frequency": "annual",
+      "aliases": [
+        "الشركات الصغيرة والمتوسطة",
+        "المشاريع الصغيرة",
+        "SMEs"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "marriage-contracts",
+      "topic": "social",
+      "name_ar": "عقود الزواج",
+      "name_en": "Marriage contracts",
+      "unit_kind": "count",
+      "unit": "contract",
+      "frequency": "annual",
+      "aliases": [
+        "الزواج",
+        "حالات الزواج",
+        "marriages"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "divorce-cases",
+      "topic": "social",
+      "name_ar": "حالات الطلاق",
+      "name_en": "Divorce cases",
+      "unit_kind": "count",
+      "unit": "case",
+      "frequency": "annual",
+      "aliases": [
+        "الطلاق",
+        "divorces"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "social-support-beneficiaries",
+      "topic": "social",
+      "name_ar": "المستفيدون من برامج الدعم الاجتماعي",
+      "name_en": "Social support beneficiaries",
+      "unit_kind": "count",
+      "unit": "person",
+      "frequency": "annual",
+      "aliases": [
+        "الدعم الاجتماعي",
+        "المساعدات الاجتماعية",
+        "social support"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "museum-visitors",
+      "topic": "culture-sport",
+      "name_ar": "زوار المتاحف",
+      "name_en": "Museum visitors",
+      "unit_kind": "count",
+      "unit": "visitor",
+      "frequency": "annual",
+      "aliases": [
+        "المتاحف",
+        "museum visitors"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "cultural-events",
+      "topic": "culture-sport",
+      "name_ar": "عدد الفعاليات الثقافية",
+      "name_en": "Cultural events",
+      "unit_kind": "count",
+      "unit": "event",
+      "frequency": "annual",
+      "aliases": [
+        "الفعاليات الثقافية",
+        "cultural events"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "road-traffic-deaths",
+      "topic": "safety-justice",
+      "name_ar": "وفيات الحوادث المرورية",
+      "name_en": "Road traffic deaths",
+      "unit_kind": "count",
+      "unit": "death",
+      "frequency": "annual",
+      "aliases": [
+        "وفيات الطرق",
+        "ضحايا الحوادث",
+        "traffic deaths",
+        "road deaths"
+      ],
+      "definition_ar": null
+    },
+    {
+      "slug": "traffic-accidents",
+      "topic": "safety-justice",
+      "name_ar": "عدد الحوادث المرورية",
+      "name_en": "Road traffic accidents",
+      "unit_kind": "count",
+      "unit": "accident",
+      "frequency": "annual",
+      "aliases": [
+        "الحوادث المرورية",
+        "حوادث الطرق",
+        "traffic accidents"
+      ],
+      "definition_ar": null
+    }
+  ]
+}

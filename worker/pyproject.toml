@@ -1,0 +1,41 @@
+[project]
+name = "isnad-worker"
+version = "0.1.0"
+description = "Isnad pipeline worker and webhook API"
+authors = [
+    { name = "Ahmed M. Kadhim", email = "ahmed.kadhim.dev@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "fastapi>=0.156.2",
+    "google-genai>=2.32.0",
+    "httpx2>=2.15.1",
+    "lxml>=6.1.3",
+    "openpyxl>=3.1.5",
+    "psycopg-pool>=3.3.3",
+    "psycopg[binary]>=3.3.6",
+    "pydantic-settings>=2.16.1",
+    "pymupdf>=2.0",
+    "python-dateutil>=2.9.0.post0",
+    "python-docx>=1.2.0",
+    "uvicorn[standard]>=0.54.0",
+    "xlrd>=2.0.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.4,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

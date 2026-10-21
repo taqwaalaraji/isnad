@@ -1,0 +1,27 @@
+{
+	email {$ACME_EMAIL}
+}
+
+# The web app; Telegram posts its updates to the worker API on the same host.
+{$SITE_DOMAIN} {
+	encode zstd gzip
+	handle /telegram/webhook {
+		reverse_proxy api:8000
+	}
+	handle {
+		reverse_proxy web:3000
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+}
+
+# Supabase's public API (auth, REST, realtime, storage) for the browser. Studio stays private.
+{$SUPABASE_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy kong:8000
+	header -Server
+}

@@ -1,0 +1,7 @@
+# Build context is the repository root; only the worker's code and lockfile are needed.
+*
+!worker/pyproject.toml
+!worker/uv.lock
+!worker/src/
+!worker/seed_data/
+**/__pycache__

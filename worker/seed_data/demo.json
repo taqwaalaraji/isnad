@@ -1,0 +1,67 @@
+{
+  "password": "Isnad-Demo-2026!",
+  "staff": [
+    {
+      "email": "admin@isnad.ae",
+      "full_name": "فريق إسناد · المشرف",
+      "platform_role": "admin"
+    },
+    {
+      "email": "curator@isnad.ae",
+      "full_name": "مريم الكعبي",
+      "platform_role": "curator"
+    }
+  ],
+  "newsrooms": [
+    {
+      "slug": "almadar",
+      "name": "غرفة المدار",
+      "desks": [
+        "الاقتصاد",
+        "الأخبار العاجلة",
+        "التحقق"
+      ],
+      "members": [
+        {
+          "email": "laila@almadar.news",
+          "full_name": "ليلى حداد",
+          "role": "admin",
+          "desk": "الاقتصاد"
+        },
+        {
+          "email": "sara@almadar.news",
+          "full_name": "سارة القاسمي",
+          "role": "editor",
+          "desk": "الاقتصاد"
+        },
+        {
+          "email": "omar@almadar.news",
+          "full_name": "عمر الزعابي",
+          "role": "journalist",
+          "desk": "الأخبار العاجلة"
+        },
+        {
+          "email": "khaled@almadar.news",
+          "full_name": "خالد المري",
+          "role": "journalist",
+          "desk": "التحقق"
+        }
+      ]
+    },
+    {
+      "slug": "alufuq",
+      "name": "صحيفة الأفق",
+      "desks": [
+        "الأخبار"
+      ],
+      "members": [
+        {
+          "email": "rana@alufuq.ae",
+          "full_name": "رنا الشامسي",
+          "role": "admin",
+          "desk": "الأخبار"
+        }
+      ]
+    }
+  ]
+}

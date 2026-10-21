@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Dark mode follows the data-theme attribute, which the layout sets before first paint. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-ink: var(--isnad-ink);
+  --color-lapis: var(--isnad-lapis);
+  --color-paper: var(--isnad-paper);
+  --color-sky: var(--isnad-sky);
+  --color-mist: var(--isnad-mist);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-highlight: var(--highlight);
+
+  --color-match: var(--match-marker);
+  --color-match-text: var(--match-text);
+  --color-match-tint: var(--match-tint);
+  --color-differ: var(--differ-marker);
+  --color-differ-text: var(--differ-text);
+  --color-differ-tint: var(--differ-tint);
+  --color-context: var(--context-marker);
+  --color-context-text: var(--context-text);
+  --color-context-tint: var(--context-tint);
+  --color-none: var(--none-marker);
+  --color-none-text: var(--none-text);
+  --color-none-tint: var(--none-tint);
+
+  /* The sidebar is ink in both themes. */
+  --color-nav: #0e1230;
+  --color-nav-raised: #171d48;
+  --color-nav-border: #2a3166;
+  --color-nav-text: #f4f1ea;
+  --color-nav-muted: #a3a9c7;
+
+  --font-sans: var(--font-plex-arabic), var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-latin: var(--font-outfit), var(--font-plex-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-num: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-card: 0 1px 2px rgb(14 18 48 / 0.04), 0 1px 1px rgb(14 18 48 / 0.03);
+  --shadow-raised: 0 8px 24px rgb(14 18 48 / 0.08), 0 2px 6px rgb(14 18 48 / 0.05);
+  --shadow-popover: 0 16px 40px rgb(14 18 48 / 0.14), 0 4px 10px rgb(14 18 48 / 0.08);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html:lang(ar) {
+    line-height: 1.75;
+  }
+  html:lang(en) {
+    font-family: var(--font-latin);
+  }
+  ::selection {
+    background: var(--highlight);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility num {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}

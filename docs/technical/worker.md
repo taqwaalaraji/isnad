@@ -1,0 +1,103 @@
+# The Worker
+
+`worker/` is a Python 3.12 package (`isnad_worker`, managed with uv). It runs two processes:
+
+- **Pipeline worker** — `python -m isnad_worker.runner` (`make worker`). Claims jobs from Postgres and runs them in a thread pool.
+- **Worker API** — `uvicorn isnad_worker.api:app` (`make api`). FastAPI: `GET /health` and `POST /internal/ask` (Ask Isnad, protected by `Authorization: Bearer <INTERNAL_API_TOKEN>`).
+
+The worker connects to Postgres as the database owner, so row-level security doesn't apply to it; every rule it relies on is in its own code or in the SQL functions.
+
+## Modules
+
+| Module | Responsibility |
+|---|---|
+| `runner.py` | Worker threads, `LISTEN isnad_jobs`, the scheduler (stale-job recovery every minute, `watch_sources` every `WATCH_INTERVAL_HOURS`, daily `retention_cleanup` and job pruning), graceful shutdown |
+| `jobs.py` | Queue primitives: handler registry, `enqueue`, `claim`, `complete`, `fail` with backoff, `recover_stale`, `prune`; `RetryableError` and `PermanentError` |
+| `db.py` | Connection pool (thread-safe creation), `fetch_one`, `fetch_all`, `execute` (returns the row count), `transaction`, `json` |
+| `storage.py` | Supabase Storage over REST with the secret key: upload, download, signed URLs, remove, list |
+| `config.py` | Settings from the environment and `worker/.env` |
+| `text.py` | Arabic normalization, verbatim matching (`find_span`, `contains_verbatim`), number parsing (digits with scale words and percent; spoken Arabic numbers), unit normalization, period labels |
+| `ai/gateway.py` | The single entry point for model calls ([architecture.md](architecture.md#ai-gateway)) |
+| `prompts/*.md` | System prompts: `extract_claims`, `verify_claim`, `suggest_wording`, `extract_figures`, `ask_registry` |
+| `pipeline/check.py` | The `process_check` job ([pipeline.md](pipeline.md)) |
+| `pipeline/media.py` | ffmpeg/ffprobe: probe, audio extraction, web copies, poster, waveform, caption-track extraction (`parse_srt`) |
+| `pipeline/transcribe.py` | Gemini 3.5 Transcribe: word timings and speakers, long recordings cut at pauses |
+| `pipeline/content.py` | Paragraphs from text, PDF, DOCX and HTML (main-content extraction); safe downloads |
+| `pipeline/extract.py` | Claim extraction, span anchoring, number re-reading, timings |
+| `pipeline/catalog.py` | The indicator and entity catalog for prompts and name matching (cached 5 minutes) |
+| `pipeline/compare.py` | Tolerance, period and scope relations, verdict rules |
+| `pipeline/evidence.py` | Registry candidates, evidence verification against stored documents, earlier figures |
+| `pipeline/discovery.py` | Google Search on allowed official domains, then reading the downloaded page; registers what it verifies |
+| `pipeline/review.py` | Verifier, suggested wording, the chain |
+| `registry/store.py` | Versioned document snapshots and text/table extraction |
+| `registry/ingest.py` | The `ingest_document` job (figure extraction and verification) |
+| `registry/intake.py` | The `register_document` job (console links and inbox uploads) |
+| `registry/revisions.py` | The `figures_approved` job: supersede earlier figures, revision and follower alerts |
+| `registry/watch.py` | `watch_sources`, `refetch_document`, `retention_cleanup` |
+| `ask.py` | Ask Isnad |
+| `briefs.py` | The `generate_brief` job |
+| `evals.py` | The `run_eval` job (calls `isnad_worker.eval.harness`) |
+| `telegram/notify.py` | `telegram_check_done` and `deliver_alerts` (call `isnad_worker.telegram.bot`) |
+| `api.py` | The FastAPI app |
+| `seed/` | Seed commands |
+| `devtools/` | Local tooling |
+
+## Job kinds
+
+| Kind | Enqueued by | Handler |
+|---|---|---|
+| `process_check` | Trigger on `checks` insert; `request_recheck`; `update_segment`; `request_claim_search` | `pipeline/check.py` |
+| `ingest_document` | Seeding, re-fetches, `register_document`, `retry_extraction` | `registry/ingest.py` |
+| `register_document` | `add_source_document` (console) | `registry/intake.py` |
+| `refetch_document` | `watch_sources`, `fetch_source_now` | `registry/watch.py` |
+| `watch_sources` | Scheduler | `registry/watch.py` |
+| `retention_cleanup` | Scheduler (daily) | `registry/watch.py` |
+| `figures_approved` | `approve_figures` | `registry/revisions.py` |
+| `deliver_alerts` | Revisions | `telegram/notify.py` |
+| `telegram_check_done` | A Telegram check finished or failed | `telegram/notify.py` |
+| `generate_brief` | Trigger on `briefs` insert; `regenerate_brief` | `briefs.py` |
+| `run_eval` | Trigger on `eval_runs` insert | `evals.py` |
+
+A worker only claims kinds it has a handler for, so workers of different versions can share a queue safely.
+
+## Configuration
+
+Read by `config.py` from the environment (or `worker/.env`):
+
+| Variable | Default | Meaning |
+|---|---|---|
+| `DATABASE_URL` | local Supabase Postgres | Postgres connection |
+| `SUPABASE_URL`, `SUPABASE_SECRET_KEY` | local | Storage and Auth admin |
+| `SITE_URL` | `http://localhost:3000` | Links in messages |
+| `INTERNAL_API_TOKEN` | — | Protects `/internal/*` |
+| `GEMINI_API_KEY` | — | Gemini API: every model task, transcription included |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_MODE` (`polling`/`webhook`/`off`), `TELEGRAM_WEBHOOK_SECRET` | `polling` | Telegram delivery |
+| `WORKER_CONCURRENCY` | 4 | Worker threads |
+| `POLL_INTERVAL_SECONDS` | 5 | Fallback polling |
+| `JOB_TIMEOUT_MINUTES` | 30 | When a running job counts as stale |
+| `DISCOVERY_ENABLED` | true | Allow web search for unmatched numbers |
+| `DISCOVERY_PER_CHECK` | 8 | Searched numbers per check |
+| `WATCH_INTERVAL_HOURS` | 24 | How often sources are re-fetched |
+
+The worker needs `ffmpeg` and `ffprobe` on the path.
+
+## Seeds
+
+`python -m isnad_worker.seed <what>`:
+
+| Command | Loads |
+|---|---|
+| `catalog` | Topics, indicators, entities and sources from `seed_data/` (idempotent upserts) |
+| `demo` | Demo staff and newsrooms from `seed_data/demo.json` (password in that file) — never for production |
+| `documents` | The official documents of the test corpus into the registry, with automatic approval of verified figures (`--review` leaves them pending). Requires `isnad_worker.seed.documents`. |
+| `all` (default) | `catalog`, `demo`, `documents` |
+| `showcase` | Demo checks from `seed_data/showcase.json`: real newspaper claims grouped as drafts, and real clips (download them with `make media`). Needs the worker running; waits for processing, then applies review states (one published, escalations, matches approved, one sent for review), including checks the newsroom policy escalated. `--no-wait` only creates them. Never part of `all`. |
+
+`make seed` runs `catalog` and `demo`; `make seed-showcase` runs `showcase`.
+
+## Devtools
+
+| Command | What it does |
+|---|---|
+| `python -m isnad_worker.devtools.env` (`make env`) | Writes `web/.env.local` and `worker/.env` from `supabase status` and the provider keys in `../credentials/*.env`; keeps generated secrets stable; prints names only |
+| `python -m isnad_worker.devtools.test_media [--only IDS]` (`make media`) | Downloads the real test clips listed in `testdata/manifest.json` (`media` entries with `file_url`) into `testdata/files/media/real/`; checks each is a media file with an audio track; skips clips already present |

@@ -1,0 +1,134 @@
+{
+  "note": "Demo checks built from real newspaper claims in testdata/manifest.json (grouped as newsroom drafts) and real Arabic clips with UAE statistics (testdata/manifest.json media; download them with `make media`). Run after the registry is seeded: python -m isnad_worker.seed showcase",
+  "published_url_base": "https://almadar.news/economy/2026/",
+  "checks": [
+    {
+      "newsroom": "almadar",
+      "title": "مقال: حصاد السياحة والفنادق في 2025",
+      "author": "khaled@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-04-15",
+      "claims": ["claim-003", "claim-005", "claim-008", "claim-011", "claim-016", "claim-037", "claim-052"],
+      "review": "publish",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "مسودة تقرير: التجارة الخارجية غير النفطية",
+      "author": "omar@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-03-02",
+      "claims": ["claim-001", "claim-002", "claim-010", "claim-042", "claim-043", "claim-056"],
+      "review": "send_for_review",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "تقرير: اقتصاد أبوظبي في 2025",
+      "author": "omar@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-02-10",
+      "claims": ["claim-032", "claim-034", "claim-035", "claim-048", "claim-049", "claim-059"],
+      "review": "approve_matches",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "رصد: سوق العقارات في دبي",
+      "author": "sara@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-01-01",
+      "claims": ["claim-020", "claim-024", "claim-025", "claim-027", "claim-055", "claim-060"],
+      "review": "escalate",
+      "editor": "laila@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "خبر: حركة المسافرين في مطارات الدولة",
+      "author": "khaled@almadar.news",
+      "desk": "الأخبار العاجلة",
+      "recorded_at": "2026-02-11",
+      "claims": ["claim-012", "claim-021", "claim-023", "claim-026", "claim-051"]
+    },
+    {
+      "newsroom": "almadar",
+      "title": "خبر: سكان أبوظبي والقطاع المصرفي",
+      "author": "omar@almadar.news",
+      "desk": "الأخبار العاجلة",
+      "recorded_at": "2026-06-30",
+      "claims": ["claim-039", "claim-040", "claim-058"]
+    },
+    {
+      "newsroom": "almadar",
+      "title": "تقرير مصوّر: التجارة الخارجية غير النفطية في النصف الأول",
+      "author": "omar@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-07-20",
+      "media": "real/sna-1881855-nonoil-trade/sna-1881855-nonoil-trade.mp4",
+      "filename": "تقرير-التجارة-غير-النفطية.mp4",
+      "speakers": "معلّق التقرير",
+      "review": "approve_matches",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "مقابلة: مدير عام مركز أبوظبي العقاري والاستثمار الأجنبي",
+      "author": "khaled@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-10-01",
+      "media": "real/sna-1895652-adrec-fdi/sna-1895652-adrec-fdi.mp4",
+      "filename": "مقابلة-مركز-أبوظبي-العقاري.mp4",
+      "speakers": "المذيع، راشد العميرة (مركز أبوظبي العقاري)",
+      "review": "send_for_review",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "تقرير: الإمارات بالأرقام",
+      "author": "omar@almadar.news",
+      "desk": "الأخبار العاجلة",
+      "recorded_at": "2026-08-27",
+      "media": "real/sna-1888300-by-the-numbers/sna-1888300-by-the-numbers.mp4",
+      "filename": "الإمارات-بالأرقام.mp4",
+      "speakers": "معلّق التقرير",
+      "review": "escalate",
+      "editor": "sara@almadar.news"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "حوار اقتصادي: التنويع وتعافي اقتصاد الإمارات",
+      "author": "khaled@almadar.news",
+      "desk": "الاقتصاد",
+      "recorded_at": "2026-10-12",
+      "media": "real/sna-1897849-diversification/sna-1897849-diversification.mp4",
+      "filename": "حوار-التنويع-الاقتصادي.mp4",
+      "speakers": "المذيعة، علي العدو (ضيف)"
+    },
+    {
+      "newsroom": "almadar",
+      "title": "مقابلة إذاعية: شما المزروعي والاستثمار الاجتماعي",
+      "author": "omar@almadar.news",
+      "desk": "التحقق",
+      "recorded_at": "2026-04-17",
+      "media": "real/cnn-71398028-mazrouei/cnn-71398028-mazrouei.mp3",
+      "filename": "مقابلة-شما-المزروعي.mp3",
+      "speakers": "المذيع، شما المزروعي"
+    },
+    {
+      "newsroom": "alufuq",
+      "title": "بودكاست: القمة الشرطية العالمية في دبي",
+      "author": "rana@alufuq.ae",
+      "recorded_at": "2025-05-15",
+      "media": "real/dubai-police-17158486/dubai-police-17158486.mp3",
+      "filename": "بودكاست-القمة-الشرطية.mp3",
+      "speakers": "مقدّم البودكاست، الأمين العام للقمة"
+    },
+    {
+      "newsroom": "alufuq",
+      "title": "زوار أبوظبي ودبي ونزلاء الفنادق",
+      "author": "rana@alufuq.ae",
+      "recorded_at": "2026-02-20",
+      "claims": ["claim-017", "claim-018", "claim-036", "claim-038"]
+    }
+  ]
+}

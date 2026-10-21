@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>دعوة للانضمام إلى إسناد</title></head>
+<body style="margin:0;padding:0;background:#F4F1EA;font-family:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;color:#0E1230;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#F4F1EA;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px;background:#FFFFFF;border-radius:20px;border:1px solid #DCD9D2;">
+        <tr><td style="padding:28px 32px 8px 32px;text-align:right;">
+          <div style="font-size:22px;font-weight:700;color:#0E1230;">إسناد <span style="color:#3355FF;">•</span></div>
+        </td></tr>
+        <tr><td style="padding:8px 32px 0 32px;text-align:right;">
+          <h1 style="font-size:20px;line-height:1.5;margin:0 0 8px 0;">دُعيت إلى غرفة أخبار على إسناد</h1>
+          <p style="font-size:15px;line-height:1.8;margin:0 0 20px 0;color:#5E647E;">إسناد يعيد كل رقم في المحتوى الإعلامي إلى مصدره الرسمي. اضغط الزر لقبول الدعوة والدخول.</p>
+          <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite&next={{ .RedirectTo }}" style="display:inline-block;background:#3355FF;color:#FFFFFF;text-decoration:none;font-size:15px;font-weight:600;padding:12px 24px;border-radius:12px;">قبول الدعوة</a>
+          <p style="font-size:13px;line-height:1.7;margin:20px 0 0 0;color:#7D839F;">الدعوة صالحة لمدة 14 يوماً.</p>
+        </td></tr>
+        <tr><td dir="ltr" style="padding:20px 32px 28px 32px;text-align:left;border-top:1px solid #EFEBE2;margin-top:20px;">
+          <p style="font-family:Outfit,Arial,sans-serif;font-size:14px;line-height:1.7;margin:16px 0 0 0;color:#5E647E;">You've been invited to a newsroom on Isnad, which traces every number back to its official source. <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite&next={{ .RedirectTo }}" style="color:#3355FF;">Accept the invitation</a></p>
+        </td></tr>
+      </table>
+      <p style="font-size:12px;color:#7D839F;margin:16px 0 0 0;">لكلّ رقمٍ إسناد · Every number has an isnad</p>
+    </td></tr>
+  </table>
+</body>
+</html>

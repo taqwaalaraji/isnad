@@ -1,0 +1,82 @@
+/* Isnad — colour tokens v0.1
+   Brand palette + semantic tokens for light and dark themes.
+   Light is the default; dark applies with [data-theme="dark"] or the OS setting. */
+
+:root {
+  /* ── Brand palette ─────────────────────────────── */
+  --isnad-ink:   #0E1230;  /* حبر    primary, dark surfaces, text   */
+  --isnad-lapis: #3355FF;  /* لازورد the source, the nuqta, actions */
+  --isnad-paper: #F4F1EA;  /* ورق    documents, light surfaces      */
+  --isnad-sky:   #8DA0FF;  /* سماء   lapis on dark backgrounds      */
+  --isnad-mist:  #DDE3FF;  /* evidence highlight on light           */
+
+  /* ── Scales ────────────────────────────────────── */
+  --lapis-50:  #EEF1FF;  --lapis-100: #DDE3FF;  --lapis-200: #BCC8FF;
+  --lapis-300: #8DA0FF;  --lapis-400: #6079FF;  --lapis-500: #3355FF;
+  --lapis-600: #2A47F0;  --lapis-700: #1F38C9;  --lapis-800: #192D9E;
+
+  --ink-300: #A3A9C7;  --ink-400: #7D839F;  --ink-500: #5E647E;
+  --ink-700: #2A3166;  --ink-800: #232A5E;  --ink-850: #1B2252;
+  --ink-900: #171D48;  --ink-950: #0E1230;
+
+  --paper-0: #FFFFFF;  --paper-50: #FAF8F3;  --paper-100: #F4F1EA;
+  --paper-200: #EFEBE2;  --paper-300: #DCD9D2;  --paper-400: #C9C5BC;
+
+  /* ── Semantic: light (default) ─────────────────── */
+  --bg:             var(--paper-100);
+  --surface:        var(--paper-0);
+  --surface-raised: var(--paper-0);
+  --surface-sunken: var(--paper-200);
+  --border:         var(--paper-300);
+  --border-strong:  var(--paper-400);
+  --text:           var(--ink-950);
+  --text-muted:     var(--ink-500);   /* 5.2:1 on bg */
+  --text-subtle:    var(--ink-400);   /* 3.3:1: large or non-essential text only */
+  --accent:         var(--lapis-500); /* links, primary actions, the source nuqta */
+  --accent-hover:   var(--lapis-600);
+  --accent-pressed: var(--lapis-700);
+  --accent-soft:    var(--lapis-50);  /* selected rows, soft fills */
+  --on-accent:      #FFFFFF;
+  --highlight:      var(--lapis-100); /* evidence / matched quote */
+  --focus-ring:     var(--lapis-500);
+  --nuqta:          var(--lapis-500);
+
+  /* Verdicts: marker = the nuqta fill, text = labels, tint = chip / row background */
+  --match-marker:   #1F9D6B;  --match-text:   #0F6B4A;  --match-tint:   #DCEFE6;
+  --differ-marker:  #E5484D;  --differ-text:  #B3262F;  --differ-tint:  #F8DEDD;
+  --context-marker: #C98300;  --context-text: #8A5000;  --context-tint: #FBEBCB;
+  --none-marker:    #5E647E;  --none-text:    #5E647E;  --none-tint:    #E5E6EC;
+
+  /* Chain status */
+  --chain-connected: var(--accent);
+  --chain-broken:    var(--none-marker);
+}
+
+/* ── Semantic: dark ─────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: var(--ink-950); --surface: var(--ink-900); --surface-raised: var(--ink-850); --surface-sunken: #0A0D24;
+    --border: var(--ink-700); --border-strong: #3A4380;
+    --text: var(--paper-100); --text-muted: var(--ink-300); --text-subtle: var(--ink-400);
+    --accent: var(--lapis-300); --accent-hover: var(--lapis-200); --accent-pressed: var(--lapis-400); --accent-soft: #1E2766;
+    --on-accent: var(--ink-950); --highlight: #2B3474; --focus-ring: var(--lapis-300); --nuqta: var(--lapis-300);
+    --match-marker: #4CCB94;  --match-text: #4CCB94;  --match-tint: #14372F;
+    --differ-marker: #FF8086; --differ-text: #FF8086; --differ-tint: #3A1A2A;
+    --context-marker: #F5B544; --context-text: #F5B544; --context-tint: #36291A;
+    --none-marker: #A3A9C7;   --none-text: #A3A9C7;   --none-tint: #232A4E;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--ink-950); --surface: var(--ink-900); --surface-raised: var(--ink-850); --surface-sunken: #0A0D24;
+  --border: var(--ink-700); --border-strong: #3A4380;
+  --text: var(--paper-100); --text-muted: var(--ink-300); --text-subtle: var(--ink-400);
+  --accent: var(--lapis-300); --accent-hover: var(--lapis-200); --accent-pressed: var(--lapis-400); --accent-soft: #1E2766;
+  --on-accent: var(--ink-950); --highlight: #2B3474; --focus-ring: var(--lapis-300); --nuqta: var(--lapis-300);
+  --match-marker: #4CCB94;  --match-text: #4CCB94;  --match-tint: #14372F;
+  --differ-marker: #FF8086; --differ-text: #FF8086; --differ-tint: #3A1A2A;
+  --context-marker: #F5B544; --context-text: #F5B544; --context-tint: #36291A;
+  --none-marker: #A3A9C7;   --none-text: #A3A9C7;   --none-tint: #232A4E;
+}

@@ -1,0 +1,5186 @@
+{
+  "generated_at": "2026-10-21",
+  "topics": [
+    {
+      "slug": "economy",
+      "name_ar": "الاقتصاد",
+      "name_en": "Economy"
+    },
+    {
+      "slug": "population",
+      "name_ar": "السكان",
+      "name_en": "Population"
+    },
+    {
+      "slug": "tourism",
+      "name_ar": "السياحة",
+      "name_en": "Tourism"
+    },
+    {
+      "slug": "trade",
+      "name_ar": "التجارة الخارجية",
+      "name_en": "Foreign trade"
+    },
+    {
+      "slug": "labour",
+      "name_ar": "سوق العمل",
+      "name_en": "Labour market"
+    },
+    {
+      "slug": "prices",
+      "name_ar": "الأسعار والتضخم",
+      "name_en": "Prices and inflation"
+    },
+    {
+      "slug": "public-finance",
+      "name_ar": "المالية العامة",
+      "name_en": "Public finance"
+    },
+    {
+      "slug": "banking",
+      "name_ar": "المصارف والأسواق المالية",
+      "name_en": "Banking and financial markets"
+    },
+    {
+      "slug": "real-estate",
+      "name_ar": "العقارات والإسكان",
+      "name_en": "Real estate and housing"
+    },
+    {
+      "slug": "energy",
+      "name_ar": "الطاقة",
+      "name_en": "Energy"
+    },
+    {
+      "slug": "environment",
+      "name_ar": "البيئة والمناخ",
+      "name_en": "Environment and climate"
+    },
+    {
+      "slug": "transport",
+      "name_ar": "النقل والطيران",
+      "name_en": "Transport and aviation"
+    },
+    {
+      "slug": "education",
+      "name_ar": "التعليم",
+      "name_en": "Education"
+    },
+    {
+      "slug": "health",
+      "name_ar": "الصحة",
+      "name_en": "Health"
+    },
+    {
+      "slug": "technology",
+      "name_ar": "التقنية والاتصالات",
+      "name_en": "Technology and telecoms"
+    },
+    {
+      "slug": "agriculture",
+      "name_ar": "الزراعة والأمن الغذائي",
+      "name_en": "Agriculture and food security"
+    },
+    {
+      "slug": "industry",
+      "name_ar": "الصناعة",
+      "name_en": "Industry"
+    },
+    {
+      "slug": "business",
+      "name_ar": "الأعمال والاستثمار",
+      "name_en": "Business and investment"
+    },
+    {
+      "slug": "social",
+      "name_ar": "التنمية المجتمعية",
+      "name_en": "Social development"
+    },
+    {
+      "slug": "culture-sport",
+      "name_ar": "الثقافة والرياضة",
+      "name_en": "Culture and sport"
+    },
+    {
+      "slug": "safety-justice",
+      "name_ar": "الأمن والعدل",
+      "name_en": "Safety and justice"
+    }
+  ],
+  "entities": [
+    {
+      "slug": "fcsc",
+      "name_ar": "المركز الاتحادي للتنافسية والإحصاء",
+      "name_en": "Federal Competitiveness and Statistics Centre",
+      "kind": "statistics_office",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://fcsc.gov.ae",
+      "description_en": "The UAE's federal statistics office (formerly the Federal Competitiveness and Statistics Authority, FCSA), producing official national statistics such as GDP, population estimates, CPI, foreign trade, labour force and vital statistics, plus competitiveness and SDG reporting."
+    },
+    {
+      "slug": "uae-open-data",
+      "name_ar": "بوابة البيانات المفتوحة لدولة الإمارات (بيانات)",
+      "name_en": "UAE Open Data Portal (Bayanat.ae)",
+      "kind": "open_data_portal",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://bayanat.ae",
+      "description_en": "The UAE Government's official open data portal (still branded Bayanat.ae), operated by FCSC, aggregating datasets published by federal and emirate-level government entities."
+    },
+    {
+      "slug": "cbuae",
+      "name_ar": "مصرف الإمارات العربية المتحدة المركزي",
+      "name_en": "Central Bank of the UAE",
+      "kind": "central_bank",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.centralbank.ae",
+      "description_en": "The UAE's central bank and regulator of banks and (since the 2020 merger of the former Insurance Authority) insurers; publishes monetary, banking, exchange-rate, financial-stability and insurance-sector statistics."
+    },
+    {
+      "slug": "ministry-of-economy",
+      "name_ar": "وزارة الاقتصاد والسياحة",
+      "name_en": "Ministry of Economy and Tourism",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moet.gov.ae",
+      "description_en": "Federal ministry for economic policy, business regulation, SMEs, consumer protection, intellectual property and tourism; renamed from the Ministry of Economy on 20 June 2025 (moec.gov.ae now redirects to moet.gov.ae), when foreign trade moved to the new Ministry of Foreign Trade."
+    },
+    {
+      "slug": "ministry-of-finance",
+      "name_ar": "وزارة المالية",
+      "name_en": "Ministry of Finance",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://mof.gov.ae",
+      "description_en": "Federal ministry responsible for the federal budget, public finance policy and government finance statistics, international tax and investment treaties."
+    },
+    {
+      "slug": "mohre",
+      "name_ar": "وزارة الموارد البشرية والتوطين",
+      "name_en": "Ministry of Human Resources and Emiratisation",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.mohre.gov.ae",
+      "description_en": "Federal ministry regulating the private-sector labour market and Emiratisation; publishes employment, establishment and labour-market indicators."
+    },
+    {
+      "slug": "mohap",
+      "name_ar": "وزارة الصحة ووقاية المجتمع",
+      "name_en": "Ministry of Health and Prevention",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://mohap.gov.ae",
+      "description_en": "Federal health ministry; publishes national health statistics, an open data API and a statistics dashboard."
+    },
+    {
+      "slug": "ministry-of-education",
+      "name_ar": "وزارة التربية والتعليم",
+      "name_en": "Ministry of Education",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moe.gov.ae",
+      "description_en": "Federal ministry for general (school) education; publishes student, school, teacher and education-expenditure statistics."
+    },
+    {
+      "slug": "mohesr",
+      "name_ar": "وزارة التعليم العالي والبحث العلمي",
+      "name_en": "Ministry of Higher Education and Scientific Research",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.mohesr.gov.ae",
+      "description_en": "Federal ministry for higher education and scientific research; publishes higher-education open data."
+    },
+    {
+      "slug": "moccae",
+      "name_ar": "وزارة التغير المناخي والبيئة",
+      "name_en": "Ministry of Climate Change and Environment",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moccae.gov.ae",
+      "description_en": "Federal ministry for climate, environment, agriculture, fisheries and food safety; publishes environmental, agricultural and food-security data."
+    },
+    {
+      "slug": "ministry-of-energy",
+      "name_ar": "وزارة الطاقة والبنية التحتية",
+      "name_en": "Ministry of Energy and Infrastructure",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moei.gov.ae",
+      "description_en": "Federal ministry for energy, petroleum, water, federal roads, transport (land and maritime) and housing policy; it also runs an open data portal at opendata.moei.gov.ae (launched GITEX 2024, 200+ datasets), which refused connections during verification and is therefore not listed as a source. The UAE left OPEC/OPEC+ effective 1 May 2026."
+    },
+    {
+      "slug": "moiat",
+      "name_ar": "وزارة الصناعة والتكنولوجيا المتقدمة",
+      "name_en": "Ministry of Industry and Advanced Technology",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://moiat.gov.ae",
+      "description_en": "Federal ministry for industrial development, standards, metrology, conformity and advanced technology; publishes industrial-sector data."
+    },
+    {
+      "slug": "ministry-of-foreign-trade",
+      "name_ar": "وزارة التجارة الخارجية",
+      "name_en": "Ministry of Foreign Trade",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.trade.gov.ae",
+      "description_en": "Federal ministry created on 20 June 2025 (split from the former Ministry of Economy) for trade policy, CEPA trade agreements and export promotion; publishes trade dashboards and economic reports."
+    },
+    {
+      "slug": "moi",
+      "name_ar": "وزارة الداخلية",
+      "name_en": "Ministry of Interior",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moi.gov.ae",
+      "description_en": "Federal interior ministry (police, traffic, civil defence); publishes road-safety, traffic and security open data."
+    },
+    {
+      "slug": "icp",
+      "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+      "name_en": "Federal Authority for Identity, Citizenship, Customs and Port Security",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://icp.gov.ae",
+      "description_en": "Federal authority for ID, residency, citizenship, customs and border ports (absorbed the former Federal Customs Authority); publishes service-transaction and customs open data."
+    },
+    {
+      "slug": "moce",
+      "name_ar": "وزارة تمكين المجتمع",
+      "name_en": "Ministry of Community Empowerment",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moce.gov.ae",
+      "description_en": "Federal ministry for social welfare, social support, people of determination and non-profit/community organisations; formerly the Ministry of Community Development (old domain mocd.gov.ae), with family affairs now under a separate Ministry of Family."
+    },
+    {
+      "slug": "ministry-of-culture",
+      "name_ar": "وزارة الثقافة",
+      "name_en": "Ministry of Culture",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://moc.gov.ae",
+      "description_en": "Federal culture ministry, formerly the Ministry of Culture and Youth (mcy.gov.ae now redirects to moc.gov.ae); publishes cultural statistics."
+    },
+    {
+      "slug": "ministry-of-sports",
+      "name_ar": "وزارة الرياضة",
+      "name_en": "Ministry of Sports",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.sports.gov.ae",
+      "description_en": "Federal sports ministry established in 2024, replacing the General Authority of Sports (gas.gov.ae now redirects to sports.gov.ae)."
+    },
+    {
+      "slug": "tdra",
+      "name_ar": "هيئة تنظيم الاتصالات والحكومة الرقمية",
+      "name_en": "Telecommunications and Digital Government Regulatory Authority",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://tdra.gov.ae",
+      "description_en": "Federal regulator for telecoms and digital government; publishes telecom subscription, ICT and digital-government indicators."
+    },
+    {
+      "slug": "gcaa",
+      "name_ar": "الهيئة العامة للطيران المدني",
+      "name_en": "General Civil Aviation Authority",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.gcaa.gov.ae",
+      "description_en": "Federal civil aviation regulator; publishes aviation open data (air traffic, aircraft movements, licences)."
+    },
+    {
+      "slug": "fanr",
+      "name_ar": "الهيئة الاتحادية للرقابة النووية",
+      "name_en": "Federal Authority for Nuclear Regulation",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.fanr.gov.ae",
+      "description_en": "Federal nuclear and radiation-safety regulator (oversees the Barakah nuclear plant); publishes regulatory and inspection data."
+    },
+    {
+      "slug": "fta",
+      "name_ar": "الهيئة الاتحادية للضرائب",
+      "name_en": "Federal Tax Authority",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://tax.gov.ae",
+      "description_en": "Federal authority administering VAT, excise tax and corporate tax; publishes tax registration and collection data."
+    },
+    {
+      "slug": "sca",
+      "name_ar": "هيئة سوق المال",
+      "name_en": "Capital Market Authority",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.uaecma.gov.ae",
+      "description_en": "Federal capital-markets regulator that replaced the Securities and Commodities Authority (SCA) on 1 January 2026 under Federal Decree-Laws 32 and 33 of 2025; sca.gov.ae now redirects to uaecma.gov.ae."
+    },
+    {
+      "slug": "eci",
+      "name_ar": "الاتحاد لائتمان الصادرات",
+      "name_en": "Etihad Credit Insurance",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.eci.gov.ae",
+      "description_en": "The UAE federal export credit agency; reports export-credit and trade-finance support figures."
+    },
+    {
+      "slug": "ministry-of-investment",
+      "name_ar": "وزارة الاستثمار",
+      "name_en": "Ministry of Investment",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.invest.gov.ae",
+      "description_en": "Federal ministry (established 2023) for investment policy and FDI attraction; publishes FDI figures and investment reports."
+    },
+    {
+      "slug": "fahr",
+      "name_ar": "الهيئة الاتحادية للموارد البشرية الحكومية",
+      "name_en": "Federal Authority for Government Human Resources",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.fahr.gov.ae",
+      "description_en": "Federal authority managing HR policy for the federal government; publishes federal government workforce data."
+    },
+    {
+      "slug": "ncm",
+      "name_ar": "المركز الوطني للأرصاد",
+      "name_en": "National Center of Meteorology",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.ncm.gov.ae",
+      "description_en": "Federal meteorology and seismology centre (ncm.ae redirects to ncm.gov.ae); publishes weather observations and climate reports."
+    },
+    {
+      "slug": "moj",
+      "name_ar": "وزارة العدل",
+      "name_en": "Ministry of Justice",
+      "kind": "ministry",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.moj.gov.ae",
+      "description_en": "Federal justice ministry (federal courts, notaries, legal affairs); publishes judicial open data and statistics."
+    },
+    {
+      "slug": "ehs",
+      "name_ar": "مؤسسة الإمارات للخدمات الصحية",
+      "name_en": "Emirates Health Services",
+      "kind": "authority",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.ehs.gov.ae",
+      "description_en": "Federal establishment running public hospitals and primary-care centres (mainly in the northern emirates); publishes health-service open data."
+    },
+    {
+      "slug": "wam",
+      "name_ar": "وكالة أنباء الإمارات (وام)",
+      "name_en": "Emirates News Agency (WAM)",
+      "kind": "news_agency",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://www.wam.ae",
+      "description_en": "The UAE's official news agency; relays official announcements and figures from federal and local government entities."
+    },
+    {
+      "slug": "uae-government-media-office",
+      "name_ar": "المكتب الإعلامي لحكومة دولة الإمارات",
+      "name_en": "UAE Government Media Office",
+      "kind": "media_office",
+      "level": "federal",
+      "emirate": null,
+      "website": "https://uaecabinet.ae",
+      "description_en": "The federal government's media office under the UAE Cabinet (formerly the Government Communication Office / UAE Government Communication Office); publishes Cabinet decisions and announcements on uaecabinet.ae."
+    },
+    {
+      "slug": "scad",
+      "name_ar": "مركز الإحصاء - أبوظبي",
+      "name_en": "Statistics Centre - Abu Dhabi",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.scad.gov.ae",
+      "description_en": "Abu Dhabi's official statistics office (SCAD), the sole reference for official statistics of the emirate, publishing population/census, GDP, prices, foreign trade, labour, tourism and sector statistics."
+    },
+    {
+      "slug": "abu-dhabi-data",
+      "name_ar": "منصة أبوظبي للبيانات المفتوحة",
+      "name_en": "Abu Dhabi Open Data Platform",
+      "kind": "open_data_portal",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://data.abudhabi/opendata/",
+      "description_en": "The Abu Dhabi Government's official open data platform, operated by the Abu Dhabi Digital Authority (ADDA) and launched in 2020 by the then Department of Government Support, aggregating datasets published by Abu Dhabi government entities."
+    },
+    {
+      "slug": "dct-abu-dhabi",
+      "name_ar": "دائرة الثقافة والسياحة - أبوظبي",
+      "name_en": "Department of Culture and Tourism - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://dct.gov.ae/en/",
+      "description_en": "Abu Dhabi government department regulating and promoting tourism and culture; announces hotel guest, occupancy and visitor figures and publishes annual reports."
+    },
+    {
+      "slug": "added",
+      "name_ar": "دائرة التنمية الاقتصادية - أبوظبي",
+      "name_en": "Abu Dhabi Department of Economic Development",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.added.gov.ae/en",
+      "description_en": "Abu Dhabi government department responsible for economic policy, business licensing and industrial development; announces economic, licensing and investment figures."
+    },
+    {
+      "slug": "doh-abu-dhabi",
+      "name_ar": "دائرة الصحة - أبوظبي",
+      "name_en": "Department of Health - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.doh.gov.ae/en/",
+      "description_en": "The regulator of Abu Dhabi's healthcare sector; publishes health statistics through open data dashboards and announces health-sector figures."
+    },
+    {
+      "slug": "adek",
+      "name_ar": "دائرة التعليم والمعرفة - أبوظبي",
+      "name_en": "Abu Dhabi Department of Education and Knowledge",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adek.gov.ae/en",
+      "description_en": "Abu Dhabi's education regulator (ADEK) for private schools, nurseries and higher education; announces student, school and programme figures."
+    },
+    {
+      "slug": "dmt-abu-dhabi",
+      "name_ar": "دائرة البلديات والنقل",
+      "name_en": "Department of Municipalities and Transport - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.dmt.gov.ae/en",
+      "description_en": "Abu Dhabi government department overseeing municipalities, urban planning, construction and transport (including Abu Dhabi Mobility and the Abu Dhabi Real Estate Centre)."
+    },
+    {
+      "slug": "ad-mobility",
+      "name_ar": "أبوظبي للتنقل",
+      "name_en": "Abu Dhabi Mobility",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://admobility.gov.ae/en",
+      "description_en": "Abu Dhabi Mobility (AD Mobility) is the new brand identity of the Integrated Transport Centre (ITC), responsible for public transport, land, maritime and aviation transport regulation, parking, tolls and vehicle licensing in Abu Dhabi."
+    },
+    {
+      "slug": "adrec",
+      "name_ar": "مركز أبوظبي العقاري",
+      "name_en": "Abu Dhabi Real Estate Centre",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://adrec.gov.ae/en",
+      "description_en": "Abu Dhabi's real estate sector regulator (ADREC), publishing real estate market data, dashboards and semi-annual market reports for the emirate."
+    },
+    {
+      "slug": "dof-abu-dhabi",
+      "name_ar": "دائرة المالية - أبوظبي",
+      "name_en": "Department of Finance - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.dof.abudhabi.ae/en",
+      "description_en": "Abu Dhabi government department responsible for the emirate's public finances and financial policy; issues financial-policy news and finance-related publications."
+    },
+    {
+      "slug": "abu-dhabi-media-office",
+      "name_ar": "مكتب أبوظبي الإعلامي",
+      "name_en": "Abu Dhabi Media Office",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.mediaoffice.abudhabi/en/",
+      "description_en": "The official media office of the Abu Dhabi Government, relaying news and figures announced by Abu Dhabi government entities."
+    },
+    {
+      "slug": "abu-dhabi-police",
+      "name_ar": "شرطة أبوظبي",
+      "name_en": "Abu Dhabi Police",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adpolice.gov.ae/en",
+      "description_en": "Abu Dhabi's police force; announces road safety, traffic and crime-related figures through its media centre."
+    },
+    {
+      "slug": "ead",
+      "name_ar": "هيئة البيئة - أبوظبي",
+      "name_en": "Environment Agency - Abu Dhabi",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.ead.gov.ae/en",
+      "description_en": "Abu Dhabi's environmental regulator (EAD), monitoring air quality, marine, biodiversity and groundwater and publishing environmental research and data."
+    },
+    {
+      "slug": "adafsa",
+      "name_ar": "هيئة أبوظبي للزراعة والسلامة الغذائية",
+      "name_en": "Abu Dhabi Agriculture and Food Safety Authority",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adafsa.gov.ae/en/Pages/default.aspx",
+      "description_en": "Abu Dhabi's agriculture, livestock and food safety authority (ADAFSA); announces agricultural production, farm and food-safety figures."
+    },
+    {
+      "slug": "doe-abu-dhabi",
+      "name_ar": "دائرة الطاقة - أبوظبي",
+      "name_en": "Department of Energy - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.doe.gov.ae/en",
+      "description_en": "Abu Dhabi's energy sector regulator (DoE) for electricity, water, wastewater and petroleum products; publishes annual and technical reports on sector performance."
+    },
+    {
+      "slug": "adx",
+      "name_ar": "سوق أبوظبي للأوراق المالية",
+      "name_en": "Abu Dhabi Securities Exchange",
+      "kind": "exchange",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adx.ae/en",
+      "description_en": "Abu Dhabi's stock exchange (ADX), publishing daily, weekly, monthly and yearly trading statistics, index performance and investor-type/nationality trading data."
+    },
+    {
+      "slug": "addcd",
+      "name_ar": "دائرة تنمية المجتمع - أبوظبي",
+      "name_en": "Department of Community Development - Abu Dhabi",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.addcd.gov.ae/en",
+      "description_en": "Abu Dhabi's social sector regulator (DCD); publishes social sector studies, research and survey results (e.g. quality of life, sports and physical activity surveys)."
+    },
+    {
+      "slug": "adio",
+      "name_ar": "مكتب أبوظبي للاستثمار",
+      "name_en": "Abu Dhabi Investment Office",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.investwithabudhabi.com/en",
+      "description_en": "Abu Dhabi government's investment promotion office (ADIO); announces foreign direct investment, company attraction and incentive programme figures."
+    },
+    {
+      "slug": "ssa-abu-dhabi",
+      "name_ar": "هيئة أبوظبي للدعم الاجتماعي",
+      "name_en": "Abu Dhabi Social Support Authority",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.ssa.gov.ae/en",
+      "description_en": "Abu Dhabi authority administering the social support programme for low-income Emirati families; announces beneficiary and disbursement figures."
+    },
+    {
+      "slug": "adha",
+      "name_ar": "هيئة أبوظبي للإسكان",
+      "name_en": "Abu Dhabi Housing Authority",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.iskan.abudhabi/",
+      "description_en": "Abu Dhabi authority for citizens' housing (ADHA); announces housing benefit packages, loans and housing project figures. Its website moved from adha.gov.ae to iskan.abudhabi."
+    },
+    {
+      "slug": "abu-dhabi-customs",
+      "name_ar": "الإدارة العامة لجمارك أبوظبي",
+      "name_en": "General Administration of Abu Dhabi Customs",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adcustoms.gov.ae/",
+      "description_en": "Abu Dhabi's customs administration; publishes an annual foreign trade statistics booklet for the emirate and an annual performance report."
+    },
+    {
+      "slug": "adgm",
+      "name_ar": "سوق أبوظبي العالمي",
+      "name_en": "Abu Dhabi Global Market",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "abu_dhabi",
+      "website": "https://www.adgm.com/",
+      "description_en": "Abu Dhabi's international financial centre and free zone (ADGM), whose authorities (Registration Authority, FSRA) announce figures on registered entities, assets under management and financial-sector growth."
+    },
+    {
+      "slug": "dubai-statistics",
+      "name_ar": "مؤسسة دبي للبيانات والإحصاء",
+      "name_en": "Dubai Data and Statistics Establishment (DDSE)",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://data.dubai",
+      "description_en": "Dubai's official statistics body, affiliated to the Dubai Digital Authority (Digital Dubai); created by Dubai Law No. 24 of 2023 as legal successor to the former Dubai Statistics Center (dsc.gov.ae, now redirecting to data.dubai) and the Dubai Data Establishment, it publishes Dubai's population, CPI, national accounts, labour and trade statistics."
+    },
+    {
+      "slug": "dubai-data",
+      "name_ar": "منصة بيانات دبي",
+      "name_en": "Data Dubai (Dubai official data platform)",
+      "kind": "open_data_portal",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://data.dubai",
+      "description_en": "Dubai's unified official data platform run by the Dubai Data and Statistics Establishment; it replaced the Dubai Pulse open data platform (dubaipulse.gov.ae now redirects here) and hosts open datasets from Dubai government entities."
+    },
+    {
+      "slug": "dubai-det",
+      "name_ar": "دائرة الاقتصاد والسياحة في دبي",
+      "name_en": "Dubai Department of Economy and Tourism (DET)",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dubaidet.gov.ae",
+      "description_en": "Dubai government department for economy and tourism (formed in 2021 by merging Dubai Economy and Dubai Tourism/DTCM); publishes official visitor arrivals, hotel performance, Dubai FDI Monitor and business-licensing figures."
+    },
+    {
+      "slug": "dld",
+      "name_ar": "دائرة الأراضي والأملاك",
+      "name_en": "Dubai Land Department (DLD)",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://dubailand.gov.ae",
+      "description_en": "Dubai's real estate registration and regulatory department; publishes official real estate transaction, rent, mortgage, project and price-index data."
+    },
+    {
+      "slug": "dha",
+      "name_ar": "هيئة الصحة بدبي",
+      "name_en": "Dubai Health Authority (DHA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dha.gov.ae",
+      "description_en": "Dubai's health regulator and provider; publishes the annual Dubai Health Statistical Yearbook (births, deaths, hospital activity, health workforce and facilities) and Dubai health accounts."
+    },
+    {
+      "slug": "khda",
+      "name_ar": "هيئة المعرفة والتنمية البشرية",
+      "name_en": "Knowledge and Human Development Authority (KHDA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://web.khda.gov.ae",
+      "description_en": "Dubai's regulator of private education; publishes official data on private schools, students, early childhood centres and higher education institutions, plus school inspection ratings."
+    },
+    {
+      "slug": "dubai-municipality",
+      "name_ar": "بلدية دبي",
+      "name_en": "Dubai Municipality",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dm.gov.ae",
+      "description_en": "Dubai's municipal authority for planning, building permits, food safety, waste and environment; publishes figures on these services in press releases and open datasets on Data Dubai."
+    },
+    {
+      "slug": "rta",
+      "name_ar": "هيئة الطرق والمواصلات",
+      "name_en": "Roads and Transport Authority (RTA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.rta.ae",
+      "description_en": "Dubai's roads and transport authority; publishes public transport ridership (metro, tram, buses, taxis, marine), road and licensing figures in annual reports and press releases."
+    },
+    {
+      "slug": "dubai-customs",
+      "name_ar": "جمارك دبي",
+      "name_en": "Dubai Customs",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dubaicustoms.gov.ae",
+      "description_en": "Dubai's customs administration; announces customs transactions, Dubai non-oil foreign trade and seizure figures."
+    },
+    {
+      "slug": "dubai-media-office",
+      "name_ar": "المكتب الإعلامي لحكومة دبي",
+      "name_en": "Government of Dubai Media Office",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.mediaoffice.ae",
+      "description_en": "Official media office of the Government of Dubai; relays announcements and figures from Dubai government entities in Arabic and English."
+    },
+    {
+      "slug": "dubai-police",
+      "name_ar": "القيادة العامة لشرطة دبي",
+      "name_en": "Dubai Police General Headquarters",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dubaipolice.gov.ae",
+      "description_en": "Dubai's police force; publishes open data on major crime rates per 100,000 population, emergency (999) call statistics and traffic accident statistics."
+    },
+    {
+      "slug": "dewa",
+      "name_ar": "هيئة كهرباء ومياه دبي",
+      "name_en": "Dubai Electricity and Water Authority (DEWA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dewa.gov.ae",
+      "description_en": "Dubai's electricity and water utility authority (a PJSC listed on DFM since 2022, majority government-owned); publishes annual statistics on generation capacity, consumption, customers and renewable energy."
+    },
+    {
+      "slug": "dubai-dof",
+      "name_ar": "دائرة المالية - حكومة دبي",
+      "name_en": "Department of Finance – Government of Dubai",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dof.gov.ae",
+      "description_en": "Dubai government finance department; prepares and announces the Dubai Government general budget and, through its Public Debt Management Office, publishes fiscal and economic overview data."
+    },
+    {
+      "slug": "dfm",
+      "name_ar": "سوق دبي المالي",
+      "name_en": "Dubai Financial Market (DFM)",
+      "kind": "exchange",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://www.dfm.ae",
+      "description_en": "Dubai's securities exchange; publishes trading bulletins, index levels, market capitalisation, foreign ownership and historical market data."
+    },
+    {
+      "slug": "dubai-airports",
+      "name_ar": "مطارات دبي",
+      "name_en": "Dubai Airports",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "dubai",
+      "website": "https://dubaiairports.ae",
+      "description_en": "Government of Dubai-owned operator of Dubai International (DXB) and Al Maktoum International (DWC) airports; publishes official passenger, flight and baggage traffic figures."
+    },
+    {
+      "slug": "sharjah-statistics",
+      "name_ar": "دائرة الإحصاء والتنمية المجتمعية",
+      "name_en": "Department of Statistics and Community Development (DSCD) - Sharjah",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://dscd.ae",
+      "description_en": "Sharjah's official statistics body; runs the Sharjah Census (Census 2025 results released June 2026), the Statistical Yearbook, statistical bulletins and the Sharjah open data portal."
+    },
+    {
+      "slug": "sharjah-ded",
+      "name_ar": "دائرة التنمية الاقتصادية - الشارقة",
+      "name_en": "Sharjah Economic Development Department (SEDD)",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://sedd.ae",
+      "description_en": "Sharjah's economic development and business licensing department; publishes annual reports and business-licence reports for the emirate."
+    },
+    {
+      "slug": "sgmb",
+      "name_ar": "المكتب الإعلامي لحكومة الشارقة",
+      "name_en": "Sharjah Government Media Bureau (SGMB)",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://sgmb.ae",
+      "description_en": "Official media office of the Government of Sharjah; issues official news and statements on behalf of Sharjah government entities."
+    },
+    {
+      "slug": "sharjah-rerd",
+      "name_ar": "دائرة التسجيل العقاري - حكومة الشارقة",
+      "name_en": "Sharjah Real Estate Registration Department",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://www.shjrerd.gov.ae",
+      "description_en": "Sharjah's real estate registry; publishes monthly and periodic real estate transaction values, volumes and investor nationalities."
+    },
+    {
+      "slug": "sctda",
+      "name_ar": "هيئة الإنماء التجاري والسياحي بالشارقة",
+      "name_en": "Sharjah Commerce and Tourism Development Authority (SCTDA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://www.sharjahtourism.ae",
+      "description_en": "Sharjah's tourism authority; collects hotel data through its hotel statistics system and publishes hotel performance statistics."
+    },
+    {
+      "slug": "spea",
+      "name_ar": "هيئة الشارقة للتعليم الخاص",
+      "name_en": "Sharjah Private Education Authority (SPEA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "sharjah",
+      "website": "https://spea.shj.ae",
+      "description_en": "Regulator of private schools, nurseries and training centres in Sharjah; publishes headline private-education statistics."
+    },
+    {
+      "slug": "ajman-statistics",
+      "name_ar": "مركز عجمان للإحصاء",
+      "name_en": "Ajman Statistics Center",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://scc.ajman.ae",
+      "description_en": "Ajman's official statistics authority, reorganised under its current name by Amiri Decree No. 8 of 2022 (formerly the Ajman Statistics and Competitiveness Center, est. 2017); publishes the Ajman statistical yearbook, Ajman in Figures and quarterly bulletins."
+    },
+    {
+      "slug": "digital-ajman",
+      "name_ar": "دائرة عجمان الرقمية",
+      "name_en": "Department of Digital Ajman",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://www.ajman.ae",
+      "description_en": "Ajman's digital government department; runs the Ajman government portal and the Ajman Data open data platform (data.ajman.ae)."
+    },
+    {
+      "slug": "ajman-ded",
+      "name_ar": "دائرة التنمية الاقتصادية - عجمان",
+      "name_en": "Department of Economic Development - Ajman",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://www.ajmanded.ae",
+      "description_en": "Ajman's economic development and business licensing department; publishes licensing datasets (licences by activity and area, economic permits)."
+    },
+    {
+      "slug": "ajman-land",
+      "name_ar": "دائرة الأراضي والتنظيم العقاري - عجمان",
+      "name_en": "Department of Land and Real Estate Regulation - Ajman",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://ajmanre.gov.ae",
+      "description_en": "Ajman's land registry and real estate regulator; publishes real estate transaction statistics and monthly market figures."
+    },
+    {
+      "slug": "ajman-tourism",
+      "name_ar": "دائرة السياحة والثقافة والإعلام - عجمان",
+      "name_en": "Department of Tourism, Culture and Media - Ajman",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://ajmantourism.ae",
+      "description_en": "Ajman's tourism, culture and media department (renamed from the Ajman Tourism Development Department, which it superseded); publishes hotel and visitor statistics."
+    },
+    {
+      "slug": "ajman-municipality",
+      "name_ar": "دائرة البلدية والتخطيط - عجمان",
+      "name_en": "Ajman Municipality and Planning Department",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://www.am.gov.ae",
+      "description_en": "Ajman's municipal and urban planning authority; publishes an annual Statistical Book and open datasets on municipal services."
+    },
+    {
+      "slug": "ajman-media-office",
+      "name_ar": "المكتب الإعلامي لحكومة عجمان",
+      "name_en": "Ajman Media Office",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "ajman",
+      "website": "https://ajmanmedia.ae",
+      "description_en": "Official media office of the Government of Ajman; publishes official Ajman government news and publications."
+    },
+    {
+      "slug": "rak-statistics",
+      "name_ar": "مركز رأس الخيمة للإحصاء",
+      "name_en": "Ras Al Khaimah Statistics Center (RAKSC)",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "ras_al_khaimah",
+      "website": "https://css.rak.ae",
+      "description_en": "Ras Al Khaimah's official statistics body (Emiri Law No. 2 of 2016), also referred to on the RAK government portal as the RAK Center for Statistics and Studies; publishes monthly, quarterly and annual statistics for the emirate."
+    },
+    {
+      "slug": "rak-ded",
+      "name_ar": "دائرة التنمية الاقتصادية - رأس الخيمة",
+      "name_en": "Department of Economic Development - Ras Al Khaimah",
+      "kind": "government_department",
+      "level": "emirate",
+      "emirate": "ras_al_khaimah",
+      "website": "https://ded.rak.ae",
+      "description_en": "Ras Al Khaimah's economic development and business licensing department; announces licensing figures (new and active licences, licensed capital)."
+    },
+    {
+      "slug": "raktda",
+      "name_ar": "هيئة رأس الخيمة لتنمية السياحة",
+      "name_en": "Ras Al Khaimah Tourism Development Authority (RAKTDA)",
+      "kind": "authority",
+      "level": "emirate",
+      "emirate": "ras_al_khaimah",
+      "website": "https://raktda.com",
+      "description_en": "Ras Al Khaimah's tourism authority; publishes visitor arrival and hotel performance figures."
+    },
+    {
+      "slug": "rak-media-office",
+      "name_ar": "المكتب الإعلامي لحكومة رأس الخيمة",
+      "name_en": "Ras Al Khaimah Government Media Office",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "ras_al_khaimah",
+      "website": "https://www.rakmediaoffice.ae",
+      "description_en": "Official media office of the Government of Ras Al Khaimah; publishes government news and statements."
+    },
+    {
+      "slug": "fujairah-statistics",
+      "name_ar": "مركز الفجيرة للإحصاء",
+      "name_en": "Fujairah Statistics Center",
+      "kind": "statistics_office",
+      "level": "emirate",
+      "emirate": "fujairah",
+      "website": "https://www.fscfuj.gov.ae",
+      "description_en": "Fujairah's official statistics body, renamed from the Department of Statistics and Planning (est. 1997) by Decree No. 6 of 2009; publishes the annual Fujairah Statistical Book."
+    },
+    {
+      "slug": "fujairah-media-office",
+      "name_ar": "المكتب الإعلامي لحكومة الفجيرة",
+      "name_en": "Fujairah Government Media Office",
+      "kind": "media_office",
+      "level": "emirate",
+      "emirate": "fujairah",
+      "website": "https://media.fujairah.ae",
+      "description_en": "Official media office of the Government of Fujairah (Emiri Decree No. 10 of 2014); publishes news on the Ruler's and government's activities."
+    },
+    {
+      "slug": "imf",
+      "name_ar": "صندوق النقد الدولي",
+      "name_en": "International Monetary Fund",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.imf.org",
+      "description_en": "Multilateral financial institution; publishes Article IV country reports and macroeconomic estimates and projections (World Economic Outlook) for the UAE."
+    },
+    {
+      "slug": "world-bank",
+      "name_ar": "البنك الدولي",
+      "name_en": "World Bank",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.worldbank.org",
+      "description_en": "International development bank; publishes the World Development Indicators and World Bank Open Data country series covering the UAE's economy, population, environment and social indicators."
+    },
+    {
+      "slug": "unsd",
+      "name_ar": "شعبة الإحصاءات في الأمم المتحدة",
+      "name_en": "United Nations Statistics Division",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://unstats.un.org",
+      "description_en": "Statistics division of UN DESA; compiles internationally comparable country statistics (UNdata / UN System Data Commons) and the UN Comtrade international merchandise trade database."
+    },
+    {
+      "slug": "un-tourism",
+      "name_ar": "منظمة الأمم المتحدة للسياحة",
+      "name_en": "UN Tourism (World Tourism Organization)",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.untourism.int",
+      "description_en": "UN specialized agency for tourism (renamed from UNWTO to UN Tourism in 2024; unwto.org now redirects to untourism.int); publishes international tourism arrivals, receipts and accommodation statistics by country."
+    },
+    {
+      "slug": "ilo",
+      "name_ar": "منظمة العمل الدولية",
+      "name_en": "International Labour Organization",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.ilo.org",
+      "description_en": "UN agency for the world of work; publishes harmonised labour statistics (ILOSTAT) including UAE labour force, employment and unemployment indicators."
+    },
+    {
+      "slug": "irena",
+      "name_ar": "الوكالة الدولية للطاقة المتجددة",
+      "name_en": "International Renewable Energy Agency",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.irena.org",
+      "description_en": "Intergovernmental renewable energy agency headquartered in Abu Dhabi; publishes renewable capacity, generation and investment statistics (IRENASTAT) and country energy profiles including the UAE."
+    },
+    {
+      "slug": "opec",
+      "name_ar": "منظمة الدول المصدرة للبترول (أوبك)",
+      "name_en": "Organization of the Petroleum Exporting Countries",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.opec.org",
+      "description_en": "Oil producers' organisation; publishes the Annual Statistical Bulletin and Monthly Oil Market Report with UAE crude production, reserves and export data. The UAE announced its exit from OPEC and OPEC+ effective 1 May 2026 (WAM, 28 April 2026), so UAE coverage is a former-member/historical series from that date."
+    },
+    {
+      "slug": "gcc-stat",
+      "name_ar": "المركز الإحصائي لدول مجلس التعاون لدول الخليج العربية",
+      "name_en": "GCC Statistical Centre (GCC-Stat)",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.gccstat.org",
+      "description_en": "Regional statistics body of the Gulf Cooperation Council (Statistical Centre for the Cooperation Council for the Arab Countries of the Gulf); publishes harmonised GCC and member-state statistics including the UAE."
+    },
+    {
+      "slug": "who",
+      "name_ar": "منظمة الصحة العالمية",
+      "name_en": "World Health Organization",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.who.int",
+      "description_en": "UN health agency; publishes country health statistics (Global Health Observatory, WHO Data) including UAE life expectancy, mortality and disease indicators."
+    },
+    {
+      "slug": "iea",
+      "name_ar": "وكالة الطاقة الدولية",
+      "name_en": "International Energy Agency",
+      "kind": "international_org",
+      "level": "international",
+      "emirate": null,
+      "website": "https://www.iea.org",
+      "description_en": "Intergovernmental energy agency; publishes country energy balances, electricity, renewables and CO2 emissions data including a UAE country profile."
+    }
+  ],
+  "sources": [
+    {
+      "slug": "fcsc-uae-stat",
+      "entity": "fcsc",
+      "name_ar": "منصة الإحصاءات الوطنية UAE.Stat",
+      "name_en": "UAE.Stat - national statistics data portal",
+      "tier": 1,
+      "type": "statistics_portal",
+      "homepage_url": "https://fcsc.gov.ae",
+      "data_url": "https://uaestat.fcsc.gov.ae/en",
+      "domains": [
+        "fcsc.gov.ae",
+        "uaestat.fcsc.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "excel",
+        "csv",
+        "api"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "population",
+        "economy",
+        "prices",
+        "trade",
+        "labour",
+        "health",
+        "education",
+        "social",
+        "safety-justice",
+        "environment",
+        "energy",
+        "culture-sport",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FCSC's SDMX-based (.Stat Suite) data explorer with official UAE time series by subject: population estimates (from 1970), births, deaths, marriages and divorces, education, health, security and traffic accidents, social and cultural statistics, national accounts, CPI, balance of payments, trade, labour, energy and environment.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fcsc-press-releases",
+      "entity": "fcsc",
+      "name_ar": "الأخبار الصحفية - المركز الاتحادي للتنافسية والإحصاء",
+      "name_en": "FCSC press releases",
+      "tier": 1,
+      "type": "press_releases",
+      "homepage_url": "https://fcsc.gov.ae",
+      "data_url": "https://fcsc.gov.ae/press-release/",
+      "domains": [
+        "fcsc.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "prices",
+        "trade",
+        "labour",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FCSC announcements of newly released official figures, e.g. quarterly and half-year real and non-oil GDP (H1 2026 release of 9 Oct 2026) and joint surveys with federal entities; archive back to 2015.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fcsc-publications",
+      "entity": "fcsc",
+      "name_ar": "تقارير وإصدارات المركز الاتحادي للتنافسية والإحصاء",
+      "name_en": "FCSC reports and publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://fcsc.gov.ae",
+      "data_url": "https://fcsc.gov.ae/media-center-publication/",
+      "domains": [
+        "fcsc.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "economy",
+        "population",
+        "social",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Statistical, competitiveness and SDG publications filterable by year (2015 onward), e.g. 'Unified UAE Numbers' (2025), XDGs report and the UAE Voluntary National Review (2026).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "uae-open-data-portal",
+      "entity": "uae-open-data",
+      "name_ar": "بوابة البيانات المفتوحة - بيانات",
+      "name_en": "Bayanat.ae - UAE open data portal",
+      "tier": 1,
+      "type": "open_data_portal",
+      "homepage_url": "https://bayanat.ae/en",
+      "data_url": "https://bayanat.ae/en/Datasets",
+      "domains": [
+        "bayanat.ae",
+        "opendata.fcsc.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "api",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "trade",
+        "labour",
+        "health",
+        "education",
+        "environment",
+        "energy",
+        "transport",
+        "social",
+        "safety-justice",
+        "public-finance",
+        "technology",
+        "agriculture",
+        "industry",
+        "culture-sport",
+        "business",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "National open data catalogue (about 3,580 datasets from 57 entities as of Oct 2026) with XLSX resources and a JSON API (DatasetResources/GetDatasetResource). FCSC's homepage 'Open Data' link points to opendata.fcsc.gov.ae, which serves the same national catalogue (entity datasets such as @ministry-education, @federal-customs-authority); that host is Cloudflare-protected and could not be loaded directly.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cbuae-statistics",
+      "entity": "cbuae",
+      "name_ar": "البحوث والإحصاءات - المصرف المركزي",
+      "name_en": "CBUAE Research and Statistics",
+      "tier": 1,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.centralbank.ae/en/",
+      "data_url": "https://centralbank.ae/en/research-and-statistics/",
+      "domains": [
+        "centralbank.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "banking",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Research and Statistics Department output (Data and Statistics Centre): Monthly Statistical Bulletin (money supply, monetary survey, central bank balance sheet, reserves, deposits, credit), monthly monetary and banking developments, Credit Sentiment Survey (PDF + XLSX) and MSME surveys.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cbuae-publications",
+      "entity": "cbuae",
+      "name_ar": "منشورات المصرف المركزي",
+      "name_en": "CBUAE publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://www.centralbank.ae/en/",
+      "data_url": "https://centralbank.ae/en/news-and-publications/publications/",
+      "domains": [
+        "centralbank.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "banking",
+        "economy",
+        "prices"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Quarterly Economic Review, quarterly Monetary, Banking and Financial Markets Developments, Financial Stability Report, CBUAE Annual Report, working papers and the Annual Statistical Report for the Insurance Sector.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cbuae-forex-eibor",
+      "entity": "cbuae",
+      "name_ar": "أسعار الصرف وإيبور",
+      "name_en": "CBUAE FX rates and EIBOR",
+      "tier": 1,
+      "type": "dashboard",
+      "homepage_url": "https://www.centralbank.ae/en/",
+      "data_url": "https://centralbank.ae/en/forex-eibor/",
+      "domains": [
+        "centralbank.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "banking",
+        "prices"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official daily dirham exchange rates against major currencies and the Emirates Interbank Offered Rate (EIBOR), plus a summary of economic indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cbuae-news",
+      "entity": "cbuae",
+      "name_ar": "أخبار ورؤى المصرف المركزي",
+      "name_en": "CBUAE news and press releases",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.centralbank.ae/en/",
+      "data_url": "https://centralbank.ae/en/news-and-publications/news-and-insights/",
+      "domains": [
+        "centralbank.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "banking",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "CBUAE press releases (HTML with PDF copies) on policy-rate decisions, regulation, banking-sector figures and international cooperation.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moet-open-data",
+      "entity": "ministry-of-economy",
+      "name_ar": "البيانات المفتوحة - وزارة الاقتصاد والسياحة",
+      "name_en": "MoET open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.moet.gov.ae/en/home",
+      "data_url": "https://www.moet.gov.ae/en/open-data",
+      "domains": [
+        "moet.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "business",
+        "trade",
+        "prices",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Open data hub linking MoEc Open Data datasets, the FDI dashboard, International Trade Map, economic reports, annual economic and statistical reports, and the Essential Goods Prices Platform.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moet-tourism-indicators",
+      "entity": "ministry-of-economy",
+      "name_ar": "مؤشرات السياحة",
+      "name_en": "MoET tourism indicators",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.moet.gov.ae/en/home",
+      "data_url": "https://www.moet.gov.ae/en/tourism-indicators",
+      "domains": [
+        "moet.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "National tourism performance indicators: travel and tourism share of GDP, international tourist spending, hotel revenues, number of hotels and rooms, hotel occupancy and guests.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moet-publications",
+      "entity": "ministry-of-economy",
+      "name_ar": "إصدارات وزارة الاقتصاد والسياحة",
+      "name_en": "MoET publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.moet.gov.ae/en/home",
+      "data_url": "https://www.moet.gov.ae/en/our-publications",
+      "domains": [
+        "moet.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "economy",
+        "business",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Ministry reports and publications, including annual economic reports and sector studies.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moet-media-centre",
+      "entity": "ministry-of-economy",
+      "name_ar": "المركز الإعلامي - وزارة الاقتصاد والسياحة",
+      "name_en": "MoET media centre",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.moet.gov.ae/en/home",
+      "data_url": "https://www.moet.gov.ae/en/media-centre",
+      "domains": [
+        "moet.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "business",
+        "tourism",
+        "prices"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Ministry news and press releases, often carrying figures on company registrations, SMEs, IP, consumer-protection and tourism performance.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mof-statistical-reports",
+      "entity": "ministry-of-finance",
+      "name_ar": "التقارير الإحصائية - وزارة المالية",
+      "name_en": "MoF statistical reports (open data)",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://mof.gov.ae/en/home/",
+      "data_url": "https://mof.gov.ae/en/open-data/statistical-reports/",
+      "domains": [
+        "mof.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf",
+        "api"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "public-finance",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Federal fiscal data filterable by group: approved budget by sector, budget execution, federal budget revenues and expenses, general government revenue and expenditure, government finance statistics, public debt outstanding and transactions in assets and liabilities; the page advertises real-time API access. The parent open data hub (/en/open-data/) adds data-visualisation, geospatial, real-time and treaties dashboards.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mof-gfs",
+      "entity": "ministry-of-finance",
+      "name_ar": "إحصاءات مالية الحكومة - وزارة المالية",
+      "name_en": "MoF Government Finance Statistics",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://mof.gov.ae/en/home/",
+      "data_url": "https://mof.gov.ae/en/public-finance/uae-federal-budget/government-financial-statistics/",
+      "domains": [
+        "mof.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "public-finance"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Quarterly and annual UAE Government Finance Statistics (revenues, expenditures, assets and liabilities) compiled under the IMF GFSM 2014 methodology.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mof-publications",
+      "entity": "ministry-of-finance",
+      "name_ar": "الإصدارات والنشرات - وزارة المالية",
+      "name_en": "MoF publications and releases",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://mof.gov.ae/en/home/",
+      "data_url": "https://mof.gov.ae/en/media-center/publications-and-releases/",
+      "domains": [
+        "mof.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "public-finance",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Monthly 'Pulse of Finance' newsletter (PDF) with ministry news, statements, studies and fiscal data.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mof-news",
+      "entity": "ministry-of-finance",
+      "name_ar": "أخبار وزارة المالية",
+      "name_en": "MoF news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://mof.gov.ae/en/home/",
+      "data_url": "https://mof.gov.ae/en/media-center/news/",
+      "domains": [
+        "mof.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "public-finance"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Ministry press releases, including federal budget approvals and fiscal announcements.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohre-statistical-report",
+      "entity": "mohre",
+      "name_ar": "التقارير الإحصائية - وزارة الموارد البشرية والتوطين",
+      "name_en": "MoHRE open data statistical reports",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.mohre.gov.ae/en/home",
+      "data_url": "https://www.mohre.gov.ae/en/open-data/statistical-report",
+      "domains": [
+        "mohre.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "labour"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Downloadable labour statistics (39 files in Oct 2026) by category - employment, establishments, complaints - e.g. employment distribution by economic activity and gender, growth of skilled workforce in the private sector.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohre-labour-market-observatory",
+      "entity": "mohre",
+      "name_ar": "مرصد سوق العمل",
+      "name_en": "MoHRE Labour Market Observatory",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.mohre.gov.ae/en/home",
+      "data_url": "https://observatory.mohre.gov.ae/en",
+      "domains": [
+        "observatory.mohre.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "labour"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Periodic labour-market data and the UAE's rankings in global labour competitiveness indices (IMD etc.), plus outputs of labour-market policies.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohre-news",
+      "entity": "mohre",
+      "name_ar": "أخبار وزارة الموارد البشرية والتوطين",
+      "name_en": "MoHRE news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.mohre.gov.ae/en/home",
+      "data_url": "https://www.mohre.gov.ae/en/media-center/news",
+      "domains": [
+        "mohre.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "labour"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoHRE press releases, including Emiratisation, inspections and private-sector workforce figures.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohap-open-data",
+      "entity": "mohap",
+      "name_ar": "البيانات المفتوحة - وزارة الصحة ووقاية المجتمع",
+      "name_en": "MoHAP open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://mohap.gov.ae/en/home",
+      "data_url": "https://mohap.gov.ae/en/open-data/mohap-open-data",
+      "domains": [
+        "mohap.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf",
+        "api"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "health"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoHAP open datasets and statistical files (an open data API page is also published under /en/open-data/open-data-api).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohap-statistics-dashboard",
+      "entity": "mohap",
+      "name_ar": "لوحة الإحصاءات - وزارة الصحة ووقاية المجتمع",
+      "name_en": "MoHAP statistics dashboard",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://mohap.gov.ae/en/home",
+      "data_url": "https://mohap.gov.ae/en/open-data/statistics-dashboard",
+      "domains": [
+        "mohap.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "health",
+        "population"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Interactive dashboard of national health statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohap-news",
+      "entity": "mohap",
+      "name_ar": "أخبار وزارة الصحة ووقاية المجتمع",
+      "name_en": "MoHAP news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://mohap.gov.ae/en/home",
+      "data_url": "https://mohap.gov.ae/en/digital-participation/media-center/news",
+      "domains": [
+        "mohap.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "health"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoHAP press releases on health programmes, campaigns and health-sector figures.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moe-open-data",
+      "entity": "ministry-of-education",
+      "name_ar": "البيانات المفتوحة - وزارة التربية والتعليم",
+      "name_en": "MoE open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.moe.gov.ae/En/Pages/Default.aspx",
+      "data_url": "https://www.moe.gov.ae/en/open-data/pages/moe-open-data.aspx",
+      "domains": [
+        "moe.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Education datasets: public and private schools, students by nationality, sector and gender, grade-12 graduates, school staff and teachers, education budget and expenditure (older Arabic PDF archives under /Ar/OpenData/Documents/).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moe-stats-dashboard",
+      "entity": "ministry-of-education",
+      "name_ar": "لوحة الإحصاءات - وزارة التربية والتعليم",
+      "name_en": "MoE stats dashboard",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.moe.gov.ae/En/Pages/Default.aspx",
+      "data_url": "https://www.moe.gov.ae/en/open-data/Pages/stats-dashboard.aspx",
+      "domains": [
+        "moe.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Interactive education statistics dashboard of the Ministry of Education.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mohesr-open-data",
+      "entity": "mohesr",
+      "name_ar": "البيانات المفتوحة - وزارة التعليم العالي والبحث العلمي",
+      "name_en": "MoHESR open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.mohesr.gov.ae/En/Pages/home.aspx",
+      "data_url": "https://www.mohesr.gov.ae/En/OpenData/Pages/default.aspx",
+      "domains": [
+        "mohesr.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Higher-education open data hub with datasets, a data-visualisation page and a geospatial dashboard (page last modified Aug 2026).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moccae-open-data",
+      "entity": "moccae",
+      "name_ar": "البيانات المفتوحة - وزارة التغير المناخي والبيئة",
+      "name_en": "MOCCAE open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.moccae.gov.ae/en/home",
+      "data_url": "https://www.moccae.gov.ae/en/open-data/moccae-open-data",
+      "domains": [
+        "moccae.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "environment",
+        "agriculture"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MOCCAE open datasets on environment, climate, agriculture, fisheries and food security, searchable by category and date (e.g. sea water quality indicators, XLSX).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moei-publications",
+      "entity": "ministry-of-energy",
+      "name_ar": "الإصدارات والدراسات - وزارة الطاقة والبنية التحتية",
+      "name_en": "MoEI publications and studies",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.moei.gov.ae/en/home",
+      "data_url": "https://www.moei.gov.ae/en/knowledge-center/publications-and-studies",
+      "domains": [
+        "moei.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "energy",
+        "transport",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoEI Knowledge Center publications and studies, searchable by category and year (list loads dynamically).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moei-news",
+      "entity": "ministry-of-energy",
+      "name_ar": "أخبار وزارة الطاقة والبنية التحتية",
+      "name_en": "MoEI news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.moei.gov.ae/en/home",
+      "data_url": "https://www.moei.gov.ae/en/media-centre/news",
+      "domains": [
+        "moei.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "energy",
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoEI press releases on energy, infrastructure, transport and housing.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moiat-open-data",
+      "entity": "moiat",
+      "name_ar": "البيانات المفتوحة - وزارة الصناعة والتكنولوجيا المتقدمة",
+      "name_en": "MoIAT open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://moiat.gov.ae/en/",
+      "data_url": "https://moiat.gov.ae/en/open-data",
+      "domains": [
+        "moiat.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "industry"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoIAT open data documents library by category (industrial, metrology, conformity, standards, accreditation, advanced technology) in PDF/Excel, plus interactive open data statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moiat-publications",
+      "entity": "moiat",
+      "name_ar": "الإصدارات والدراسات - وزارة الصناعة والتكنولوجيا المتقدمة",
+      "name_en": "MoIAT publications and studies",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://moiat.gov.ae/en/",
+      "data_url": "https://moiat.gov.ae/en/media-center/publication-and-studies",
+      "domains": [
+        "moiat.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "industry",
+        "technology"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoIAT reports and studies on the industrial sector.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moiat-news",
+      "entity": "moiat",
+      "name_ar": "أخبار وزارة الصناعة والتكنولوجيا المتقدمة",
+      "name_en": "MoIAT news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://moiat.gov.ae/en/",
+      "data_url": "https://moiat.gov.ae/en/media-center/news",
+      "domains": [
+        "moiat.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "industry"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoIAT press releases, including industrial output, exports and Make it in the Emirates figures.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moft-open-data",
+      "entity": "ministry-of-foreign-trade",
+      "name_ar": "البيانات المفتوحة - وزارة التجارة الخارجية",
+      "name_en": "MoFT open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.trade.gov.ae/",
+      "data_url": "https://www.trade.gov.ae/web/guest/open-data",
+      "domains": [
+        "trade.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "excel"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "trade"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Open data hub of the Ministry of Foreign Trade, including the International Trade Map (non-oil trade by partner, trade type and year) and data transparency dashboard.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moft-economic-reports",
+      "entity": "ministry-of-foreign-trade",
+      "name_ar": "التقارير الاقتصادية - وزارة التجارة الخارجية",
+      "name_en": "MoFT economic reports",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.trade.gov.ae/",
+      "data_url": "https://www.trade.gov.ae/web/guest/economic-reports",
+      "domains": [
+        "trade.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "trade",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Country and trade-partner economic reports published by the Ministry of Foreign Trade.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moft-news",
+      "entity": "ministry-of-foreign-trade",
+      "name_ar": "أخبار وزارة التجارة الخارجية",
+      "name_en": "MoFT news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.trade.gov.ae/",
+      "data_url": "https://www.trade.gov.ae/web/guest/news",
+      "domains": [
+        "trade.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "trade"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Ministry news, including non-oil foreign trade figures and CEPA announcements.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moi-open-data",
+      "entity": "moi",
+      "name_ar": "البيانات المفتوحة - وزارة الداخلية",
+      "name_en": "MoI open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.moi.gov.ae/en/home",
+      "data_url": "https://www.moi.gov.ae/en/open-data/open-data",
+      "domains": [
+        "moi.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "safety-justice",
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoI open data files by type (police, traffic and licensing, civil defence, e-services, budget, geographic and real-time data), e.g. annual Traffic Cases XLSX files 2015-2025.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moi-news",
+      "entity": "moi",
+      "name_ar": "أخبار وزارة الداخلية",
+      "name_en": "MoI news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.moi.gov.ae/en/home",
+      "data_url": "https://www.moi.gov.ae/en/media-center/news",
+      "domains": [
+        "moi.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "safety-justice",
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoI press releases on traffic safety, policing and civil defence.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "icp-open-data",
+      "entity": "icp",
+      "name_ar": "تقارير البيانات المفتوحة - الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+      "name_en": "ICP open data reports",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://icp.gov.ae/en/",
+      "data_url": "https://icp.gov.ae/en/huge-open-data/open-data/",
+      "domains": [
+        "icp.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "population",
+        "trade",
+        "safety-justice"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ICP open data files (55 in Oct 2026, years 2010-2026), e.g. monthly statistics on the number of ICP service transactions (ID, residency, visas).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moce-statistics",
+      "entity": "moce",
+      "name_ar": "الإحصاءات - وزارة تمكين المجتمع",
+      "name_en": "MoCE statistics",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.moce.gov.ae/ar",
+      "data_url": "https://www.moce.gov.ae/en/statistics",
+      "domains": [
+        "moce.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Statistics portal with key figures and downloadable databases by category, year and emirate (e.g. social welfare cases by emirate for 2024, volunteers) on social welfare, non-profit organisations and community participation.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moc-statistical-reports",
+      "entity": "ministry-of-culture",
+      "name_ar": "التقارير والدراسات الإحصائية - وزارة الثقافة",
+      "name_en": "Ministry of Culture statistical reports and studies",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://moc.gov.ae/en/",
+      "data_url": "https://moc.gov.ae/en/opendata/statistical-reports-and-studies/",
+      "domains": [
+        "moc.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Statistical reports and studies filterable by category (general, culture, heritage, activities) and year (2000-2026), e.g. quarterly cultural centre visitor statistics and beneficiaries of cultural and creative centre services.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "mos-statistics",
+      "entity": "ministry-of-sports",
+      "name_ar": "الإحصاءات والدراسات - وزارة الرياضة",
+      "name_en": "Ministry of Sports statistics and studies",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.sports.gov.ae/",
+      "data_url": "https://www.sports.gov.ae/statistics-and-studies",
+      "domains": [
+        "sports.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Open data files (9 as of Apr 2026): medal counts, players and staff registered with sports entities, physical activity statistics in the UAE, ministry budget and service statistics; open data charts at /open-data-reports.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "tdra-open-data",
+      "entity": "tdra",
+      "name_ar": "مجموعات البيانات - هيئة تنظيم الاتصالات والحكومة الرقمية",
+      "name_en": "TDRA open data sets",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://tdra.gov.ae/en",
+      "data_url": "https://tdra.gov.ae/en/open-data/data-sets",
+      "domains": [
+        "tdra.gov.ae"
+      ],
+      "access_methods": [
+        "excel"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "technology"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "61 XLSX datasets (Oct 2026): phone and internet subscriptions (e.g. broadband subscriptions per 100 inhabitants), mobile network and smartphone benchmarking, service quality and prices, ICT access and use, spectrum and budget data.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "tdra-publications",
+      "entity": "tdra",
+      "name_ar": "إصدارات هيئة تنظيم الاتصالات والحكومة الرقمية",
+      "name_en": "TDRA publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://tdra.gov.ae/en",
+      "data_url": "https://tdra.gov.ae/en/media/publications",
+      "domains": [
+        "tdra.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "technology"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "TDRA reports and publications on the telecom sector and digital government.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "uae-government-portal",
+      "entity": "tdra",
+      "name_ar": "المنصة الرسمية لحكومة الإمارات العربية المتحدة",
+      "name_en": "The Official Platform of the UAE Government (u.ae)",
+      "tier": 3,
+      "type": "publications",
+      "homepage_url": "https://u.ae/en",
+      "data_url": "https://u.ae/en/about-the-uae/fact-sheet",
+      "domains": [
+        "u.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "population",
+        "economy",
+        "labour",
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "The UAE Government's official unified digital platform (launched 2011, promoted by TDRA under its digital-government remit); its fact sheet and information pages (e.g. labour market data, open data guide) relay key national figures from the producing entities.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "gcaa-open-data",
+      "entity": "gcaa",
+      "name_ar": "البيانات المفتوحة - الهيئة العامة للطيران المدني",
+      "name_en": "GCAA open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.gcaa.gov.ae/en/Pages/default.aspx",
+      "data_url": "https://www.gcaa.gov.ae/en/open-data",
+      "domains": [
+        "gcaa.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "GCAA open data sets (31 in Oct 2026) on UAE civil aviation activity.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "gcaa-media-center",
+      "entity": "gcaa",
+      "name_ar": "المركز الإعلامي - الهيئة العامة للطيران المدني",
+      "name_en": "GCAA media center",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.gcaa.gov.ae/en/Pages/default.aspx",
+      "data_url": "https://www.gcaa.gov.ae/en/media-center",
+      "domains": [
+        "gcaa.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "GCAA news and press releases, including air-traffic and passenger figures.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fanr-open-data",
+      "entity": "fanr",
+      "name_ar": "البيانات المفتوحة - الهيئة الاتحادية للرقابة النووية",
+      "name_en": "FANR open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.fanr.gov.ae/en/Pages/default.aspx",
+      "data_url": "https://www.fanr.gov.ae/en/open-data",
+      "domains": [
+        "fanr.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FANR open data: general reports, general data and inspection reports, plus a glossary and link to Bayanat.ae.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fta-open-data",
+      "entity": "fta",
+      "name_ar": "البيانات المفتوحة - الهيئة الاتحادية للضرائب",
+      "name_en": "FTA open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://tax.gov.ae/en/default.aspx",
+      "data_url": "https://tax.gov.ae/en/open.data.aspx",
+      "domains": [
+        "tax.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "public-finance",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FTA open data hub: open data files, visual open data and 3D open data pages, and the open data publication plan.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fta-news",
+      "entity": "fta",
+      "name_ar": "أخبار الهيئة الاتحادية للضرائب",
+      "name_en": "FTA press releases",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://tax.gov.ae/en/default.aspx",
+      "data_url": "https://tax.gov.ae/en/media.centre/news.aspx?category=press.releases",
+      "domains": [
+        "tax.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "public-finance",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FTA press releases, e.g. corporate-tax and VAT registration counts and tourist VAT refunds.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cma-statistics",
+      "entity": "sca",
+      "name_ar": "الأرقام والإحصاءات - هيئة سوق المال",
+      "name_en": "CMA numbers and statistics",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.uaecma.gov.ae/en/home",
+      "data_url": "https://www.uaecma.gov.ae/en/open-data/numbers-and-statistics",
+      "domains": [
+        "uaecma.gov.ae",
+        "sca.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf",
+        "excel"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "banking",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "CMA 'Numbers and Statistics' and 'Graphs and Statistics' pages on the UAE capital market, alongside open-data lists of registered and licensed companies and investment funds; the CMA annual report is still served from sca.gov.ae/assets.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "cma-news",
+      "entity": "sca",
+      "name_ar": "المركز الإعلامي - هيئة سوق المال",
+      "name_en": "CMA media centre",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.uaecma.gov.ae/en/home",
+      "data_url": "https://www.uaecma.gov.ae/en/media-centre/news",
+      "domains": [
+        "uaecma.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "banking"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "CMA news and press releases, including market notices and regulatory figures.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "eci-news",
+      "entity": "eci",
+      "name_ar": "أخبار الاتحاد لائتمان الصادرات",
+      "name_en": "ECI news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.eci.gov.ae/",
+      "data_url": "https://www.eci.gov.ae/",
+      "domains": [
+        "eci.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "trade",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ECI news items (individual pages under /en/news/) on export-credit support, partnerships and trade figures; there is no news listing URL, so the homepage is used as data_url. Annual reports are linked to an external host and not included.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moinvest-reports",
+      "entity": "ministry-of-investment",
+      "name_ar": "التقارير والرؤى - وزارة الاستثمار",
+      "name_en": "Ministry of Investment reports and insights",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.invest.gov.ae/en",
+      "data_url": "https://www.invest.gov.ae/en/reports-and-insights",
+      "domains": [
+        "invest.gov.ae",
+        "investuae.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "business",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FDI reports and sector whitepapers (e.g. FDI inflows of US$45.6bn in 2024); PDFs are served from invest.gov.ae and investuae.gov.ae.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fahr-open-data",
+      "entity": "fahr",
+      "name_ar": "البيانات المفتوحة - الهيئة الاتحادية للموارد البشرية الحكومية",
+      "name_en": "FAHR open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.fahr.gov.ae/en/home/",
+      "data_url": "https://www.fahr.gov.ae/en/opendata/",
+      "domains": [
+        "fahr.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "labour"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "FAHR open data: federal government HR numbers and statistics, benchmarks and FAHR e-service usage; publications at /en/media-center/publications/.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ncm-climate-reports",
+      "entity": "ncm",
+      "name_ar": "التقارير المناخية - المركز الوطني للأرصاد",
+      "name_en": "NCM climate reports",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.ncm.gov.ae/",
+      "data_url": "https://www.ncm.gov.ae/pages/climate-reports?lang=en",
+      "domains": [
+        "ncm.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Climate reports (daily and yearly climate report services) and NCM publications on UAE weather and climate.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "moj-open-data",
+      "entity": "moj",
+      "name_ar": "البيانات المفتوحة - وزارة العدل",
+      "name_en": "MoJ open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.moj.gov.ae/en/home.aspx",
+      "data_url": "https://www.moj.gov.ae/en/open-data",
+      "domains": [
+        "moj.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "safety-justice"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "MoJ open data section with 'Data & Statistics', open data services, governance and external platforms pages.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ehs-open-data",
+      "entity": "ehs",
+      "name_ar": "البيانات المفتوحة - مؤسسة الإمارات للخدمات الصحية",
+      "name_en": "EHS open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.ehs.gov.ae/en/home",
+      "data_url": "https://www.ehs.gov.ae/en/open-data",
+      "domains": [
+        "ehs.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "health"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "EHS health reports and statistics: numbers and statistics, open data charts, budget, geospatial hospital data and real-time data on outpatient appointments, surgeries and referrals.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "wam-ar",
+      "entity": "wam",
+      "name_ar": "وكالة أنباء الإمارات - العربية",
+      "name_en": "WAM Arabic news",
+      "tier": 3,
+      "type": "news_agency",
+      "homepage_url": "https://www.wam.ae/ar",
+      "data_url": "https://www.wam.ae/ar/list/latest-news",
+      "domains": [
+        "wam.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "population",
+        "tourism",
+        "trade",
+        "labour",
+        "prices",
+        "public-finance",
+        "banking",
+        "real-estate",
+        "energy",
+        "environment",
+        "transport",
+        "education",
+        "health",
+        "technology",
+        "agriculture",
+        "industry",
+        "business",
+        "social",
+        "culture-sport",
+        "safety-justice"
+      ],
+      "languages": [
+        "ar"
+      ],
+      "description_en": "Arabic WAM newswire (latest news plus sections such as اقتصاد/business, أسواق/markets, عقارات/real estate, استثمار/investment, سياحة/tourism).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "wam-en",
+      "entity": "wam",
+      "name_ar": "وكالة أنباء الإمارات - الإنجليزية",
+      "name_en": "WAM English news",
+      "tier": 3,
+      "type": "news_agency",
+      "homepage_url": "https://www.wam.ae/en",
+      "data_url": "https://www.wam.ae/en/list/latest-news",
+      "domains": [
+        "wam.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "population",
+        "tourism",
+        "trade",
+        "labour",
+        "prices",
+        "public-finance",
+        "banking",
+        "real-estate",
+        "energy",
+        "environment",
+        "transport",
+        "education",
+        "health",
+        "technology",
+        "agriculture",
+        "industry",
+        "business",
+        "social",
+        "culture-sport",
+        "safety-justice"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "English WAM newswire (latest news plus sections such as Business, Markets, Real Estate, Investments, Tourism, Oil and Gas).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "uae-cabinet-news",
+      "entity": "uae-government-media-office",
+      "name_ar": "أخبار مجلس الوزراء",
+      "name_en": "UAE Cabinet news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://uaecabinet.ae/en",
+      "data_url": "https://uaecabinet.ae/en/news",
+      "domains": [
+        "uaecabinet.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "weekly",
+      "topics": [
+        "public-finance",
+        "economy",
+        "social",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Cabinet news releases, e.g. federal budget approvals (AED 292.5bn 2027-2029 budget, Oct 2026) and Cabinet reviews of national competitiveness and development indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "scad-statistics",
+      "entity": "scad",
+      "name_ar": "الإصدارات الإحصائية - مركز الإحصاء أبوظبي",
+      "name_en": "SCAD Statistical Publications",
+      "tier": 1,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.scad.gov.ae/en",
+      "data_url": "https://www.scad.gov.ae/en/statistical-publication",
+      "domains": [
+        "scad.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "economy",
+        "population",
+        "tourism",
+        "trade",
+        "labour",
+        "prices",
+        "banking",
+        "real-estate",
+        "energy",
+        "environment",
+        "transport",
+        "education",
+        "health",
+        "technology",
+        "agriculture",
+        "industry",
+        "business",
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Abu Dhabi statistics releases with downloadable Excel tables and PDF reports: GDP and national accounts, CPI and producer price index, non-oil foreign merchandise trade, industrial production index, building completions, hotel establishments, labour force, population, bank, education, health, climate, air/marine quality, waste, fishery and agriculture statistics; key indicators at /en/key-statistical-indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "scad-news",
+      "entity": "scad",
+      "name_ar": "أخبار مركز الإحصاء - أبوظبي",
+      "name_en": "SCAD News",
+      "tier": 1,
+      "type": "press_releases",
+      "homepage_url": "https://www.scad.gov.ae/en",
+      "data_url": "https://www.scad.gov.ae/en/scad-news",
+      "domains": [
+        "scad.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "prices",
+        "trade",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "SCAD's news and press releases announcing new statistical releases and headline figures (e.g. GDP growth, inflation, census results) for Abu Dhabi.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "scad-census",
+      "entity": "scad",
+      "name_ar": "تعداد أبوظبي 2024",
+      "name_en": "Abu Dhabi Census 2024",
+      "tier": 1,
+      "type": "dashboard",
+      "homepage_url": "https://census.scad.gov.ae/",
+      "data_url": "https://census.scad.gov.ae/",
+      "domains": [
+        "census.scad.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "population",
+        "labour",
+        "social",
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "SCAD's official portal for the Abu Dhabi Census 2024 results: population size and composition, households and related census indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "abu-dhabi-open-data",
+      "entity": "abu-dhabi-data",
+      "name_ar": "منصة أبوظبي للبيانات المفتوحة",
+      "name_en": "Abu Dhabi Open Data Platform",
+      "tier": 1,
+      "type": "open_data_portal",
+      "homepage_url": "https://data.abudhabi/opendata/",
+      "data_url": "https://data.abudhabi/opendata/dataset",
+      "domains": [
+        "data.abudhabi"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "tourism",
+        "transport",
+        "health",
+        "education",
+        "environment",
+        "energy",
+        "real-estate",
+        "social",
+        "agriculture",
+        "safety-justice"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Catalogue of open datasets published by Abu Dhabi government entities (launched 2020 with 550+ datasets across sectors), downloadable in multiple formats with a metadata API and real-time APIs.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dct-abu-dhabi-media-centre",
+      "entity": "dct-abu-dhabi",
+      "name_ar": "المركز الإعلامي - دائرة الثقافة والسياحة أبوظبي",
+      "name_en": "DCT Abu Dhabi Media Centre",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://dct.gov.ae/en/",
+      "data_url": "https://dct.gov.ae/en/media.centre.aspx",
+      "domains": [
+        "dct.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "tourism",
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DCT Abu Dhabi's media centre with news, circulars and annual reports (2017–2025) containing tourism and culture KPIs such as hotel guests, occupancy and visitor numbers. The on-site news list appears not to be updated recently; DCT's tourism figures are also announced via the Abu Dhabi Media Office, and SCAD publishes hotel establishment statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "added-news",
+      "entity": "added",
+      "name_ar": "أخبار دائرة التنمية الاقتصادية - أبوظبي",
+      "name_en": "Abu Dhabi DED News and Highlights",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.added.gov.ae/en",
+      "data_url": "https://www.added.gov.ae/en/news-and-highlights",
+      "domains": [
+        "added.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "business",
+        "industry"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADDED news and highlights announcing Abu Dhabi economic figures (non-oil growth, new business licences, investment and industrial-sector data); its publications section (/en/news-and-highlights/publications) holds brochures and guides.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "doh-abu-dhabi-open-data",
+      "entity": "doh-abu-dhabi",
+      "name_ar": "لوحات البيانات المفتوحة - دائرة الصحة أبوظبي",
+      "name_en": "DoH Abu Dhabi Open Data Dashboards",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.doh.gov.ae/en/",
+      "data_url": "https://www.doh.gov.ae/en/resources/opendata",
+      "domains": [
+        "doh.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "health"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DoH's interactive Open Data Dashboards relaying the emirate's latest health statistics, with filters by period, trends and comparisons against international benchmarks; health-sector figures are also announced on DoH news (/en/news).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adek-news",
+      "entity": "adek",
+      "name_ar": "أخبار دائرة التعليم والمعرفة",
+      "name_en": "ADEK Media Centre News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.adek.gov.ae/en",
+      "data_url": "https://www.adek.gov.ae/en/Media-Centre/News",
+      "domains": [
+        "adek.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADEK news releases with Abu Dhabi education figures (students, schools, nurseries, programmes). ADEK has no dedicated public statistics page; education statistics are also published by SCAD.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dmt-news",
+      "entity": "dmt-abu-dhabi",
+      "name_ar": "أخبار دائرة البلديات والنقل",
+      "name_en": "DMT Latest News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.dmt.gov.ae/en",
+      "data_url": "https://www.dmt.gov.ae/en/Media-Centre/News",
+      "domains": [
+        "dmt.gov.ae",
+        "pages.dmt.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "transport",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DMT news on municipal, construction, planning and transport projects and figures; DMT also publishes an engineering licensing and firm classification dashboard at pages.dmt.gov.ae/en/dashboard and an e-library.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ad-mobility-news",
+      "entity": "ad-mobility",
+      "name_ar": "أخبار أبوظبي للتنقل",
+      "name_en": "Abu Dhabi Mobility News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://admobility.gov.ae/en",
+      "data_url": "https://admobility.gov.ae/en/news",
+      "domains": [
+        "admobility.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "News from Abu Dhabi Mobility (formerly branded Integrated Transport Centre, ITC; itc.gov.ae now redirects here) with public transport ridership, taxi, toll and parking figures. The news list is loaded dynamically.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adrec-market-data",
+      "entity": "adrec",
+      "name_ar": "بيانات السوق - مركز أبوظبي العقاري",
+      "name_en": "ADREC Market Data and Dashboards",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://adrec.gov.ae/en",
+      "data_url": "https://adrec.gov.ae/en/property_and_index/adrec-dashboard",
+      "domains": [
+        "adrec.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADREC's market data hub: dashboards with property transactions, price movements and market KPIs, an interactive map with real-time market trends and Quanta advanced reports (hub at /en/property_and_index).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adrec-market-reports",
+      "entity": "adrec",
+      "name_ar": "التقارير السوقية - مركز أبوظبي العقاري",
+      "name_en": "ADREC Market Reports",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://adrec.gov.ae/en",
+      "data_url": "https://adrec.gov.ae/en/market_reports",
+      "domains": [
+        "adrec.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Biannual (H1 and full-year) Abu Dhabi real estate market reports in PDF analysing transactions, prices and market performance (latest: H1 2026).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dof-abu-dhabi-news",
+      "entity": "dof-abu-dhabi",
+      "name_ar": "أخبار دائرة المالية - أبوظبي",
+      "name_en": "DoF Abu Dhabi News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.dof.abudhabi.ae/en",
+      "data_url": "https://www.dof.abudhabi.ae/en/Presscenter/AllNews",
+      "domains": [
+        "dof.abudhabi.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "public-finance"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Department of Finance news on Abu Dhabi public finance and financial policy; its publications page (/en/Publications) holds the financial system law, chart of accounts and manuals. Abu Dhabi does not publish a detailed budget dataset here.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "abu-dhabi-media-office-news",
+      "entity": "abu-dhabi-media-office",
+      "name_ar": "آخر أخبار أبوظبي - مكتب أبوظبي الإعلامي",
+      "name_en": "Abu Dhabi Media Office Latest News",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://www.mediaoffice.abudhabi/en/",
+      "data_url": "https://www.mediaoffice.abudhabi/en/latest-news/",
+      "domains": [
+        "mediaoffice.abudhabi"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "tourism",
+        "real-estate",
+        "health",
+        "education",
+        "transport",
+        "energy",
+        "environment",
+        "agriculture",
+        "business",
+        "social",
+        "culture-sport",
+        "safety-justice"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Abu Dhabi Government news releases relaying figures announced by Abu Dhabi departments and authorities (tourism, economy, real estate, health, agriculture, etc.).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "abu-dhabi-police-news",
+      "entity": "abu-dhabi-police",
+      "name_ar": "أخبار شرطة أبوظبي",
+      "name_en": "Abu Dhabi Police News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.adpolice.gov.ae/en",
+      "data_url": "https://www.adpolice.gov.ae/en/Media-Center/News",
+      "domains": [
+        "adpolice.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "safety-justice",
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Abu Dhabi Police media centre news with road safety, traffic accident and security figures. No dedicated public statistics page was found.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ead-publications",
+      "entity": "ead",
+      "name_ar": "المنشورات العلمية - هيئة البيئة أبوظبي",
+      "name_en": "EAD Research Publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.ead.gov.ae/en",
+      "data_url": "https://www.ead.gov.ae/en/Research-Hub/Research-Publications",
+      "domains": [
+        "ead.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "environment",
+        "agriculture"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "EAD research publications and reports on Abu Dhabi's environment (biodiversity, marine and groundwater, air quality, climate) from its Research Hub; environmental figures are also announced via EAD news (/en/Media-Centre/News).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ead-air-quality",
+      "entity": "ead",
+      "name_ar": "جودة الهواء في أبوظبي",
+      "name_en": "Abu Dhabi Air Quality",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.adairquality.ae/",
+      "data_url": "https://www.adairquality.ae/",
+      "domains": [
+        "adairquality.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "environment"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "EAD's real-time air quality monitoring portal showing the Air Quality Index, measured pollutants and weather readings by monitoring station across Abu Dhabi (real-time data subject to validation).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adafsa-news",
+      "entity": "adafsa",
+      "name_ar": "أخبار هيئة أبوظبي للزراعة والسلامة الغذائية",
+      "name_en": "ADAFSA News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.adafsa.gov.ae/en/Pages/default.aspx",
+      "data_url": "https://www.adafsa.gov.ae/en/mediahub/news/Pages/default.aspx",
+      "domains": [
+        "adafsa.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "agriculture"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADAFSA news releases with Abu Dhabi agricultural production, farm, livestock and food safety inspection figures; publications at /en/awareness/Pages/publications.aspx.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "doe-abu-dhabi-publications",
+      "entity": "doe-abu-dhabi",
+      "name_ar": "منشورات دائرة الطاقة - أبوظبي",
+      "name_en": "DoE Abu Dhabi Publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.doe.gov.ae/en",
+      "data_url": "https://www.doe.gov.ae/en/Our-Publications",
+      "domains": [
+        "doe.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DoE publications library including annual reports and annual technical reports with electricity, water and wastewater sector statistics (generation, capacity, peak demand, desalination output) plus policies; the list loads dynamically. Sector news at /en/Media-Centre/News.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adx-report-centre",
+      "entity": "adx",
+      "name_ar": "مركز التقارير - سوق أبوظبي للأوراق المالية",
+      "name_en": "ADX Report Centre",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.adx.ae/en",
+      "data_url": "https://www.adx.ae/en/resources/report-center/overview",
+      "domains": [
+        "adx.ae",
+        "eservices.adx.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "banking",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADX market statistics: daily, weekly, monthly and yearly trading activity reports, sector trading, index performance, broker activity, and trading by investor type and nationality (legacy report tool at eservices.adx.ae/reportcenter.html). The site blocks automated clients (Cloudflare).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "addcd-publications",
+      "entity": "addcd",
+      "name_ar": "منشورات دائرة تنمية المجتمع",
+      "name_en": "DCD Abu Dhabi Publications and Research",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.addcd.gov.ae/en",
+      "data_url": "https://www.addcd.gov.ae/en/Media-Center/Publications",
+      "domains": [
+        "addcd.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "social",
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DCD publications, studies and research on Abu Dhabi's social sector (also /en/Media-Center/Research), including social survey results such as the sports and physical activity survey; news at /en/Media-Center/News. The list loads dynamically.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adio-news",
+      "entity": "adio",
+      "name_ar": "أخبار مكتب أبوظبي للاستثمار",
+      "name_en": "ADIO Newsroom",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.investwithabudhabi.com/en",
+      "data_url": "https://www.investwithabudhabi.com/en/news",
+      "domains": [
+        "investwithabudhabi.com"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "business",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADIO newsroom announcing Abu Dhabi investment partnerships and investment-attraction figures. Its reports page mostly links third-party and federal reports.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ssa-abu-dhabi-news",
+      "entity": "ssa-abu-dhabi",
+      "name_ar": "أخبار هيئة أبوظبي للدعم الاجتماعي",
+      "name_en": "Abu Dhabi Social Support Authority News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.ssa.gov.ae/en",
+      "data_url": "https://www.ssa.gov.ae/en/Media-Center/News",
+      "domains": [
+        "ssa.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "SSA news releases on Abu Dhabi's social support programmes, including programme and beneficiary figures. The news list loads dynamically.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adha-news",
+      "entity": "adha",
+      "name_ar": "أخبار هيئة أبوظبي للإسكان",
+      "name_en": "Abu Dhabi Housing Authority News",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.iskan.abudhabi/",
+      "data_url": "https://www.iskan.abudhabi/en/Media-Center/News",
+      "domains": [
+        "iskan.abudhabi"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "ADHA news and press releases on housing benefit packages, housing loans and citizen housing projects; publications at /en/Publications.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "abu-dhabi-customs-trade-statistics",
+      "entity": "abu-dhabi-customs",
+      "name_ar": "إحصاءات التجارة الخارجية - جمارك أبوظبي",
+      "name_en": "Abu Dhabi Customs Foreign Trade Statistics",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.adcustoms.gov.ae/",
+      "data_url": "https://www.adcustoms.gov.ae/en/Foreign-Trade-Statistics",
+      "domains": [
+        "adcustoms.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "trade"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Annual booklet of Abu Dhabi foreign trade statistics (trade between the emirate and world countries) and an annual performance report (/en/Annual-Performance-Report); the list loads dynamically. SCAD publishes the official monthly trade statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "adgm-announcements",
+      "entity": "adgm",
+      "name_ar": "إعلانات سوق أبوظبي العالمي",
+      "name_en": "ADGM Media Announcements",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.adgm.com/",
+      "data_url": "https://www.adgm.com/media/announcements",
+      "domains": [
+        "adgm.com"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "banking",
+        "business"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "ADGM announcements, including periodic growth figures for the financial centre (e.g. operational entities, assets under management) and regulatory actions by the FSRA and Registration Authority.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-statistics-portal",
+      "entity": "dubai-statistics",
+      "name_ar": "البيانات والإحصاءات - بيانات دبي",
+      "name_en": "Dubai official statistics (Data Dubai – Data and Statistics)",
+      "tier": 1,
+      "type": "statistics_portal",
+      "homepage_url": "https://data.dubai/en/",
+      "data_url": "https://data.dubai/en/data-and-statistics",
+      "domains": [
+        "data.dubai"
+      ],
+      "access_methods": [
+        "pdf",
+        "csv",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "population",
+        "prices",
+        "economy",
+        "trade",
+        "labour",
+        "social",
+        "technology",
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DDSE statistics organised by theme (Population, Prices, National Accounts, Employment, Trade, Economic Sectors, Society, Digital Society, Infrastructure, Polls and Surveys): monthly Dubai CPI bulletin, annual Population Bulletin of the Emirate of Dubai, Emirati marriage/divorce rates, GDP and survey results, as Arabic/English PDFs and datasets. Replaces the former Dubai Statistics Center site dsc.gov.ae; the catalogue is rendered dynamically.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-data",
+      "entity": "dubai-data",
+      "name_ar": "البيانات المفتوحة - منصة بيانات دبي",
+      "name_en": "Data Dubai open data catalogue",
+      "tier": 1,
+      "type": "open_data_portal",
+      "homepage_url": "https://data.dubai/en/",
+      "data_url": "https://data.dubai/o/c/datasets",
+      "domains": [
+        "data.dubai",
+        "apis.data.dubai"
+      ],
+      "access_methods": [
+        "api",
+        "csv"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "transport",
+        "economy",
+        "tourism",
+        "trade",
+        "health",
+        "education",
+        "social",
+        "safety-justice",
+        "energy",
+        "environment",
+        "culture-sport",
+        "banking",
+        "population",
+        "technology"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "About 640 open datasets (Oct 2026) from Dubai entities including DDSE, Dubai Land Department, RTA, Dubai Municipality, DET, Dubai Customs, Dubai Airports, Dubai Courts, Public Prosecution and DEWA, mostly CSV with API endpoints on apis.data.dubai (an application key is required). Successor to Dubai Pulse (dubaipulse.gov.ae redirects here); update frequency varies by dataset.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-det-research",
+      "entity": "dubai-det",
+      "name_ar": "الأبحاث والرؤى - دائرة الاقتصاد والسياحة في دبي",
+      "name_en": "DET Research and Insights (Tourism Performance Reports)",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dubaidet.gov.ae/en",
+      "data_url": "https://www.dubaidet.gov.ae/en/research-and-insights",
+      "domains": [
+        "dubaidet.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "tourism",
+        "economy",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Monthly year-to-date Tourism Performance Reports (overnight international visitors by source market, hotel occupancy, average daily rate, RevPAR), the Annual Visitor Report and other economic research. The site blocks automated clients (Akamai 403); URL verified via search index.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-det-press-releases",
+      "entity": "dubai-det",
+      "name_ar": "البيانات الصحفية - دائرة الاقتصاد والسياحة في دبي",
+      "name_en": "DET press releases",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.dubaidet.gov.ae/en",
+      "data_url": "https://www.dubaidet.gov.ae/en/newsroom/press-releases",
+      "domains": [
+        "dubaidet.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "tourism",
+        "economy",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official DET announcements with headline figures: visitor numbers, hotel performance, Dubai FDI Monitor results (FDI capital, projects, jobs), new business licences. The site blocks automated clients (Akamai 403); URL verified via search index.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dld-real-estate-data",
+      "entity": "dld",
+      "name_ar": "البيانات العقارية - دائرة الأراضي والأملاك",
+      "name_en": "DLD Real Estate Data",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://dubailand.gov.ae/en/",
+      "data_url": "https://dubailand.gov.ae/en/open-data/real-estate-data/",
+      "domains": [
+        "dubailand.gov.ae"
+      ],
+      "access_methods": [
+        "csv",
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Searchable official records of real estate transactions (sales, mortgages, gifts), rent contracts, projects, valuations, land, buildings, units, brokers and developers, filterable by date and area with CSV download; older years are on Data Dubai.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dld-research",
+      "entity": "dld",
+      "name_ar": "الأبحاث - دائرة الأراضي والأملاك",
+      "name_en": "DLD Research and Residential Sales Price Index",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://dubailand.gov.ae/en/",
+      "data_url": "https://dubailand.gov.ae/en/open-data/research/",
+      "domains": [
+        "dubailand.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DLD research reports, including the annual Real Estate Sector Performance report and the Residential Sales Price Index (monthly, quarterly and annual; methodology page at /en/open-data/residential-properties-price-index-rppi/).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dld-news",
+      "entity": "dld",
+      "name_ar": "الأخبار والوسائط - دائرة الأراضي والأملاك",
+      "name_en": "DLD news and media",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://dubailand.gov.ae/en/",
+      "data_url": "https://dubailand.gov.ae/en/news-media/",
+      "domains": [
+        "dubailand.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DLD press releases announcing quarterly and annual real estate transaction volumes and values, investor numbers and market performance.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dha-open-data",
+      "entity": "dha",
+      "name_ar": "البيانات المفتوحة - هيئة الصحة بدبي",
+      "name_en": "DHA Open Data and Dubai Health Statistical Yearbook",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dha.gov.ae/en",
+      "data_url": "https://www.dha.gov.ae/en/OpenData",
+      "domains": [
+        "dha.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "health",
+        "population"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DHA open data page and statistical publications: the annual Dubai Health Statistical Yearbook (latest found: 2024 edition, published Dec 2025, with births, deaths, hospital admissions, outpatient visits, licensed facilities and workforce) and the Health Accounts System of Dubai (health expenditure). PDFs are served from dha.gov.ae/uploads; the page is rendered dynamically.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "khda-data-statistics",
+      "entity": "khda",
+      "name_ar": "البيانات والإحصائيات - هيئة المعرفة والتنمية البشرية",
+      "name_en": "KHDA data and statistics",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://web.khda.gov.ae/en/",
+      "data_url": "https://web.khda.gov.ae/en/Resources/KHDA-data-statistics",
+      "domains": [
+        "khda.gov.ae",
+        "web.khda.gov.ae"
+      ],
+      "access_methods": [
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Open data workbooks on Dubai private schools (enrolment, curricula, ratings), early childhood centres and higher education institutions, plus private school, ECC and higher education landscape infographics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-municipality-news",
+      "entity": "dubai-municipality",
+      "name_ar": "الأخبار - بلدية دبي",
+      "name_en": "Dubai Municipality news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.dm.gov.ae/",
+      "data_url": "https://www.dm.gov.ae/media-center/spotlight/",
+      "domains": [
+        "dm.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "environment",
+        "health",
+        "agriculture"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Dubai Municipality announcements with figures on building permits, food safety inspections, waste and environment services. Its open data page (https://www.dm.gov.ae/open-data2/) lists datasets that are now hosted on Data Dubai.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "rta-open-data",
+      "entity": "rta",
+      "name_ar": "البيانات المفتوحة - هيئة الطرق والمواصلات",
+      "name_en": "RTA Open Data (annual and statistical reports)",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.rta.ae/",
+      "data_url": "https://www.rta.ae/wps/portal/rta/ae/home/open-data",
+      "domains": [
+        "rta.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "RTA annual reports (to 2025), sustainability and governance reports and statistical reports (2011–2016 only), covering public transport ridership, road network, licensing and traffic safety.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "rta-news",
+      "entity": "rta",
+      "name_ar": "الأخبار - هيئة الطرق والمواصلات",
+      "name_en": "RTA news",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.rta.ae/",
+      "data_url": "https://www.rta.ae/wps/portal/rta/ae/home/news-and-media/all-news",
+      "domains": [
+        "rta.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "RTA press releases announcing ridership of Dubai Metro, tram, buses, taxis and marine transport, Nol card and parking figures, and road projects.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-customs-news",
+      "entity": "dubai-customs",
+      "name_ar": "مركز الأخبار - جمارك دبي",
+      "name_en": "Dubai Customs newsroom",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.dubaicustoms.gov.ae/en/Pages/default.aspx",
+      "data_url": "https://www.dubaicustoms.gov.ae/en/NewsCenter/Pages/News.aspx",
+      "domains": [
+        "dubaicustoms.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "trade",
+        "safety-justice"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Dubai Customs press releases with customs declaration counts, Dubai non-oil foreign trade figures and seizure statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-media-office-news",
+      "entity": "dubai-media-office",
+      "name_ar": "الأخبار - المكتب الإعلامي لحكومة دبي",
+      "name_en": "Dubai Media Office news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://www.mediaoffice.ae/en",
+      "data_url": "https://www.mediaoffice.ae/en/news",
+      "domains": [
+        "mediaoffice.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "population",
+        "tourism",
+        "trade",
+        "real-estate",
+        "transport",
+        "public-finance",
+        "business",
+        "social",
+        "health",
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Government of Dubai news releases (Arabic at /ar/news) relaying figures announced by Dubai entities, e.g. budget, tourism, real estate, trade and FDI results; trace each figure back to the issuing entity.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-police-open-data",
+      "entity": "dubai-police",
+      "name_ar": "البيانات المفتوحة - شرطة دبي",
+      "name_en": "Dubai Police open data",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dubaipolice.gov.ae/app/home/",
+      "data_url": "https://www.dubaipolice.gov.ae/app/home/opendata/",
+      "domains": [
+        "dubaipolice.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "safety-justice",
+        "transport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Dubai Police open data: major crime rate per 100,000 population by crime type (2017–2024), emergency 999 calls received and answered, and traffic accident statistics. The current site is a single-page app; older pages under /wps/portal/home/opendata are still indexed.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dewa-annual-statistics",
+      "entity": "dewa",
+      "name_ar": "الإحصاءات السنوية - هيئة كهرباء ومياه دبي",
+      "name_en": "DEWA Annual Statistics",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dewa.gov.ae/en",
+      "data_url": "https://www.dewa.gov.ae/en/about-us/strategy-excellence/annual-statistics",
+      "domains": [
+        "dewa.gov.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "environment"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Annual statistics booklets (2017–2025; 2025 edition April 2026) with installed capacity, electricity generation and peak load, water production, consumption by sector, customer numbers and clean-energy share. The site blocks automated clients (Akamai 403); URL verified via search index.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-dof-budget",
+      "entity": "dubai-dof",
+      "name_ar": "الموازنة العامة والمنشورات - دائرة المالية في دبي",
+      "name_en": "Dubai Government budget and fiscal publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dof.gov.ae/en-us/Pages/Home/Home.aspx",
+      "data_url": "https://dmo.dof.gov.ae/en/news-and-publications/",
+      "domains": [
+        "dof.gov.ae",
+        "dmo.dof.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "public-finance",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Dubai Government general budget announcements (e.g. the 2026–2028 budget cycle: revenues, expenditure and sector allocations) and fiscal/economic overview publications from the DOF Public Debt Management Office (Dubai Overview at /en/dubai-overview/).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dfm-market-statistics",
+      "entity": "dfm",
+      "name_ar": "الإحصاءات والتقارير - سوق دبي المالي",
+      "name_en": "DFM statistics and reports",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.dfm.ae/",
+      "data_url": "https://www.dfm.ae/the-exchange/statistics-reports/bulletins",
+      "domains": [
+        "dfm.ae",
+        "assets.dfm.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "banking",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "DFM trading bulletins, historical data (DFM General Index, sectors and listed companies, up to two years downloadable at /the-exchange/statistics-reports/historical-data/dfmgi), foreign ownership and ownership-holding statistics, and the weekly margin trading report.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "dubai-airports-media",
+      "entity": "dubai-airports",
+      "name_ar": "المركز الإعلامي - مطارات دبي",
+      "name_en": "Dubai Airports media centre",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://dubaiairports.ae/",
+      "data_url": "https://media.dubaiairports.ae/en/",
+      "domains": [
+        "dubaiairports.ae",
+        "media.dubaiairports.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "transport",
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Quarterly, half-year and annual traffic releases for DXB and DWC (passengers, flight movements, baggage, top destination markets) and the Dubai Airports fact file.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sharjah-statistics-publications",
+      "entity": "sharjah-statistics",
+      "name_ar": "إصدارات دائرة الإحصاء والتنمية المجتمعية - الشارقة",
+      "name_en": "DSCD Sharjah statistical publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://dscd.ae/en/",
+      "data_url": "https://dscd.ae/en/publications/",
+      "domains": [
+        "dscd.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "population",
+        "economy",
+        "social",
+        "labour",
+        "prices",
+        "tourism",
+        "education",
+        "health",
+        "environment",
+        "transport",
+        "agriculture",
+        "energy",
+        "industry",
+        "trade"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Sharjah Statistical Yearbook (2020-2024 editions online) and annual Statistical Bulletin (2024, 2025), plus statistical indicators (dscd.ae/en/statistical-indicators/) and Sharjah Census results (dscd.ae/sharjah-census/) covering population, vital statistics, economy, prices, education, health, tourism and environment.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sharjah-open-data",
+      "entity": "sharjah-statistics",
+      "name_ar": "بوابة الشارقة للبيانات المفتوحة",
+      "name_en": "Sharjah Open Data Portal (DSCD)",
+      "tier": 1,
+      "type": "open_data_portal",
+      "homepage_url": "https://opendata.dscd.ae/en/data-statistics",
+      "data_url": "https://opendata.dscd.ae/en/data-statistics",
+      "domains": [
+        "opendata.dscd.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "population",
+        "economy",
+        "prices",
+        "real-estate",
+        "tourism",
+        "education",
+        "health",
+        "environment",
+        "energy",
+        "transport",
+        "agriculture",
+        "business",
+        "social",
+        "culture-sport",
+        "safety-justice",
+        "technology"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Sharjah open data portal run by DSCD: 177+ datasets across 20 topics from Sharjah government publishers (population and vital statistics, national accounts, prices, real estate registration, tourism, business licences, education, health, electricity and water, traffic accidents, transportation, social services). JavaScript app; download formats could not be confirmed at check time.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sharjah-ded-publications",
+      "entity": "sharjah-ded",
+      "name_ar": "منشورات دائرة التنمية الاقتصادية بالشارقة",
+      "name_en": "SEDD publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://sedd.ae/en/",
+      "data_url": "https://sedd.ae/en/publications",
+      "domains": [
+        "sedd.ae"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "business",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "SEDD annual reports (2023, 2024, 2025) and the Annual Report on Business Licenses (counts of new/renewed licences by activity), plus sector licence profiles (e.g. agriculture and livestock).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sgmb-news",
+      "entity": "sgmb",
+      "name_ar": "أخبار المكتب الإعلامي لحكومة الشارقة",
+      "name_en": "Sharjah Government Media Bureau news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://sgmb.ae/en",
+      "data_url": "https://sgmb.ae/en",
+      "domains": [
+        "sgmb.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "business",
+        "real-estate",
+        "tourism",
+        "social",
+        "culture-sport",
+        "population"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Sharjah government news releases (e.g. Sharjah Executive Council decisions, Census 2025 results, sector figures from Sharjah departments). Relays figures produced by other Sharjah entities. The news listing is rendered from the homepage (no stable listing URL could be confirmed), so the homepage is used as data_url.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sharjah-rerd-news",
+      "entity": "sharjah-rerd",
+      "name_ar": "أخبار دائرة التسجيل العقاري بالشارقة",
+      "name_en": "Sharjah Real Estate Registration Department news and market releases",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://www.shjrerd.gov.ae/home",
+      "data_url": "https://www.shjrerd.gov.ae/news",
+      "domains": [
+        "shjrerd.gov.ae"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Monthly releases on Sharjah real estate trading (e.g. total transaction value and number of transactions per month, investor nationalities, mortgages) and the Sharjah Real Estate magazine; the site's monthly/annual reports sections were empty at check time, so the news page is the data_url.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "sctda-insights-statistics",
+      "entity": "sctda",
+      "name_ar": "التقارير والإحصاءات - هيئة الإنماء التجاري والسياحي",
+      "name_en": "SCTDA insights and statistics",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.sharjahtourism.ae/",
+      "data_url": "https://www.sharjahtourism.ae/industry-resources/insights-and-statistics/",
+      "domains": [
+        "sharjahtourism.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Sharjah hotel and hotel-apartment statistics: guests, guest nights, occupancy, average length of stay, ADR and RevPAR, hotel and room counts by class, with quarterly and annual PDF reports for 2017-2025 and interactive charts.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "spea-statistics",
+      "entity": "spea",
+      "name_ar": "إحصائيات هيئة الشارقة للتعليم الخاص",
+      "name_en": "SPEA statistics",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://spea.shj.ae/en",
+      "data_url": "https://spea.shj.ae/en/resources-and-data/statistics",
+      "domains": [
+        "spea.shj.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "education"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Headline counters for Sharjah private education: number of private schools and curricula, Emirati and non-Emirati students, children in nurseries, training centres, and school inspection ratings distribution.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-statistics-publications",
+      "entity": "ajman-statistics",
+      "name_ar": "إصدارات مركز عجمان للإحصاء",
+      "name_en": "Ajman Statistics Center publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://scc.ajman.ae/en",
+      "data_url": "https://scc.ajman.ae/en/publications",
+      "domains": [
+        "scc.ajman.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "quarterly",
+      "topics": [
+        "population",
+        "economy",
+        "social",
+        "labour",
+        "prices",
+        "business",
+        "tourism",
+        "health",
+        "education",
+        "environment",
+        "agriculture",
+        "transport",
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Ajman Statistical Yearbook, Emirate of Ajman Statistics, Ajman in Figures (annual), quarterly statistical bulletins, economic survey reports and environment (waste/wastewater) reports, plus interactive dashboards of Ajman indicators (births, licences, population, agriculture). Site is a JavaScript app; pages resolve in a browser.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-open-data",
+      "entity": "digital-ajman",
+      "name_ar": "منصة بيانات عجمان المفتوحة",
+      "name_en": "Ajman Data (open data portal)",
+      "tier": 1,
+      "type": "open_data_portal",
+      "homepage_url": "https://data.ajman.ae/",
+      "data_url": "https://data.ajman.ae/explore/",
+      "domains": [
+        "data.ajman.ae"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "real-estate",
+        "tourism",
+        "transport",
+        "environment",
+        "business",
+        "economy",
+        "trade",
+        "safety-justice",
+        "public-finance",
+        "education",
+        "energy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Opendatasoft open data portal with ~197 datasets published by Ajman government entities (Municipality and Planning, Transport Authority, Tourism, Land and Real Estate Regulation, Economic Development, Ports and Customs, Ajman Police, Ajman Chamber, Finance); downloadable as CSV/JSON/Excel and via the Explore API v2.1.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-ded-open-data",
+      "entity": "ajman-ded",
+      "name_ar": "بيانات دائرة التنمية الاقتصادية - عجمان",
+      "name_en": "Ajman DED datasets",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://www.ajmanded.ae/en/home",
+      "data_url": "https://data.ajman.ae/explore/?refine.publisher=Department+of+Economic+Development",
+      "domains": [
+        "ajmanded.ae",
+        "data.ajman.ae"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "business",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "13 DED datasets on Ajman Data: business licences by activity and by area, economic permits (promotions, sales, clearance) and related licensing statistics.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-land-open-data",
+      "entity": "ajman-land",
+      "name_ar": "البيانات المفتوحة - دائرة الأراضي والتنظيم العقاري عجمان",
+      "name_en": "Ajman real estate open data",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://ajmanre.gov.ae/en/",
+      "data_url": "https://ajmanre.gov.ae/en/open-data/",
+      "domains": [
+        "ajmanre.gov.ae",
+        "data.ajman.ae"
+      ],
+      "access_methods": [
+        "csv",
+        "excel",
+        "pdf",
+        "api",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "18 datasets on land and unit sales, mortgages and transactions, registrations, real estate projects and brokers/offices (mirrored on data.ajman.ae), plus a daily 'Ajman Live' summary of transaction counts and values.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-land-news",
+      "entity": "ajman-land",
+      "name_ar": "أخبار دائرة الأراضي والتنظيم العقاري - عجمان",
+      "name_en": "Ajman Land Department news (monthly transaction releases)",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://ajmanre.gov.ae/en/",
+      "data_url": "https://ajmanre.gov.ae/en/category/news/",
+      "domains": [
+        "ajmanre.gov.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "real-estate"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Monthly press releases with Ajman real estate transaction totals (e.g. value and number of sales and mortgages per month).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-tourism-open-data",
+      "entity": "ajman-tourism",
+      "name_ar": "بيانات السياحة - عجمان",
+      "name_en": "Ajman tourism datasets",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://ajmantourism.ae/",
+      "data_url": "https://data.ajman.ae/explore/?refine.publisher=Tourism+Development+Dept",
+      "domains": [
+        "ajmantourism.ae",
+        "data.ajman.ae"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel",
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "21 tourism datasets on Ajman Data (still listed under the former publisher name 'Tourism Development Dept'): visitors and tourist groups, guest nights by hotel class, occupancy, RevPAR and related hotel indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-municipality-statistical-book",
+      "entity": "ajman-municipality",
+      "name_ar": "الكتاب الإحصائي - دائرة البلدية والتخطيط عجمان",
+      "name_en": "Ajman Municipality Statistical Book",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.am.gov.ae/en/",
+      "data_url": "https://www.am.gov.ae/en/statistical-book-2025/",
+      "domains": [
+        "am.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "environment",
+        "real-estate",
+        "health"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Annual Statistical Book (2022-2025 editions) with figures for public health and environment, infrastructure and building permits, and municipal services; the department also lists open datasets at am.gov.ae/en/open-data/.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ajman-media-office-news",
+      "entity": "ajman-media-office",
+      "name_ar": "الأخبار الرسمية - المكتب الإعلامي لحكومة عجمان",
+      "name_en": "Ajman Media Office official news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://ajmanmedia.ae/en",
+      "data_url": "https://ajmanmedia.ae/en/news",
+      "domains": [
+        "ajmanmedia.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "daily",
+      "topics": [
+        "economy",
+        "business",
+        "real-estate",
+        "tourism",
+        "social",
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Ajman government news, relaying figures announced by Ajman departments (real estate, economy, tourism, events).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "rak-statistics-publications",
+      "entity": "rak-statistics",
+      "name_ar": "إصدارات مركز رأس الخيمة للإحصاء",
+      "name_en": "RAK Statistics Center publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://css.rak.ae/en/",
+      "data_url": "https://css.rak.ae/en/home/publications/",
+      "domains": [
+        "css.rak.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "population",
+        "economy",
+        "prices",
+        "trade",
+        "labour",
+        "tourism",
+        "social",
+        "education",
+        "health",
+        "environment",
+        "real-estate",
+        "transport",
+        "business"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Monthly CPI and 'RAK in <month>' bulletins, quarterly statistical bulletin and foreign trade report, annual RAK in Figures, Statistical Yearbook, GDP estimates and Labour Force Survey report; statistics by theme at css.rak.ae/en/home/statistics-themes/ and interactive dashboards.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "rak-ded-website",
+      "entity": "rak-ded",
+      "name_ar": "دائرة التنمية الاقتصادية - رأس الخيمة",
+      "name_en": "RAK DED website",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://ded.rak.ae/",
+      "data_url": "https://ded.rak.ae/",
+      "domains": [
+        "ded.rak.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "business",
+        "economy"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Business licensing figures for Ras Al Khaimah (new licences, active licences, licensed capital by half-year/year). The site is a JavaScript app and no dedicated statistics/news page could be confirmed, so the homepage is used for both URLs; these figures are mostly published via WAM releases.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "raktda-press-releases",
+      "entity": "raktda",
+      "name_ar": "البيانات الصحفية - هيئة رأس الخيمة لتنمية السياحة",
+      "name_en": "RAKTDA press releases",
+      "tier": 2,
+      "type": "press_releases",
+      "homepage_url": "https://raktda.com/",
+      "data_url": "https://raktda.com/press-releases/",
+      "domains": [
+        "raktda.com"
+      ],
+      "access_methods": [
+        "html",
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "Press releases with half-year and annual tourism performance (overnight visitor arrivals, source markets, hotel revenue); a Market Insights page (raktda.com/market-insights/) shows visitor and STR hotel indicators with an infographic PDF.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "rak-media-office-news",
+      "entity": "rak-media-office",
+      "name_ar": "أخبار المكتب الإعلامي لحكومة رأس الخيمة",
+      "name_en": "RAK Government Media Office news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://www.rakmediaoffice.ae/en/",
+      "data_url": "https://www.rakmediaoffice.ae/en/media-center/news/",
+      "domains": [
+        "rakmediaoffice.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "tourism",
+        "business",
+        "transport",
+        "social"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official RAK government news relaying figures from RAK entities; the news listing is updated irregularly (few recent items at check time).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fujairah-statistics-publications",
+      "entity": "fujairah-statistics",
+      "name_ar": "إصدارات مركز الفجيرة للإحصاء",
+      "name_en": "Fujairah Statistics Center publications",
+      "tier": 1,
+      "type": "publications",
+      "homepage_url": "https://www.fscfuj.gov.ae/index.html",
+      "data_url": "https://www.fscfuj.gov.ae/publications.html",
+      "domains": [
+        "fscfuj.gov.ae"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "population",
+        "economy",
+        "social",
+        "education",
+        "health",
+        "industry",
+        "tourism",
+        "prices",
+        "agriculture",
+        "environment",
+        "labour"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "Annual statistical book, quarterly reports, population statistics pages (fscfuj.gov.ae/population2024/), census 2011 report and a statistics dashboard (fscfuj.gov.ae/dashboard.html); website interface is English-only (Arabic link inactive).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "fujairah-media-office-news",
+      "entity": "fujairah-media-office",
+      "name_ar": "أخبار المكتب الإعلامي لحكومة الفجيرة",
+      "name_en": "Fujairah Government Media Office news",
+      "tier": 3,
+      "type": "press_releases",
+      "homepage_url": "https://media.fujairah.ae/en",
+      "data_url": "https://media.fujairah.ae/en/media/news",
+      "domains": [
+        "media.fujairah.ae"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "social",
+        "culture-sport"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "Official Fujairah government news (mostly Ruler and Crown Prince activities); listing updated irregularly (latest items Nov 2025 at check time) and the server returns HTTP 500 with full content.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "imf-uae-country-page",
+      "entity": "imf",
+      "name_ar": "صندوق النقد الدولي - صفحة الإمارات العربية المتحدة",
+      "name_en": "IMF - United Arab Emirates country page",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.imf.org",
+      "data_url": "https://www.imf.org/en/countries/are",
+      "domains": [
+        "imf.org"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "economy",
+        "public-finance",
+        "banking",
+        "prices",
+        "trade"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "IMF country page for the UAE listing Article IV consultation staff reports and press releases (latest: 2025 Article IV, December 2025) with GDP growth, inflation, fiscal balance, current account and banking-sector assessments and projections.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "imf-weo-database",
+      "entity": "imf",
+      "name_ar": "صندوق النقد الدولي - قاعدة بيانات آفاق الاقتصاد العالمي",
+      "name_en": "IMF World Economic Outlook database (IMF Data)",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://data.imf.org/en",
+      "data_url": "https://data.imf.org/en/datasets/IMF.RES:WEO",
+      "domains": [
+        "data.imf.org",
+        "imf.org"
+      ],
+      "access_methods": [
+        "excel",
+        "csv",
+        "api"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "prices",
+        "public-finance",
+        "population",
+        "labour",
+        "trade"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "World Economic Outlook dataset on the IMF Data portal with UAE real GDP growth, nominal GDP, inflation, government revenue/expenditure/debt, current account and population estimates and projections; published twice a year (April and October; latest October 2026 edition).",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "world-bank-uae-data",
+      "entity": "world-bank",
+      "name_ar": "بيانات البنك الدولي - الإمارات العربية المتحدة",
+      "name_en": "World Bank Open Data - United Arab Emirates",
+      "tier": 2,
+      "type": "open_data_portal",
+      "homepage_url": "https://data.worldbank.org",
+      "data_url": "https://data.worldbank.org/country/united-arab-emirates",
+      "domains": [
+        "data.worldbank.org",
+        "data.albankaldawli.org",
+        "api.worldbank.org"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "labour",
+        "trade",
+        "environment",
+        "energy",
+        "education",
+        "health",
+        "technology"
+      ],
+      "languages": [
+        "en",
+        "ar"
+      ],
+      "description_en": "World Bank Open Data country page for the UAE with time series for GDP, population, labour force, trade, CO2 emissions, energy use, education, health and ICT indicators; Arabic mirror at data.albankaldawli.org and machine access via api.worldbank.org.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "world-bank-wdi",
+      "entity": "world-bank",
+      "name_ar": "مؤشرات التنمية العالمية - البنك الدولي",
+      "name_en": "World Development Indicators (World Bank DataBank)",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://databank.worldbank.org",
+      "data_url": "https://databank.worldbank.org/source/world-development-indicators",
+      "domains": [
+        "databank.worldbank.org"
+      ],
+      "access_methods": [
+        "excel",
+        "csv",
+        "api"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "labour",
+        "trade",
+        "environment",
+        "energy",
+        "education",
+        "health",
+        "social"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "DataBank query tool for the World Development Indicators, the World Bank's main cross-country database (about 1,400 indicators) used to build custom UAE tables and downloads.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "unsd-undata",
+      "entity": "unsd",
+      "name_ar": "بيانات الأمم المتحدة (UNdata)",
+      "name_en": "UNdata / UN System Data Commons",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://unstats.un.org/UNSDWebsite/",
+      "data_url": "https://data.un.org/",
+      "domains": [
+        "data.un.org",
+        "unstats.un.org"
+      ],
+      "access_methods": [
+        "html",
+        "csv"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "environment",
+        "social",
+        "health",
+        "education"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "UNSD's data portal at data.un.org, now presented as the 'UN System Data Commons', aggregating UN-system statistics (national accounts, population, environment, SDG indicators) by country; the older UAE country-profile URL now returns 404 and a stable UAE page URL could not be confirmed, so the portal root is used.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "un-comtrade",
+      "entity": "unsd",
+      "name_ar": "قاعدة بيانات الأمم المتحدة لإحصاءات تجارة السلع (كومتريد)",
+      "name_en": "UN Comtrade",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://comtradeplus.un.org",
+      "data_url": "https://comtradeplus.un.org/TradeFlow",
+      "domains": [
+        "comtradeplus.un.org",
+        "comtradeapi.un.org"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel"
+      ],
+      "update_frequency": "monthly",
+      "topics": [
+        "trade"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "UN international merchandise trade database with annual and monthly import/export values by HS commodity and partner as reported by the UAE (reporter code 784) and mirrored by its partners; API at comtradeapi.un.org.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "un-tourism-dashboard",
+      "entity": "un-tourism",
+      "name_ar": "لوحة بيانات السياحة - منظمة الأمم المتحدة للسياحة",
+      "name_en": "UN Tourism Data Dashboard",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.untourism.int",
+      "data_url": "https://www.untourism.int/tourism-data/un-tourism-tourism-dashboard",
+      "domains": [
+        "untourism.int"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "Interactive dashboard of key tourism indicators by country (international arrivals, tourism receipts, outbound expenditure, accommodation) including the UAE; UN Tourism was known as UNWTO until its 2024 rename.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "un-tourism-statistics-database",
+      "entity": "un-tourism",
+      "name_ar": "قاعدة بيانات إحصاءات السياحة - منظمة الأمم المتحدة للسياحة",
+      "name_en": "UN Tourism Statistics Database",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.untourism.int/tourism-statistics",
+      "data_url": "https://www.untourism.int/tourism-statistics/tourism-statistics-database",
+      "domains": [
+        "untourism.int"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "tourism"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "UN Tourism's country-reported tourism statistics (inbound, outbound, domestic, accommodation, tourism macroeconomic and employment, tourism SDG indicators) collected under IRTS 2008, offered as a bulk ZIP download; last updated 21 July 2026.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "ilostat-uae",
+      "entity": "ilo",
+      "name_ar": "منظمة العمل الدولية - ILOSTAT - الإمارات العربية المتحدة",
+      "name_en": "ILOSTAT - United Arab Emirates country profile",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://ilostat.ilo.org",
+      "data_url": "https://ilostat.ilo.org/data/country-profiles/are/",
+      "domains": [
+        "ilostat.ilo.org"
+      ],
+      "access_methods": [
+        "api",
+        "csv",
+        "excel"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "labour"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "ILOSTAT country profile for the UAE with labour force participation, employment, unemployment and labour underutilization, working conditions and social protection indicators (latest household survey listed: Labour Force Survey 2025); site blocks automated clients, URL confirmed via search index.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "irenastat",
+      "entity": "irena",
+      "name_ar": "إحصاءات الوكالة الدولية للطاقة المتجددة (IRENASTAT)",
+      "name_en": "IRENASTAT renewable energy statistics",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.irena.org/Data",
+      "data_url": "https://pxweb.irena.org/pxweb/en/IRENASTAT",
+      "domains": [
+        "irena.org",
+        "pxweb.irena.org"
+      ],
+      "access_methods": [
+        "csv",
+        "excel",
+        "pdf"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "environment"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "IRENA's PX-Web statistics database with renewable installed capacity, electricity generation, off-grid and public finance flows by country including the UAE; a UAE renewable energy statistical profile (PDF) is linked from irena.org/Data/Energy-Profiles.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "opec-annual-statistical-bulletin",
+      "entity": "opec",
+      "name_ar": "النشرة الإحصائية السنوية لمنظمة أوبك",
+      "name_en": "OPEC Annual Statistical Bulletin",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.opec.org",
+      "data_url": "https://www.opec.org/annual-statistical-bulletin.html",
+      "domains": [
+        "opec.org",
+        "publications.opec.org"
+      ],
+      "access_methods": [
+        "pdf",
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "trade"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "Annual bulletin of crude oil and gas reserves, production, refining, exports and oil revenues by country (61st edition ASB-2026 launched 29 April 2026 with data to end-2025; interactive version at publications.opec.org/asb). The UAE left OPEC and OPEC+ effective 1 May 2026, so UAE data here covers its membership years; check later editions for continued coverage.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "gcc-stat-data-portal",
+      "entity": "gcc-stat",
+      "name_ar": "بوابة البيانات الإحصائية (مرسى) - المركز الإحصائي الخليجي",
+      "name_en": "GCC-Stat Marsa statistical data portal",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.gccstat.org",
+      "data_url": "https://dp.marsa.gccstat.org/ar",
+      "domains": [
+        "gccstat.org",
+        "dp.marsa.gccstat.org"
+      ],
+      "access_methods": [
+        "html",
+        "api"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "population",
+        "economy",
+        "labour",
+        "prices",
+        "trade",
+        "tourism",
+        "energy",
+        "education",
+        "health",
+        "agriculture",
+        "environment",
+        "banking"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "GCC-Stat's 'Marsa' data portal with harmonised datasets for GCC states including the UAE across 16 domains (population, national accounts, labour, prices, foreign trade, tourism, energy, monetary and financial, water, waste), with dataset downloads and a developers' corner.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "gcc-stat-publications",
+      "entity": "gcc-stat",
+      "name_ar": "إصدارات المركز الإحصائي الخليجي",
+      "name_en": "GCC-Stat publications",
+      "tier": 2,
+      "type": "publications",
+      "homepage_url": "https://www.gccstat.org",
+      "data_url": "https://www.gccstat.org/publications",
+      "domains": [
+        "gccstat.org"
+      ],
+      "access_methods": [
+        "pdf"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "economy",
+        "population",
+        "social",
+        "environment",
+        "trade",
+        "prices"
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "description_en": "GCC-Stat statistical publications, studies and summaries (economic, demographic and social, environment and sustainable development statistics) comparing GCC member states including the UAE.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "who-uae-data",
+      "entity": "who",
+      "name_ar": "بيانات منظمة الصحة العالمية - الإمارات العربية المتحدة",
+      "name_en": "WHO Data - United Arab Emirates",
+      "tier": 2,
+      "type": "statistics_portal",
+      "homepage_url": "https://www.who.int/data/gho",
+      "data_url": "https://data.who.int/countries/784",
+      "domains": [
+        "data.who.int",
+        "who.int"
+      ],
+      "access_methods": [
+        "html",
+        "csv"
+      ],
+      "update_frequency": "irregular",
+      "topics": [
+        "health",
+        "population"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "WHO country data page for the UAE drawing on the Global Health Observatory: life expectancy, healthy life expectancy, causes of death, mortality, risk factors and health-system indicators.",
+      "verified_at": "2026-10-21"
+    },
+    {
+      "slug": "iea-uae-country-page",
+      "entity": "iea",
+      "name_ar": "وكالة الطاقة الدولية - ملف الإمارات العربية المتحدة",
+      "name_en": "IEA - United Arab Emirates energy profile",
+      "tier": 2,
+      "type": "dashboard",
+      "homepage_url": "https://www.iea.org",
+      "data_url": "https://www.iea.org/countries/united-arab-emirates",
+      "domains": [
+        "iea.org"
+      ],
+      "access_methods": [
+        "html"
+      ],
+      "update_frequency": "annual",
+      "topics": [
+        "energy",
+        "environment"
+      ],
+      "languages": [
+        "en"
+      ],
+      "description_en": "IEA country profile for the UAE with energy mix, total energy supply, electricity generation by source, renewables share, oil and natural gas, efficiency/demand and energy-related CO2 emissions; site blocks automated clients, URL confirmed via search index.",
+      "verified_at": "2026-10-21"
+    }
+  ]
+}

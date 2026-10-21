@@ -1,0 +1,151 @@
+{
+  "topics": [
+    {
+      "slug": "economy",
+      "name_ar": "الاقتصاد",
+      "name_en": "Economy",
+      "icon": "chart",
+      "sort_order": 0
+    },
+    {
+      "slug": "population",
+      "name_ar": "السكان",
+      "name_en": "Population",
+      "icon": "users",
+      "sort_order": 1
+    },
+    {
+      "slug": "tourism",
+      "name_ar": "السياحة",
+      "name_en": "Tourism",
+      "icon": "globe",
+      "sort_order": 2
+    },
+    {
+      "slug": "trade",
+      "name_ar": "التجارة الخارجية",
+      "name_en": "Foreign trade",
+      "icon": "layers",
+      "sort_order": 3
+    },
+    {
+      "slug": "labour",
+      "name_ar": "سوق العمل",
+      "name_en": "Labour market",
+      "icon": "building",
+      "sort_order": 4
+    },
+    {
+      "slug": "prices",
+      "name_ar": "الأسعار والتضخم",
+      "name_en": "Prices and inflation",
+      "icon": "tag",
+      "sort_order": 5
+    },
+    {
+      "slug": "public-finance",
+      "name_ar": "المالية العامة",
+      "name_en": "Public finance",
+      "icon": "building",
+      "sort_order": 6
+    },
+    {
+      "slug": "banking",
+      "name_ar": "المصارف والأسواق المالية",
+      "name_en": "Banking and financial markets",
+      "icon": "chart",
+      "sort_order": 7
+    },
+    {
+      "slug": "real-estate",
+      "name_ar": "العقارات والإسكان",
+      "name_en": "Real estate and housing",
+      "icon": "home",
+      "sort_order": 8
+    },
+    {
+      "slug": "energy",
+      "name_ar": "الطاقة",
+      "name_en": "Energy",
+      "icon": "activity",
+      "sort_order": 9
+    },
+    {
+      "slug": "environment",
+      "name_ar": "البيئة والمناخ",
+      "name_en": "Environment and climate",
+      "icon": "globe",
+      "sort_order": 10
+    },
+    {
+      "slug": "transport",
+      "name_ar": "النقل والطيران",
+      "name_en": "Transport and aviation",
+      "icon": "send",
+      "sort_order": 11
+    },
+    {
+      "slug": "education",
+      "name_ar": "التعليم",
+      "name_en": "Education",
+      "icon": "brief",
+      "sort_order": 12
+    },
+    {
+      "slug": "health",
+      "name_ar": "الصحة",
+      "name_en": "Health",
+      "icon": "shield",
+      "sort_order": 13
+    },
+    {
+      "slug": "technology",
+      "name_ar": "التقنية والاتصالات",
+      "name_en": "Technology and telecoms",
+      "icon": "system",
+      "sort_order": 14
+    },
+    {
+      "slug": "agriculture",
+      "name_ar": "الزراعة والأمن الغذائي",
+      "name_en": "Agriculture and food security",
+      "icon": "grid",
+      "sort_order": 15
+    },
+    {
+      "slug": "industry",
+      "name_ar": "الصناعة",
+      "name_en": "Industry",
+      "icon": "settings",
+      "sort_order": 16
+    },
+    {
+      "slug": "business",
+      "name_ar": "الأعمال والاستثمار",
+      "name_en": "Business and investment",
+      "icon": "chart",
+      "sort_order": 17
+    },
+    {
+      "slug": "social",
+      "name_ar": "التنمية المجتمعية",
+      "name_en": "Social development",
+      "icon": "users",
+      "sort_order": 18
+    },
+    {
+      "slug": "culture-sport",
+      "name_ar": "الثقافة والرياضة",
+      "name_en": "Culture and sport",
+      "icon": "sparkles",
+      "sort_order": 19
+    },
+    {
+      "slug": "safety-justice",
+      "name_ar": "الأمن والعدل",
+      "name_en": "Safety and justice",
+      "icon": "shield",
+      "sort_order": 20
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Build context is the repository root; only web/ is needed, and never local env files.
+*
+!web/
+web/node_modules
+web/.next
+web/.env*
+!web/.env.example
