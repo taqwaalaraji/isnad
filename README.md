@@ -12,7 +12,7 @@ Traces the numbers in Arabic media content back to their official sources: every
 | `deploy/` | VM deployment: Dockerfiles, Compose next to self-hosted Supabase, Caddy, backups ([runbook](docs/technical/deployment.md)) |
 | `docs/` | Technical and product documentation |
 | `sample-data/` | The clips, official documents and texts the platform was tested with ([list](sample-data/README.md)) |
-| `presentation/` | The submission video, presentation and brand identity ([list](presentation/README.md)) |
+| `presentation/` | The submission video, the full walkthrough, the presentation and the brand identity ([list](presentation/README.md)) |
 
 The database is the contract between `web/` and `worker/`: the web app writes rows, the worker picks them up and writes results back.
 
