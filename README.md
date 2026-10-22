@@ -1,134 +1,139 @@
-# Isnad (إسناد)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="designs/logos/isnad-logo-bilingual-reversed.svg">
+    <img src="designs/logos/isnad-logo-bilingual-color.svg" alt="Isnad · إسناد" width="420">
+  </picture>
+</p>
 
-Traces the numbers in Arabic media content back to their official sources: every claim gets its evidence, its chain, and an editor's decision.
+<h1 align="center">Isnad · إسناد</h1>
 
-## Layout
+<p align="center"><b>لكلّ رقمٍ إسناد</b><br>Every number has an isnad</p>
 
-| Path | What it is |
-|---|---|
-| `web/` | Next.js app (TypeScript): screens, server actions, admin pages |
-| `worker/` | Python: the processing pipeline worker, the Telegram bot, and a FastAPI app (Ask Isnad for the web app, the Telegram webhook) |
-| `supabase/` | Local Supabase config, SQL migrations, email templates (the seed data is in `worker/seed_data/` and `sample-data/`) |
-| `deploy/` | VM deployment: Dockerfiles, Compose next to self-hosted Supabase, Caddy, backups ([runbook](docs/technical/11-deployment.md)) |
-| `docs/` | Product and technical documentation ([index](docs/README.md)) |
-| `sample-data/` | The clips, official documents and texts the platform was tested with ([list](sample-data/README.md)) |
-| `presentation/` | The submission video, the full walkthrough, the presentation and the brand identity ([list](presentation/README.md)) |
-| `screenshots/` | The product's main screens with the demo data ([gallery](screenshots/README.md)) |
-| `designs/` | Logos, icons and the product UI design in FigCraft ([guide](designs/README.md)) |
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#presentation">Presentation</a> ·
+  <a href="#product-screenshots">Screenshots</a> ·
+  <a href="#product-docs">Product docs</a> ·
+  <a href="#technical-docs">Technical docs</a> ·
+  <a href="#designs">Designs</a> ·
+  <a href="#run-it-locally">Run it locally</a> ·
+  <a href="#credits">Credits</a>
+</p>
 
-The database is the contract between `web/` and `worker/`: the web app writes rows, the worker picks them up and writes results back.
+## Overview
 
-## Prerequisites
+<table>
+<tr>
+<td width="50%" valign="top">
 
-- Docker, running
-- Node.js 22+
-- [uv](https://docs.astral.sh/uv/) (it fetches Python 3.12), the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) and ffmpeg: `brew install uv supabase/tap/supabase ffmpeg`
+**Isnad traces every number in Arabic news back to its official source.**
 
-## First run
+A newsroom sends a clip, a recording, a document, a link or a text. AI agents transcribe it, find every number, and look for the official document behind each one. For every number Isnad shows the evidence: the document, the exact quote, a verdict (matches, different context, differs, no source) and a suggested wording. An editor makes every final decision, and readers can see the evidence on a public page.
+
+</td>
+<td width="50%" valign="top" dir="rtl" align="right">
+
+**«إسناد» يعيد كل رقم في المحتوى الإعلامي العربي إلى مصدره الرسمي.**
+
+ترسل غرفة الأخبار مقطعاً أو تسجيلاً أو وثيقة أو رابطاً أو نصاً، فيفرّغه وكلاء الذكاء الاصطناعي ويستخرجون كل رقم ويبحثون عن الوثيقة الرسمية التي تقف خلفه. ولكل رقم يعرض «إسناد» الشاهد: الوثيقة، والاقتباس الحرفي، والحكم (مطابق، سياق مختلف، مختلف عن المصدر، لم يُعثر على مصدر)، وصياغة مقترحة. القرار الأخير للمحرر دائماً، ويرى القرّاء الشواهد في صفحة عامة.
+
+</td>
+</tr>
+</table>
+
+## Presentation
+
+<table>
+<tr>
+<td width="33%" valign="top"><a href="presentation/isnad-video.mp4"><img src="presentation/thumbnails/isnad-video.jpg" alt="The pitch video"></a><br><b><a href="presentation/isnad-video.mp4">The pitch</a></b><br><sub>Video, 2:44 · MP4, 24 MB</sub></td>
+<td width="33%" valign="top"><a href="presentation/isnad-walkthrough.mp4"><img src="presentation/thumbnails/isnad-walkthrough.jpg" alt="The full walkthrough"></a><br><b><a href="presentation/isnad-walkthrough.mp4">Full walkthrough</a></b><br><sub>Video, 6:14 · MP4, 46 MB</sub></td>
+<td width="33%" valign="top"><a href="presentation/isnad-deck.pdf"><img src="presentation/thumbnails/isnad-deck.jpg" alt="The deck"></a><br><b><a href="presentation/isnad-deck.pdf">The deck</a></b><br><sub>14 slides in Arabic · PDF</sub></td>
+</tr>
+</table>
+
+The videos have Arabic narration with Arabic and English captions. More in [presentation/](presentation/README.md).
+
+## Product screenshots
+
+<table>
+<tr>
+<td width="50%"><img src="screenshots/02-home.jpg" alt="Home"><br><sub>Home: send content and see what awaits review</sub></td>
+<td width="50%"><img src="screenshots/06-check-video-and-numbers.jpg" alt="A video check"><br><sub>A clip with synced captions and a card per number</sub></td>
+</tr>
+<tr>
+<td><img src="screenshots/07-check-match-evidence.jpg" alt="Evidence for a match"><br><sub>The evidence: the official document, the exact quote, the chain</sub></td>
+<td><img src="screenshots/11-check-differs-evidence.jpg" alt="A number that differs"><br><sub>A number that differs from its source, with a corrected wording</sub></td>
+</tr>
+<tr>
+<td><img src="screenshots/15-public-evidence-page.jpg" alt="Public evidence page"><br><sub>The public evidence page readers see</sub></td>
+<td><img src="screenshots/18-registry-indicator.jpg" alt="The registry"><br><sub>The Isnad Registry: an indicator's official figures over time</sub></td>
+</tr>
+<tr>
+<td><img src="screenshots/22-ask-isnad.jpg" alt="Ask Isnad"><br><sub>Ask Isnad: answers from official figures only, with evidence</sub></td>
+<td><img src="screenshots/33-console-figure-review.jpg" alt="Figure review"><br><sub>A curator reviews each extracted figure in its document</sub></td>
+</tr>
+</table>
+
+**[See all 41 screenshots →](screenshots/README.md)**
+
+## Product docs
+
+What Isnad does and how each role uses it ([index](docs/product/README.md)):
+
+1. [Overview](docs/product/01-overview.md): numbers, verdicts, the chain, source tiers, evidence, the registry
+2. [Roles and permissions](docs/product/02-roles-and-permissions.md): who sees and does what
+3. [Guide for journalists](docs/product/03-guide-journalist.md)
+4. [Guide for editors](docs/product/04-guide-editor.md)
+5. [Guide for newsroom admins](docs/product/05-guide-newsroom-admin.md)
+6. [Guide for curators and platform admins](docs/product/06-guide-curator.md)
+7. [Glossary](docs/product/07-glossary.md): Arabic and English terms
+
+## Technical docs
+
+How Isnad is built, run and deployed ([index](docs/technical/README.md)):
+
+1. [Architecture](docs/technical/01-architecture.md): components, data flow, the job queue, the AI gateway and model choices
+2. [Data model](docs/technical/02-data-model.md)
+3. [The check pipeline](docs/technical/03-pipeline.md)
+4. [The Isnad Registry](docs/technical/04-registry.md)
+5. [The worker](docs/technical/05-worker.md)
+6. [Worker tools](docs/technical/06-worker-tools.md): the Telegram bot, the test corpus, evaluation
+7. [The web app](docs/technical/07-web-app.md)
+8. [Security](docs/technical/08-security.md)
+9. [Testing](docs/technical/09-testing.md)
+10. [Local development](docs/technical/10-local-development.md)
+11. [Deployment](docs/technical/11-deployment.md)
+
+## Designs
+
+- **Brand identity:** [brand-identity.pdf](presentation/brand-identity.pdf): the idea, the symbol and its construction, the wordmark, logo versions and colour.
+- **Logos and icons:** every lockup as SVG and PNG in [designs/logos/](designs/logos/); app icons, favicons and the Telegram avatar in [designs/icons/](designs/icons/). The rules for using them are in the [designs guide](designs/README.md).
+- **Product UI:** the design the app was built from (every screen in light and dark, the components and the design system), made in [FigCraft](https://getartcraft.com/apps/figcraft): [isnad-product-ui.figcraft](designs/ui-ux/isnad-product-ui.figcraft). How to open it, and previews without FigCraft: [UI/UX guide](designs/README.md#uiux-the-product-design-in-figcraft).
+
+<a href="designs/README.md#uiux-the-product-design-in-figcraft"><img src="designs/ui-ux/previews/00-cover.png" alt="The product UI design"></a>
+
+## Run it locally
+
+You need Docker, Node.js 22+, [uv](https://docs.astral.sh/uv/), the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) and ffmpeg. Then:
 
 ```bash
 make setup      # install web and worker dependencies
-make db         # start local Supabase (the first run downloads Docker images)
-make env        # write web/.env.local and worker/.env (local Supabase + keys from ../credentials)
-make db-reset   # build the database from migrations, then load the base seed and the demo data (no model calls)
-make dev        # run web, api, worker, and the Telegram bot together
+make db         # start local Supabase
+make env        # write the local env files
+make db-reset   # database, base seed and the demo data
+make dev        # web app, worker and Telegram bot
 ```
 
-Open http://localhost:3000 and sign in with a demo account (below). There are two seeds:
+Open http://localhost:3000 and sign in with a demo account, for example `sara@almadar.news` (editor). The demo needs no API key; new checks need a Gemini API key, and the Telegram bot a bot token.
 
-- **`make seed` (base)**: the catalog every installation needs: 21 topics, 78 indicators, 97 UAE
-  entities and 140 trusted official sources.
-- **`make seed-demo` (demo data)**: the demo exactly as it was recorded, with no model calls:
-  - the demo newsrooms and their 7 accounts;
-  - the registry: 97 official documents (29 from the test corpus, 68 found by the search agent during
-    checks) with their stored copies and 828 extracted figures;
-  - 208 processed checks: 18 newsroom checks in realistic review states (newspaper articles, a link,
-    and 8 checks of real Arabic clips: broadcast reports and interviews, a minister's radio interview,
-    the Dubai Police podcast; two published with public evidence pages) and 190 evaluation checks;
-  - alerts, the activity log, model usage and cost, an interview brief and the evaluation runs.
+**[The full guide →](docs/technical/10-local-development.md)** covers installing the tools, getting a Gemini key, creating a Telegram bot, every demo account and its password, the local addresses and the `make` targets.
 
-`make db-reset` runs both. The documents, clips and texts come from [sample-data/](sample-data/README.md),
-which lists every item with its original link. `make seed-export` writes the demo data again from your
-local database.
+## Credits
 
-Viewing the demo needs no API key. To run new checks, put `GEMINI_API_KEY=…` in a `.env` file in a
-`credentials/` folder next to the repository (for example `../credentials/gemini.env`) and run
-`make env` again: it rewrites `worker/.env` and keeps only keys from that folder. The step-by-step
-guide, including getting a Gemini key and creating a Telegram bot, is
-[docs/technical/10-local-development.md](docs/technical/10-local-development.md).
+**Idea and product: Taqwa Al-Araji**<br>
+Development: Ahmed Kadhim
 
-For more demo checks, built from real newspaper claims and the real clips and processed by the real
-pipeline (about $0.50 of model tokens, plus Google Search queries that the free monthly allowance
-covers; the worker must be running):
-
-```bash
-make seed-showcase
-```
-
-## Demo accounts
-
-All use the password in `worker/seed_data/demo.json` (local development only).
-
-| Account | Role |
-|---|---|
-| `laila@almadar.news` | Newsroom admin, غرفة المدار |
-| `sara@almadar.news` | Editor, غرفة المدار |
-| `omar@almadar.news`, `khaled@almadar.news` | Journalists, غرفة المدار |
-| `rana@alufuq.ae` | Newsroom admin, صحيفة الأفق |
-| `curator@isnad.ae` | Isnad curator (console) |
-| `admin@isnad.ae` | Isnad platform admin (console) |
-
-## External services
-
-| Service | Used for | Notes |
-|---|---|---|
-| Gemini API (Google AI Studio key) | every model task: transcription, extraction, verification, wording, source search (Google Search grounding), figure extraction, Ask Isnad, briefs | one key, `GEMINI_API_KEY`, on a project with billing; models per task in [docs/technical/01-architecture.md](docs/technical/01-architecture.md#ai-gateway) |
-| Telegram Bot API | the bot | development bot by polling; webhook in production |
-
-## Local services
-
-| Service | URL |
-|---|---|
-| Web app | http://localhost:3000 |
-| Worker API | http://localhost:8000 (`/health`, `/internal/ask`, `/telegram/webhook`) |
-| Telegram bot | the development bot, by long polling (`make bot`) |
-| Supabase API | http://127.0.0.1:54321 |
-| Supabase Studio | http://127.0.0.1:54323 |
-| Postgres | `postgresql://postgres:postgres@127.0.0.1:54322/postgres` |
-| Mailpit (auth emails) | http://127.0.0.1:54324 |
-
-## Common tasks
-
-```bash
-make help                          # list all targets
-make env                           # write web/.env.local and worker/.env (local Supabase + ../credentials)
-make test                          # worker tests + lint, web lint + type check
-make db-reset                      # rebuild the local database from migrations, base seed and demo data
-make seed                          # base seed only: topics, indicators, entities, official sources
-make seed-demo                     # demo data: accounts, registry, checks, alerts, usage (no model calls)
-make seed-export                   # write the demo data and sample-data/README.md from the local database
-make types                         # regenerate web/src/lib/database.types.ts after a schema change
-make smoke                         # request every page as each demo role against the running app
-make seed-showcase                 # more demo checks through the real pipeline (model cost)
-make bot                           # run only the Telegram bot (polling)
-make corpus                        # read the test corpus documents into the registry (model cost)
-make media                         # download the clips again from their publishers
-make screenshots                   # take the product screenshots in screenshots/ (app running)
-make eval                          # evaluate the pipeline on the labelled corpus claims (model cost)
-supabase migration new <name>      # create a new migration in supabase/migrations
-```
-
-## Documentation
-
-The full, ordered index is in [docs/README.md](docs/README.md):
-
-- [Product docs](docs/product/README.md): overview, roles and permissions, a guide per role, glossary.
-- [Technical docs](docs/technical/README.md): architecture, data model, pipeline, registry, worker, web app, security, testing, operations, deployment.
-
-## Team
-
-- Idea and product: Taqwa Al-Araji
-- Development: Ahmed Kadhim
+The demo clip in the videos is Sky News Arabia's report «2 تريليون درهم.. التجارة الخارجية غير النفطية للإمارات» (20 July 2026), credited on screen; the other test clips and documents are listed with their publishers in [sample-data/](sample-data/README.md). Every figure comes from a published official UAE source. The videos' narration and music are AI-generated (Gemini TTS, Lyria).
 
 ## License
 

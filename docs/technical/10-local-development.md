@@ -75,13 +75,46 @@ make db-reset   # migrations, then the base seed and the demo data (no model cal
 make dev        # web, worker API, pipeline worker and Telegram bot together; Ctrl+C stops them
 ```
 
-## 5. Check that it works
+Then open http://localhost:3000.
 
-1. Open http://localhost:3000 and sign in with a demo account: `sara@almadar.news` (editor) or another one from [09-testing.md](09-testing.md#demo-data); the password is in `worker/seed_data/demo.json`.
+### What the seeds load
+
+`make db-reset` runs both seeds; neither calls a model.
+
+- **`make seed` (base):** the catalog every installation needs: 21 topics, 78 indicators, 97 UAE entities and 140 trusted official sources.
+- **`make seed-demo` (demo data):** the demo exactly as it was recorded:
+  - two newsrooms and their accounts (below);
+  - the registry: 97 official documents (29 from the test corpus, 68 found by the search agent during checks) with their stored copies and 828 extracted figures;
+  - 208 processed checks: 18 newsroom checks in realistic review states (newspaper articles, a link, and 8 real Arabic clips: broadcast reports and interviews, a minister's radio interview, the Dubai Police podcast; two published with public evidence pages) and 190 evaluation checks;
+  - alerts, the activity log, model usage and cost, an interview brief and the evaluation runs.
+
+The documents, clips and texts come from [sample-data/](../../sample-data/README.md), which lists every item with its original link. `make seed-export` writes the demo data again from your local database, and `make seed-showcase` builds more demo checks through the real pipeline (about $0.50 of model tokens; the worker must be running).
+
+## 5. Demo accounts
+
+Every demo account uses the password **`Isnad-Demo-2026!`** (also in `worker/seed_data/demo.json`). They are for local use: change them on any server other people can reach.
+
+| Account | Role | Try |
+|---|---|---|
+| `omar@almadar.news` | Journalist, غرفة المدار | Start a check, read the numbers and their evidence, fix the transcript, send for review |
+| `khaled@almadar.news` | Journalist, غرفة المدار | The same, with his own checks |
+| `sara@almadar.news` | Editor, غرفة المدار | Decide on each number, approve, record publication, briefs |
+| `laila@almadar.news` | Newsroom admin, غرفة المدار | Members and desks, policies, private sources, activity and usage |
+| `rana@alufuq.ae` | Newsroom admin, صحيفة الأفق | A second newsroom: nothing of غرفة المدار is visible |
+| `curator@isnad.ae` | Isnad curator | The console: sources, inbox, figure review, catalog, proposals |
+| `admin@isnad.ae` | Isnad platform admin | The console, plus newsrooms, limits and model settings |
+
+The [product guides](../product/README.md) walk through each role's screens.
+
+## 6. Check that it works
+
+1. Sign in at http://localhost:3000 with a demo account.
 2. Sign-in links, invitations and password resets are emails: read them in Mailpit, http://127.0.0.1:54324.
 3. With a Gemini key: **New check** → **Text**, paste «استقبلت دبي 19.59 مليون زائر دولي خلال عام 2025.» and start it. Within about a minute the check is awaiting review, with the number's verdict and its official source.
 4. With a bot: link Telegram as above and send the same sentence to the bot; it replies with progress, then a summary.
 5. `make test` runs the worker tests and lint, and the web lint and type check.
+
+The other local addresses (Supabase Studio, Postgres, the worker API) are under [Local services](#local-services).
 
 ## Make targets
 

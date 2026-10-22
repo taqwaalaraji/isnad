@@ -8,6 +8,7 @@ Isnad's submission to the Future Media Agents Innovation Challenge (تحدي ا�
 | [`isnad-walkthrough.mp4`](isnad-walkthrough.mp4) | The full walkthrough (6:14): every pipeline step with its model, the demo check from upload to publication (match, different context, no source, difference, the editor's decisions, the public evidence page), the registry and its curation, Ask Isnad and interview briefs, newsroom administration, Telegram, quality and limits, the technology. Same narration and captions |
 | [`isnad-deck.pdf`](isnad-deck.pdf) | The presentation, 14 slides in Arabic: problem, users, the agent, how it works, an applied example, human review, the registry, newsrooms, what's new, accuracy, technology and cost, limits and roadmap |
 | [`brand-identity.pdf`](brand-identity.pdf) | The brand identity, 12 pages: the idea, the symbol and its construction, the wordmark, logo versions and colour |
+| [`thumbnails/`](thumbnails/) | A still from each video and the deck's cover, for the repository's README |
 
 Team: idea and product, Taqwa Al-Araji; development, Ahmed Kadhim.
 
