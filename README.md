@@ -17,7 +17,7 @@
   <a href="#technical-docs">Technical docs</a> ·
   <a href="#designs">Designs</a> ·
   <a href="#run-it-locally">Run it locally</a> ·
-  <a href="#credits">Credits</a>
+  <a href="#team">Team</a>
 </p>
 
 ## Overview
@@ -51,7 +51,7 @@ A newsroom sends a clip, a recording, a document, a link or a text. AI agents tr
 </tr>
 </table>
 
-The videos have Arabic narration with Arabic and English captions. More in [presentation/](presentation/README.md).
+The videos have Arabic narration with Arabic and English captions; the narration and music are AI-generated (Gemini TTS, Lyria). The demo clip is Sky News Arabia's report «2 تريليون درهم.. التجارة الخارجية غير النفطية للإمارات» (20 July 2026), credited on screen; every figure shown comes from a published official UAE source. More in [presentation/](presentation/README.md).
 
 ## Product screenshots
 
@@ -128,12 +128,10 @@ Open http://localhost:3000 and sign in with a demo account, for example `sara@al
 
 **[The full guide →](docs/technical/10-local-development.md)** covers installing the tools, getting a Gemini key, creating a Telegram bot, every demo account and its password, the local addresses and the `make` targets.
 
-## Credits
+## Team
 
-**Idea and product: Taqwa Al-Araji**<br>
-Development: Ahmed Kadhim
-
-The demo clip in the videos is Sky News Arabia's report «2 تريليون درهم.. التجارة الخارجية غير النفطية للإمارات» (20 July 2026), credited on screen; the other test clips and documents are listed with their publishers in [sample-data/](sample-data/README.md). Every figure comes from a published official UAE source. The videos' narration and music are AI-generated (Gemini TTS, Lyria).
+- **Taqwa Al-Araji**: idea and product
+- **Ahmed Kadhim**: development
 
 ## License
 
