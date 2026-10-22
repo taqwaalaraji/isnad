@@ -27,7 +27,7 @@ Who sees what is explained in [02-roles-and-permissions.md](02-roles-and-permiss
 | Escalate cards the automatic verifier objects to | إحالة تلقائية عند اعتراض المدقق الآلي | On (default): when processing finishes, numbers the verifier objected to are escalated, so they need a decision before the check is approved |
 | Who sees new checks by default | من يرى التحققات الجديدة افتراضياً | Preselected in the new-check form (the creator can change it per check), and used for checks sent through Telegram |
 | Keep uploaded clips for | مدة الاحتفاظ بالمقاطع | 30, 60, 90 (default), 180 or 365 days. Only uploaded video and audio are deleted; transcripts, results and decisions always stay |
-| Newsroom logo on the isnad note | شعار الغرفة في ملاحظة الإسناد | Adds the line «تم التحقق من الأرقام عبر إسناد.» to the isnad note |
+| Credit Isnad on the isnad note | ذكر إسناد في ملاحظة الإسناد | Adds the line «تم التحقق من الأرقام عبر إسناد.» at the end of the isnad note |
 | Accept content through Telegram | استقبال المحتوى عبر تيليجرام | Whether members may send content from Telegram. When off, members still receive their alerts in Telegram |
 
 The monthly check limit is shown here but set by the Isnad team.

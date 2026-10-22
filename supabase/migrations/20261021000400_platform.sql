@@ -122,7 +122,7 @@ create index usage_events_created_idx on public.usage_events (created_at desc);
 
 create table public.model_settings (
   task text primary key,
-  provider text not null default 'anthropic',
+  provider text not null default 'google',
   model text not null,
   effort text not null default 'medium' check (effort in ('low', 'medium', 'high', 'xhigh', 'max')),
   description_en text,

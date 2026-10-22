@@ -35,7 +35,7 @@
 | `/console`, `/console/sources[/new, /[id], /[id]/edit]`, `/console/inbox`, `/console/review`, `/console/catalog`, `/console/proposals`, `/console/newsrooms`, `/console/quality`, `/console/system` | Isnad console |
 | `/n/[slug]` | Public evidence page |
 
-Unknown paths render the localized not-found page (`[...rest]` route). The workspace has its own not-found page, so the sidebar stays; errors fall back to the locale's `error.tsx` (without the sidebar) and `app/global-error.tsx`.
+Unknown paths render the localized not-found page (`[...rest]` route). The workspace and the console have their own `not-found.tsx` and `error.tsx`, so the sidebar stays; other errors fall back to the locale's `error.tsx` (without the sidebar) and `app/global-error.tsx`. The error pages share `components/states/error-state.tsx` (retry, go home, the error digest).
 
 ## Rendering patterns
 
@@ -64,7 +64,7 @@ Client components subscribe with `subscribeAsUser(name, configure)` (`lib/supaba
 
 ### Public evidence page
 
-`/n/[slug]` uses a cookie-free anonymous client (`lib/supabase/public.ts`) and a `"use cache"` function with `cacheLife("minutes")` and the tag `public-note:<slug>`. A missing note throws instead of being cached, so a page published a moment ago isn't stuck as not found. Nothing invalidates the tag yet, so a revision shows on the page when the cached copy expires (minutes).
+`/n/[slug]` uses a cookie-free anonymous client (`lib/supabase/public.ts`) and a `"use cache"` function with `cacheLife("minutes")` and the tag `public-note:<slug>`. A missing note throws instead of being cached, so a page published a moment ago isn't stuck as not found. The check actions that change what the page shows (recording publication, editing the check's details, archiving, re-checking) expire the tag with `updateTag`, so the next visit is fresh; a revised official figure, recorded by the worker, shows when the cached copy expires (minutes).
 
 ## Supabase clients
 

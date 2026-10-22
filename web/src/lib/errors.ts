@@ -13,6 +13,7 @@ const KNOWN = [
   "wording_required",
   "text_required",
   "editor_invalid",
+  "desk_invalid",
   "invalid_decision",
   "claim_not_found",
 ] as const;

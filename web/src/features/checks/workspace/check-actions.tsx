@@ -5,17 +5,17 @@ import { toast } from "sonner";
 
 import { Button, IconButton } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Field, Input, Select } from "@/components/ui/field";
+import { Field, Input, Radio, Select } from "@/components/ui/field";
 import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from "@/components/ui/menu";
 import type { ActionResult } from "@/lib/errors";
 import { useI18n } from "@/lib/i18n/provider";
 
-import { approveCheck, approveMatches, archiveCheck, publishCheck, recheck, sendForReview } from "../actions";
+import { approveCheck, approveMatches, archiveCheck, publishCheck, recheck, sendForReview, updateCheckDetails } from "../actions";
 import type { CheckDetail } from "../queries";
 import { isnadNote, toSrt } from "./export";
 import type { Capabilities } from "./types";
 
-type DialogKind = "review" | "publish" | "note" | "archive" | null;
+type DialogKind = "review" | "publish" | "note" | "archive" | "details" | null;
 
 const REVIEWABLE = ["awaiting_review", "in_review", "escalated"];
 
@@ -23,11 +23,13 @@ export function CheckActions({
   detail,
   caps,
   editors,
+  desks,
   siteUrl,
 }: {
   detail: CheckDetail;
   caps: Capabilities;
   editors: Array<{ id: string; name: string }>;
+  desks: Array<{ id: string; name: string }>;
   siteUrl: string;
 }) {
   const { t, locale } = useI18n();
@@ -35,6 +37,9 @@ export function CheckActions({
   const [dialog, setDialog] = useState<DialogKind>(null);
   const [editor, setEditor] = useState<string>(check.assigned_editor_id ?? "");
   const [url, setUrl] = useState(check.published_url ?? "");
+  const [title, setTitle] = useState(check.title);
+  const [deskId, setDeskId] = useState<string | null>(check.desk_id);
+  const [visibility, setVisibility] = useState(check.visibility);
   const [pending, startTransition] = useTransition();
 
   const status = check.status;
@@ -145,6 +150,19 @@ export function CheckActions({
                 {status === "failed" ? t("common.retry") : t("check.recheck")}
               </MenuItem>
             )}
+            {caps.canEdit && status !== "archived" && (
+              <MenuItem
+                icon="edit"
+                onSelect={() => {
+                  setTitle(check.title);
+                  setDeskId(check.desk_id);
+                  setVisibility(check.visibility);
+                  setDialog("details");
+                }}
+              >
+                {t("check.editDetails")}
+              </MenuItem>
+            )}
             {caps.canDecide && status === "published" && (
               <MenuItem icon="link" onSelect={() => setDialog("publish")}>
                 {t("check.markPublished")}
@@ -215,6 +233,67 @@ export function CheckActions({
             <Field label={t("check.publishedUrl")} htmlFor="published-url">
               <Input id="published-url" dir="ltr" type="url" placeholder="https://" value={url} onChange={(e) => setUrl(e.target.value)} />
             </Field>
+          </DialogContent>
+        )}
+        {dialog === "details" && (
+          <DialogContent
+            closeLabel={t("common.close")}
+            title={t("check.detailsTitle")}
+            description={t("check.detailsBody")}
+            footer={
+              <>
+                <Button variant="ghost" onClick={() => setDialog(null)}>
+                  {t("common.cancel")}
+                </Button>
+                <Button
+                  variant="primary"
+                  loading={pending}
+                  disabled={!title.trim() || (visibility === "desk" && !deskId)}
+                  onClick={() => run(() => updateCheckDetails(check.id, { title, deskId, visibility }), t("check.detailsSaved"))}
+                >
+                  {t("common.save")}
+                </Button>
+              </>
+            }
+          >
+            <div className="space-y-4">
+              <Field label={t("newCheck.titleLabel")} htmlFor="check-title">
+                <Input id="check-title" value={title} maxLength={300} onChange={(e) => setTitle(e.target.value)} />
+              </Field>
+              <Field label={t("newCheck.desk")} htmlFor="check-desk">
+                <Select
+                  id="check-desk"
+                  value={deskId ?? ""}
+                  onChange={(e) => {
+                    const next = e.target.value || null;
+                    setDeskId(next);
+                    if (!next && visibility === "desk") setVisibility("newsroom");
+                  }}
+                >
+                  <option value="">{t("newCheck.noDesk")}</option>
+                  {desks.map((d) => (
+                    <option key={d.id} value={d.id}>
+                      {d.name}
+                    </option>
+                  ))}
+                </Select>
+              </Field>
+              <fieldset>
+                <legend className="mb-2 text-sm font-medium">{t("newCheck.visibility")}</legend>
+                <div className="flex flex-wrap gap-5">
+                  {(["private", "desk", "newsroom"] as const).map((v) => (
+                    <Radio
+                      key={v}
+                      name="check-visibility"
+                      checked={visibility === v}
+                      disabled={v === "desk" && !deskId}
+                      onChange={() => setVisibility(v)}
+                      label={t(`newCheck.visibilityOptions.${v}`)}
+                    />
+                  ))}
+                </div>
+              </fieldset>
+            </div>
           </DialogContent>
         )}
         {dialog === "archive" && (

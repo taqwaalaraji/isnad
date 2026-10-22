@@ -54,7 +54,7 @@ The worker connects to Postgres as the database owner, so row-level security doe
 | `watch_sources` | Scheduler | `registry/watch.py` |
 | `retention_cleanup` | Scheduler (daily) | `registry/watch.py` |
 | `figures_approved` | `approve_figures` | `registry/revisions.py` |
-| `deliver_alerts` | Revisions | `telegram/notify.py` |
+| `deliver_alerts` | A trigger on every new alert for a member linked to Telegram; the scheduler's sweep every 5 minutes | `telegram/notify.py` |
 | `telegram_check_done` | A Telegram check finished or failed | `telegram/notify.py` |
 | `generate_brief` | Trigger on `briefs` insert; `regenerate_brief` | `briefs.py` |
 | `run_eval` | Trigger on an `eval_runs` row inserted as `queued` (the console); `make eval` runs in-process | `evals.py` |

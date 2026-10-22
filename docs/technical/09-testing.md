@@ -78,4 +78,4 @@ Live model runs (October 2026, Gemini): a seven-number text check ($0.0098, one 
 
 ---
 
-[← Security](08-security.md) · [Documentation](../README.md) · [Local development and operations →](10-operations.md)
+[← Security](08-security.md) · [Documentation](../README.md) · [Local development →](10-local-development.md)

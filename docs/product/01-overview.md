@@ -79,7 +79,7 @@ Before an interview, a journalist prepares a one-page brief on the guest's organ
 
 ### Alerts (التنبيهات)
 
-Revised figures, new releases from followed sources, checks that are ready, and numbers waiting for someone's decision arrive in **Alerts**, and in Telegram for people who linked it.
+Revised figures, new releases from followed sources, checks that are ready, and numbers waiting for someone's decision arrive in **Alerts**, and in Telegram for people who linked it (each kind can be switched off in the settings).
 
 ### Telegram
 

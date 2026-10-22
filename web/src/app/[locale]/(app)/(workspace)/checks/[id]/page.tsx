@@ -5,7 +5,7 @@ import { SetBreadcrumbs } from "@/components/shell/breadcrumbs";
 import { Skeleton } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { KIND_ICON, StatusBadge } from "@/features/checks/badges";
-import { getCheckDetail, newsroomEditors } from "@/features/checks/queries";
+import { getCheckDetail, newsroomDesks, newsroomEditors } from "@/features/checks/queries";
 import { CheckActions } from "@/features/checks/workspace/check-actions";
 import { CheckRealtime } from "@/features/checks/workspace/check-realtime";
 import { CheckWorkspace } from "@/features/checks/workspace/check-workspace";
@@ -39,7 +39,9 @@ async function Content({ params, searchParams }: Props) {
     canEdit: decides || check.created_by === viewer.id,
     viewerId: viewer.id,
   };
-  const editors = caps.canEdit ? (await newsroomEditors(check.newsroom_id)).filter((e) => e.id !== viewer.id || decides) : [];
+  const [editors, desks] = caps.canEdit
+    ? await Promise.all([newsroomEditors(check.newsroom_id).then((all) => all.filter((e) => e.id !== viewer.id || decides)), newsroomDesks(check.newsroom_id)])
+    : [[], []];
   const processing = check.status === "processing" || check.status === "failed";
 
   const meta = [
@@ -74,7 +76,7 @@ async function Content({ params, searchParams }: Props) {
           )}
         </div>
         {!processing || check.status === "failed" ? (
-          <CheckActions detail={detail} caps={caps} editors={editors} siteUrl={env.siteUrl} />
+          <CheckActions detail={detail} caps={caps} editors={editors} desks={desks} siteUrl={env.siteUrl} />
         ) : null}
       </header>
       {processing ? <ProcessingView detail={detail} caps={caps} /> : <CheckWorkspace detail={detail} caps={caps} initialClaim={claim} />}

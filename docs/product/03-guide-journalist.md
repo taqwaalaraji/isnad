@@ -77,6 +77,7 @@ Press **Send for review** («إرسال للمراجعة»), choose an editor or
 
 - **Comment** on any number in the evidence panel.
 - **Re-check against today's registry** («إعادة التحقق بسجل اليوم») from the **⋯** menu, when official figures may have changed.
+- **Edit details** («تعديل البيانات») from the **⋯** menu: rename the check, move it to another desk, or change who can see it.
 - **Export** («تصدير»): copy the **isnad note** («ملاحظة الإسناد», approved numbers only) or download **subtitles (SRT)** for audio and video.
 - **Archive** («أرشفة») your own checks.
 

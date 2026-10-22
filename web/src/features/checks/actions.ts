@@ -2,7 +2,7 @@
 
 import { randomUUID } from "node:crypto";
 
-import { refresh } from "next/cache";
+import { refresh, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -190,15 +190,28 @@ export async function approveCheck(checkId: string) {
 }
 
 export async function publishCheck(checkId: string, url: string) {
-  return rpc("publish_check", { target_check: checkId, url: url.trim() }) as Promise<ActionResult<string>>;
+  const res = (await rpc("publish_check", { target_check: checkId, url: url.trim() })) as ActionResult<string>;
+  if (res.ok && res.data) updateTag(`public-note:${res.data}`);
+  return res;
 }
 
 export async function archiveCheck(checkId: string) {
-  return rpc("archive_check", { target_check: checkId });
+  const res = await rpc("archive_check", { target_check: checkId });
+  if (res.ok) await expirePublicNote(checkId);
+  return res;
 }
 
 export async function recheck(checkId: string) {
-  return rpc("request_recheck", { target_check: checkId });
+  const res = await rpc("request_recheck", { target_check: checkId });
+  if (res.ok) await expirePublicNote(checkId);
+  return res;
+}
+
+/** The public evidence page is cached for a few minutes: drop it when its check changes. */
+async function expirePublicNote(checkId: string) {
+  const supabase = await createClient();
+  const { data } = await supabase.from("checks").select("public_slug").eq("id", checkId).maybeSingle();
+  if (data?.public_slug) updateTag(`public-note:${data.public_slug}`);
 }
 
 export async function searchClaim(claimId: string) {
@@ -229,13 +242,27 @@ export async function deleteComment(commentId: string): Promise<ActionResult> {
   return { ok: true };
 }
 
-export async function updateCheckMeta(checkId: string, patch: { title?: string; visibility?: "private" | "desk" | "newsroom" }): Promise<ActionResult> {
+const detailsSchema = z.object({
+  title: z.string().trim().min(1).max(300),
+  deskId: z.string().uuid().nullable(),
+  visibility: z.enum(["private", "desk", "newsroom"]),
+});
+
+/** Rename a check, move it to a desk, or change who sees it (its author, editors and admins). */
+export async function updateCheckDetails(checkId: string, input: z.input<typeof detailsSchema>): Promise<ActionResult> {
+  const parsed = detailsSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: "errors.generic" };
+  const { title, deskId, visibility } = parsed.data;
+  if (visibility === "desk" && !deskId) return { ok: false, error: "errors.desk_invalid" };
   const supabase = await createClient();
-  const update: { title?: string; visibility?: "private" | "desk" | "newsroom" } = {};
-  if (patch.title?.trim()) update.title = patch.title.trim().slice(0, 300);
-  if (patch.visibility) update.visibility = patch.visibility;
-  const { error } = await supabase.from("checks").update(update).eq("id", checkId);
+  const { data, error } = await supabase
+    .from("checks")
+    .update({ title, desk_id: deskId, visibility })
+    .eq("id", checkId)
+    .select("id");
   if (error) return { ok: false, error: errorKey(error) };
+  if (!data?.length) return { ok: false, error: "errors.not_allowed" };
+  await expirePublicNote(checkId);
   refresh();
   return { ok: true };
 }

@@ -88,13 +88,18 @@ class Worker:
     # ── schedule ──────────────────────────────────────────────────────────────
 
     def _schedule(self) -> None:
-        last_minute = last_watch = last_daily = 0.0
+        from isnad_worker.telegram import notify
+
+        last_minute = last_alerts = last_watch = last_daily = 0.0
         while not self.stopping.is_set():
             now = time.time()
             try:
                 if now - last_minute >= 60:
                     jobs.recover_stale(settings.job_timeout_minutes)
                     last_minute = now
+                if now - last_alerts >= 300:
+                    notify.queue_missed()
+                    last_alerts = now
                 if now - last_watch >= settings.watch_interval_hours * 3600:
                     stamp = datetime.now(UTC).strftime("%Y%m%d%H")
                     jobs.enqueue("watch_sources", {}, dedupe_key=f"watch:{stamp}")

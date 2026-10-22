@@ -33,7 +33,7 @@ How Isnad is built, tested, run and deployed.
 | 07 | [The web app](technical/07-web-app.md) | Layout, routes, rendering patterns, Supabase clients, i18n, design system, environment variables |
 | 08 | [Security](technical/08-security.md) | Sign-in, invitations, roles, row-level security, workflow functions, storage, safe fetching, secrets, headers, Telegram |
 | 09 | [Testing](technical/09-testing.md) | Automated checks, test and demo data, evaluation runs, manual verification |
-| 10 | [Local development and operations](technical/10-operations.md) | Prerequisites, first run, make targets, local services, the Gemini API |
+| 10 | [Local development](technical/10-local-development.md) | Run Isnad on your computer: tools, a Gemini key, a Telegram bot, first run, make targets, local services |
 | 11 | [Deployment](technical/11-deployment.md) | One VM: Supabase, settings and secrets, first start, checks, backups and restore, upgrades |
 
 ## Diagrams and screenshots

@@ -61,7 +61,7 @@ Approval queues `figures_approved`, which runs `registry/revisions.link` for eac
 - An earlier approved, current figure **from the same publisher** (the same source or entity, fetched no later) for the same indicator, measure, geography, period and breakdown (and the same newsroom scope) is superseded: it gets `is_current = false`, and the new figure's `supersedes_id` points to it. Another body's figure for the same indicator and period stays current alongside it. The new figure gets `status = revised` only when the value differs by more than the coarser published precision.
 - If the value changed, every newsroom that used the old figure in an approved or published check gets a `figure_revised` alert (to the check's creator and assigned editor).
 - When the figure supersedes nothing, members following the indicator or entity get a `new_figure` alert.
-- `deliver_alerts` then sends Telegram notifications to linked users who want them.
+- Every new alert for a member who linked Telegram queues `deliver_alerts` (a trigger on `alerts`), which sends it there if they want that kind.
 
 The public evidence page shows a revision notice when the figure behind a published number has been superseded.
 

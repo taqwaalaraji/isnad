@@ -65,7 +65,7 @@ cp .env.example .env && chmod 600 .env     # fill in every value
   reissue it in BotFather if it was ever shared in chat or committed anywhere.
 - `GEMINI_API_KEY`: a Google AI Studio key on a project with billing enabled (every model task,
   transcription included). Set a budget alert on that project, and check its rate limits
-  ([10-operations.md](10-operations.md#gemini-api)).
+  ([10-local-development.md](10-local-development.md#gemini-api)).
 - `SITE_DOMAIN`, `SUPABASE_DOMAIN`, `ACME_EMAIL`: the two hostnames, and the address for Let's
   Encrypt.
 - `TELEGRAM_BOT_USERNAME`: becomes `NEXT_PUBLIC_TELEGRAM_BOT_USERNAME` (the link on the settings
@@ -167,4 +167,4 @@ only the code it needs, never env files, `node_modules` or the test corpus.
 
 ---
 
-[← Local development and operations](10-operations.md) · [Documentation](../README.md)
+[← Local development](10-local-development.md) · [Documentation](../README.md)

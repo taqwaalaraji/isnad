@@ -168,8 +168,6 @@ def _alert_revision(figure: dict, old: dict, superseded: list) -> None:
                 """,
                 (row["newsroom_id"], user, title, figure["period_label"], db.json(payload)),
             )
-    if affected:
-        jobs.enqueue("deliver_alerts", {}, dedupe_key="deliver-alerts")
 
 
 def _notify_followers(figure: dict) -> None:
@@ -203,7 +201,6 @@ def _notify_followers(figure: dict) -> None:
                 ),
             ),
         )
-    jobs.enqueue("deliver_alerts", {}, dedupe_key="deliver-alerts")
 
 
 @jobs.handler("figures_approved")

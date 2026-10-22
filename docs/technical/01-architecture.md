@@ -119,7 +119,7 @@ The product rule is: the model extracts, code compares, an editor decides.
 
 ## Related
 
-- [02-data-model.md](02-data-model.md), [03-pipeline.md](03-pipeline.md), [04-registry.md](04-registry.md), [05-worker.md](05-worker.md), [07-web-app.md](07-web-app.md), [08-security.md](08-security.md), [10-operations.md](10-operations.md)
+- [02-data-model.md](02-data-model.md), [03-pipeline.md](03-pipeline.md), [04-registry.md](04-registry.md), [05-worker.md](05-worker.md), [07-web-app.md](07-web-app.md), [08-security.md](08-security.md), [10-local-development.md](10-local-development.md)
 
 ---
 

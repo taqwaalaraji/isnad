@@ -30,6 +30,11 @@ Flow:
 5. Buttons and workflow actions run as the member: the bot sets `request.jwt.claims` and
    `role authenticated` in its transaction, so `send_for_review` and friends enforce the same
    rules as in the web app.
+6. Alerts reach linked members too: a trigger on `alerts` queues `deliver_alerts` for every new
+   alert of a linked member, and the worker sends the kinds they kept on (Settings →
+   Notifications), with an "open" button for check alerts. The scheduler sweeps every 5 minutes
+   for alerts left waiting (Telegram unreachable, or the job was already running). Alerts from
+   before the link aren't replayed, and a Telegram check's "check ready" isn't sent twice.
 
 Every update is recorded in `telegram_updates` first, so a retried webhook or a restarted poller
 never handles one twice. Group chats are ignored. Links to the report are buttons only when

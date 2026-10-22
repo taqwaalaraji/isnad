@@ -53,7 +53,9 @@ local database.
 
 Viewing the demo needs no API key. To run new checks, put `GEMINI_API_KEY=…` in a `.env` file in a
 `credentials/` folder next to the repository (for example `../credentials/gemini.env`) and run
-`make env` again: it rewrites `worker/.env` and keeps only keys from that folder.
+`make env` again: it rewrites `worker/.env` and keeps only keys from that folder. The step-by-step
+guide, including getting a Gemini key and creating a Telegram bot, is
+[docs/technical/10-local-development.md](docs/technical/10-local-development.md).
 
 For more demo checks, built from real newspaper claims and the real clips and processed by the real
 pipeline (about $0.50 of model tokens, plus Google Search queries that the free monthly allowance

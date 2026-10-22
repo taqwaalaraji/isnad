@@ -45,7 +45,7 @@ export function runLabel(settings: unknown, dataset: string): string {
   const s = (settings ?? {}) as Record<string, TaskSetup | undefined>;
   const extract = s.extract_claims;
   if (!extract?.model) return dataset;
-  const short = (m: string) => m.replace(/^gemini-/, "").replace(/^claude-/, "");
+  const short = (m: string) => m.replace(/^gemini-/, "");
   const parts = [extract.escalation ? `${short(extract.model)} → ${short(extract.escalation)}` : short(extract.model)];
   if (s.verify_claim?.enabled === false) parts.push("no verifier");
   return parts.join(" · ");

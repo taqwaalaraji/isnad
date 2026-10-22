@@ -90,7 +90,7 @@ Defined as `SECURITY DEFINER` functions so policies can consult memberships with
 
 The anonymous role has no table access. Its intended entry points are `get_public_note(slug)` and `invitation_preview(token)`, the only functions granted to it explicitly; the other `SECURITY DEFINER` functions refuse a caller without a signed-in user.
 
-Triggers protect columns that RLS can't: `protect_check_columns` (status, stage, results, publication fields, storage path), `protect_profile_columns`, `protect_newsroom_columns` (slug, kind, status, limit unless platform admin), `protect_membership_columns` (a membership can't move), `ensure_newsroom_admin` (never remove the last active admin).
+Triggers protect columns that RLS can't: `protect_check_columns` (a member's direct update keeps every column but the title, desk and visibility; the desk must be one of the check's newsroom, and an archived check can't be changed), `protect_profile_columns`, `protect_newsroom_columns` (slug, kind, status, limit unless platform admin), `protect_membership_columns` (a membership can't move), `ensure_newsroom_admin` (never remove the last active admin).
 
 ## Workflow functions and their checks
 
@@ -165,6 +165,7 @@ Locally, `make env` writes both env files from the running Supabase and from a `
 - **Webhook:** Telegram sends the `X-Telegram-Bot-Api-Secret-Token` header, compared with `TELEGRAM_WEBHOOK_SECRET` in constant time. The endpoint answers 404 when Telegram is off or no secret is set, and 403 on a wrong secret.
 - **Linking:** a link token is 18 random bytes, stored only as its sha256, single use, valid for 10 minutes (`create_telegram_link_token`).
 - **Each update once:** update ids are recorded in `telegram_updates`.
+- **Alerts:** only to the linked member the alert belongs to, only kinds they kept on in their settings, and only alerts created after they linked; the "check ready" of a check sent from Telegram isn't repeated (the bot already sent its summary).
 - **Intake guards:** private chats only (groups are ignored); the newsroom's `telegram_enabled` policy and monthly check limit; at most 10 checks per user in 10 minutes; files up to 20 MB (the Bot API's limit). A check from Telegram is created as the linked user, so the same rules apply as in the web app.
 
 ## Realtime

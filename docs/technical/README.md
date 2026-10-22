@@ -13,10 +13,10 @@ How Isnad is built and operated. Each document describes what exists in the code
 | 07 | [The web app](07-web-app.md) | Layout, routes, rendering patterns, Supabase clients, i18n, design system, environment variables |
 | 08 | [Security](08-security.md) | Sign-in, invitations, roles, row-level security, workflow functions, storage, safe fetching, secrets, headers, Telegram |
 | 09 | [Testing](09-testing.md) | Automated checks, test and demo data, evaluation runs, manual verification |
-| 10 | [Local development and operations](10-operations.md) | Prerequisites, first run, make targets, local services, the Gemini API |
+| 10 | [Local development](10-local-development.md) | Run Isnad on your computer: tools, a Gemini key, a Telegram bot, first run, make targets, local services |
 | 11 | [Deployment](11-deployment.md) | One VM: Supabase, settings and secrets, first start, checks, backups and restore, upgrades |
 
-New to the code? Read 01 to 04 first. Product documentation (features, roles, guides, glossary) is in [product docs](../product/README.md).
+To run Isnad on your computer, start with [10-local-development.md](10-local-development.md). New to the code? Read 01 to 04 first. Product documentation (features, roles, guides, glossary) is in [product docs](../product/README.md).
 
 ---
 

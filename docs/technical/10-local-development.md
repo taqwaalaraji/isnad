@@ -1,21 +1,87 @@
-# Local Development and Operations Notes
+# Local Development
 
-## Prerequisites
+Everything needed to run Isnad on your own computer: the tools, the two optional keys (Gemini and a Telegram bot), the first run, and the day-to-day commands. Running it on a server is in [11-deployment.md](11-deployment.md); the `deploy/` folder is only for that.
 
-- Docker (running), Node.js 22+, Python 3.12 with [uv](https://docs.astral.sh/uv/), the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started), and `ffmpeg` (`brew install uv supabase/tap/supabase ffmpeg`).
-- Provider keys in a `credentials/` folder next to the repository (or the folder in `ISNAD_CREDENTIALS_DIR`), in any `*.env` files, for example `gemini.env` (`GEMINI_API_KEY`) and `telegram.env` (`TELEGRAM_BOT_TOKEN`). The folder is outside git; `make env` copies only those two keys into the env files. Viewing the demo needs neither.
+## 1. Install the tools
 
-## First run
+| Tool | Why |
+|---|---|
+| [Docker](https://docs.docker.com/get-docker/), running | The local Supabase stack runs in containers |
+| [Node.js](https://nodejs.org/) 22 or newer | The web app |
+| [uv](https://docs.astral.sh/uv/) | The worker (it installs Python 3.12 by itself) |
+| [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) | Starts Postgres, Auth, Storage and Realtime locally |
+| [ffmpeg](https://ffmpeg.org/download.html) | Prepares audio and video for transcription |
+
+On macOS: `brew install uv supabase/tap/supabase ffmpeg` (and Node.js from nodejs.org or `brew install node`).
+
+## 2. Get the code
+
+```bash
+git clone https://github.com/taqwaalaraji/isnad.git
+cd isnad
+```
+
+## 3. Keys
+
+Viewing the demo needs no keys. New checks, Ask Isnad and briefs need a Gemini API key; the Telegram bot needs a bot token. Keys never go in the repository: they live in a `credentials/` folder next to it, one or more `*.env` files with `NAME=value` lines (or set `ISNAD_CREDENTIALS_DIR` to another folder).
+
+```
+your-folder/
+├── credentials/          not in git
+│   ├── gemini.env        GEMINI_API_KEY=…
+│   └── telegram.env      TELEGRAM_BOT_TOKEN=…
+└── isnad/                the repository
+```
+
+`make env` copies only these two keys into `worker/.env` and prints names, never values. Run it again after adding or changing a key, then restart `make dev`.
+
+### Gemini API key
+
+1. Open [Google AI Studio](https://aistudio.google.com/) and sign in with a Google account.
+2. Go to [API keys](https://aistudio.google.com/apikey) and choose **Create API key**, in a new or an existing Google Cloud project.
+3. Turn on billing for that project (in AI Studio, **Set up billing** next to the key). Isnad was built and measured on a paid project (Tier 1); its rate limits are under [Gemini API](#gemini-api) below. Set a budget alert in Google Cloud if you like: a check costs about five US cents on average.
+4. Save the key in `credentials/gemini.env`:
+
+   ```
+   GEMINI_API_KEY=your-key
+   ```
+
+5. Run `make env` and restart `make dev`.
+
+Without a key the demo still works; new checks fail at the extraction step (clips without their own captions fail earlier, with "speech unavailable").
+
+### Telegram bot (optional)
+
+1. In Telegram, open [@BotFather](https://t.me/BotFather) and send `/newbot`.
+2. Give it a display name (for example "Isnad Dev") and a username that ends in `bot` (for example `my_isnad_dev_bot`).
+3. BotFather answers with the bot's token. Save it in `credentials/telegram.env`:
+
+   ```
+   TELEGRAM_BOT_TOKEN=123456:ABC…
+   ```
+
+4. Run `make env`. It copies the token to `worker/.env` and asks Telegram for the bot's username, which it writes to `web/.env.local` for the link on the settings page. Restart `make dev`.
+5. In Isnad, open **Settings → Channels**, press **Open Telegram** (or scan the code) and press **Start** in the chat. Then send the bot a sentence with a number.
+
+Use a bot made for development, not the production one: locally the bot reads its messages by long polling, which removes the webhook a production server set for the same token. Locally, links to reports appear as text, because Telegram refuses buttons that point to localhost. The bot answers private chats only. Without a token, `make dev` runs everything else and the bot process says Telegram is off.
+
+## 4. First run
 
 ```bash
 make setup      # npm install in web/, uv sync in worker/
-make db         # start local Supabase
-make env        # write web/.env.local and worker/.env
-make db-reset   # migrations + base seed + demo data
-make dev        # web, worker API, pipeline worker and Telegram bot together
+make db         # start local Supabase (the first time downloads its Docker images)
+make env        # write web/.env.local and worker/.env from the running Supabase and ../credentials
+make db-reset   # migrations, then the base seed and the demo data (no model calls)
+make dev        # web, worker API, pipeline worker and Telegram bot together; Ctrl+C stops them
 ```
 
-Then sign in at http://localhost:3000 with a demo account ([09-testing.md](09-testing.md#demo-data)).
+## 5. Check that it works
+
+1. Open http://localhost:3000 and sign in with a demo account: `sara@almadar.news` (editor) or another one from [09-testing.md](09-testing.md#demo-data); the password is in `worker/seed_data/demo.json`.
+2. Sign-in links, invitations and password resets are emails: read them in Mailpit, http://127.0.0.1:54324.
+3. With a Gemini key: **New check** → **Text**, paste «استقبلت دبي 19.59 مليون زائر دولي خلال عام 2025.» and start it. Within about a minute the check is awaiting review, with the number's verdict and its official source.
+4. With a bot: link Telegram as above and send the same sentence to the bot; it replies with progress, then a summary.
+5. `make test` runs the worker tests and lint, and the web lint and type check.
 
 ## Make targets
 
@@ -65,14 +131,14 @@ Every model task, transcription included, uses one Gemini API key (Google AI Stu
 
 ## Things to know
 
+- **`make env` says local Supabase isn't running:** start it with `make db`. Supabase uses ports 54321 to 54324; stop other Supabase projects first (`supabase stop` in their folder).
+- **The bot logs `getUpdates failed: 409`:** another process is reading the same bot (a second `make bot`, or a webhook set again by a server). Run one bot per token.
 - **Supabase config changes** (`supabase/config.toml`: site URL, redirect URLs, email templates) only apply after `supabase stop && supabase start` from the repo folder.
 - **One worker per code version.** After pulling worker changes, stop the old worker (Ctrl+C, or a second Ctrl+C to skip waiting for running jobs) before starting the new one. Jobs left running by a killed worker go back to the queue after `JOB_TIMEOUT_MINUTES`.
 - **After a database reset**, browser sessions belong to users that no longer exist; the app signs them out automatically (`/auth/session-ended`).
 - **Testing in a hidden or background browser tab:** React reveals streamed page sections on the next animation frame, which a background tab doesn't get, so buttons in those sections stay inert until the tab is shown. It isn't a bug in the app.
 - **Costs:** model usage is recorded per newsroom and check in `usage_events` and visible in the console (**Quality and models**: by day and task, and per check; **Newsrooms**: this month's cost) and to newsroom admins (**Activity and usage**).
 - **Media retention:** uploaded clips are deleted after each newsroom's retention period (default 90 days) by the daily cleanup job; results, transcripts and decisions stay.
-
-Deployment to a server is described separately in [11-deployment.md](11-deployment.md).
 
 ---
 

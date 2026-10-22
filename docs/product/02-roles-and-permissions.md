@@ -45,7 +45,7 @@ The new-check form calls the three choices «الغرفة كلها» / «قسم�
 | Private sources, proposing a source to the shared registry | — | — | ✓ |
 | Activity log and usage (and CSV export) | — | — | ✓ |
 
-Visibility and desk are chosen when the check is created (the database would also let the author change them later; the app doesn't offer that yet).
+A check's title, desk and visibility can be changed later from the **⋯** menu (**Edit details**, «تعديل البيانات») by its author, editors and admins. An archived check can't be changed.
 
 Limits set by Isnad (the monthly check limit, suspending a newsroom) can't be changed by newsroom admins. A suspended newsroom disappears from its members' newsroom list, in the app and in Telegram. A newsroom always keeps at least one active admin.
 

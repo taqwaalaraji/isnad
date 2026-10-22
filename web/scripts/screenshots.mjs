@@ -26,6 +26,10 @@ const env = Object.fromEntries(
       line.slice(line.indexOf("=") + 1),
     ]),
 );
+// The environment wins over .env.local, to shoot the app running against another Supabase.
+for (const key of ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"]) {
+  if (process.env[key]) env[key] = process.env[key];
+}
 const demo = JSON.parse(
   readFileSync(resolve(here, "../../worker/seed_data/demo.json"), "utf8"),
 );
