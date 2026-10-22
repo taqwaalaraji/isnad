@@ -9,6 +9,8 @@
 
 <p align="center"><b>لكلّ رقمٍ إسناد</b><br>Every number has an isnad</p>
 
+<p align="center"><sub>A submission to the Future Media Agents Innovation Challenge · تحدي ابتكار وكلاء المستقبل للإعلام</sub></p>
+
 <p align="center">
   <a href="#overview">Overview</a> ·
   <a href="#presentation">Presentation</a> ·
@@ -17,6 +19,7 @@
   <a href="#technical-docs">Technical docs</a> ·
   <a href="#designs">Designs</a> ·
   <a href="#run-it-locally">Run it locally</a> ·
+  <a href="#repository">Repository</a> ·
   <a href="#team">Team</a>
 </p>
 
@@ -40,6 +43,10 @@ A newsroom sends a clip, a recording, a document, a link or a text. AI agents tr
 </td>
 </tr>
 </table>
+
+![How Isnad works: content comes in, agents and code check each number, a card of evidence per number, the editor decides](docs/img/overview.png)
+
+**Built with** Next.js 16 (React 19, TypeScript) · a Python 3.12 worker · self-hosted Supabase (Postgres, Auth, Storage, Realtime) · the Gemini API (transcription, extraction, search, verification) · the Telegram Bot API. The architecture is in [docs/technical/01-architecture.md](docs/technical/01-architecture.md).
 
 ## Presentation
 
@@ -127,6 +134,22 @@ make dev        # web app, worker and Telegram bot
 Open http://localhost:3000 and sign in with a demo account, for example `sara@almadar.news` (editor). The demo needs no API key; new checks need a Gemini API key, and the Telegram bot a bot token.
 
 **[The full guide →](docs/technical/10-local-development.md)** covers installing the tools, getting a Gemini key, creating a Telegram bot, every demo account and its password, the local addresses and the `make` targets.
+
+## Repository
+
+| Path | What it is |
+|---|---|
+| [`web/`](web/) | The web app (Next.js): every screen, server actions, the public evidence page |
+| [`worker/`](worker/) | Python: the pipeline worker, the Telegram bot, and the worker API (Ask Isnad, the Telegram webhook) |
+| [`supabase/`](supabase/) | Database migrations (schema, row-level security, workflow functions), local config, email templates |
+| [`deploy/`](deploy/) | Running on a server: Dockerfiles, Compose, Caddy, backups ([runbook](docs/technical/11-deployment.md)) |
+| [`docs/`](docs/README.md) | Product and technical documentation |
+| [`sample-data/`](sample-data/README.md) | The real clips, official documents and texts Isnad was tested with, each with its source |
+| [`presentation/`](presentation/README.md) | The pitch video, the full walkthrough, the deck and the brand identity |
+| [`screenshots/`](screenshots/README.md) | The product's screens with the demo data |
+| [`designs/`](designs/README.md) | Logos, icons and the product UI design |
+
+The database is the contract between `web/` and `worker/`: the web app writes rows, the worker picks them up and writes its results back.
 
 ## Team
 
