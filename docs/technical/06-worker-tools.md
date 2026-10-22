@@ -40,7 +40,7 @@ Every update is recorded in `telegram_updates` first, so a retried webhook or a 
 never handles one twice. Group chats are ignored. Links to the report are buttons only when
 `SITE_URL` is public (Telegram rejects localhost buttons); locally they're printed in the text.
 
-Run locally: `make bot` (polling, with `TELEGRAM_BOT_TOKEN` from `worker/.env`, which `make env` fills from `../credentials/*.env`).
+Run locally: `make bot` (polling, with `TELEGRAM_BOT_TOKEN` from `worker/.env`, which `make env` fills from `credentials.env` at the repository root).
 Commands are registered in Arabic (default) and English on start.
 
 ## Test corpus

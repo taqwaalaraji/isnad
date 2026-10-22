@@ -143,7 +143,7 @@ Discovery and registry intake also require the URL's host to be in an approved s
 | Production: `deploy/.env` (mode 600) | `POSTGRES_PASSWORD`, `ANON_KEY`, `SERVICE_ROLE_KEY`, `INTERNAL_API_TOKEN`, `GEMINI_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` ([11-deployment.md](11-deployment.md)) |
 | `ISNAD_ADMIN_PASSWORD` | Optional, for `seed admin` without a prompt (12+ characters); not stored |
 
-Locally, `make env` writes both env files from the running Supabase and from a `credentials/` folder outside the repository, printing only variable names. Env files are git-ignored.
+Locally, `make env` writes both env files from the running Supabase and from `credentials.env` at the repository root, printing only variable names. `credentials.env` and the env files are git-ignored; only their examples are committed.
 
 ## Public evidence page
 

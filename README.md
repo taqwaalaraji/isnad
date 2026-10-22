@@ -131,7 +131,7 @@ make db-reset   # database, base seed and the demo data
 make dev        # web app, worker and Telegram bot
 ```
 
-Open http://localhost:3000 and sign in with a demo account, for example `sara@almadar.news` (editor). The demo needs no API key; new checks need a Gemini API key, and the Telegram bot a bot token.
+Open http://localhost:3000 and sign in with a demo account, for example `sara@almadar.news` (editor). The demo needs no API key; new checks need a Gemini API key, and the Telegram bot a bot token, both in `credentials.env` at the repository root (copy `credentials.env.example`; git ignores it).
 
 **[The full guide →](docs/technical/10-local-development.md)** covers installing the tools, getting a Gemini key, creating a Telegram bot, every demo account and its password, the local addresses and the `make` targets.
 
@@ -148,6 +148,7 @@ Open http://localhost:3000 and sign in with a demo account, for example `sara@al
 | [`presentation/`](presentation/README.md) | The pitch video, the full walkthrough, the deck and the brand identity |
 | [`screenshots/`](screenshots/README.md) | The product's screens with the demo data |
 | [`designs/`](designs/README.md) | Logos, icons and the product UI design |
+| [`credentials.env.example`](credentials.env.example) | The template for your API keys: copy it to `credentials.env` (git-ignored) |
 
 The database is the contract between `web/` and `worker/`: the web app writes rows, the worker picks them up and writes its results back.
 

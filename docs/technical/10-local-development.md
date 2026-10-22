@@ -23,30 +23,33 @@ cd isnad
 
 ## 3. Keys
 
-Viewing the demo needs no keys. New checks, Ask Isnad and briefs need a Gemini API key; the Telegram bot needs a bot token. Keys never go in the repository: they live in a `credentials/` folder next to it, one or more `*.env` files with `NAME=value` lines (or set `ISNAD_CREDENTIALS_DIR` to another folder).
+Viewing the demo needs no keys. New checks, Ask Isnad and briefs need a Gemini API key; the Telegram bot needs a bot token. Your keys go in `credentials.env` at the root of the repository. Git ignores that file, so the keys are never committed. Create it from the template:
 
-```
-your-folder/
-├── credentials/          not in git
-│   ├── gemini.env        GEMINI_API_KEY=…
-│   └── telegram.env      TELEGRAM_BOT_TOKEN=…
-└── isnad/                the repository
+```bash
+cp credentials.env.example credentials.env
 ```
 
-`make env` copies only these two keys into `worker/.env` and prints names, never values. Run it again after adding or changing a key, then restart `make dev`.
+It holds two lines; fill in the keys you have (how to get them is below):
+
+```
+GEMINI_API_KEY=…
+TELEGRAM_BOT_TOKEN=…
+```
+
+`make env` (part of the first run below) copies them into `worker/.env`, printing names only, never values; if `credentials.env` doesn't exist yet, it creates it from the template with empty keys. When you add or change a key later, run `make env` again and restart `make dev`.
 
 ### Gemini API key
 
 1. Open [Google AI Studio](https://aistudio.google.com/) and sign in with a Google account.
 2. Go to [API keys](https://aistudio.google.com/apikey) and choose **Create API key**, in a new or an existing Google Cloud project.
 3. Turn on billing for that project (in AI Studio, **Set up billing** next to the key). Isnad was built and measured on a paid project (Tier 1); its rate limits are under [Gemini API](#gemini-api) below. Set a budget alert in Google Cloud if you like: a check costs about five US cents on average.
-4. Save the key in `credentials/gemini.env`:
+4. Put it in `credentials.env`:
 
    ```
    GEMINI_API_KEY=your-key
    ```
 
-5. Run `make env` and restart `make dev`.
+5. If Isnad is already running, run `make env` and restart `make dev`.
 
 Without a key the demo still works; new checks fail at the extraction step (clips without their own captions fail earlier, with "speech unavailable").
 
@@ -54,13 +57,13 @@ Without a key the demo still works; new checks fail at the extraction step (clip
 
 1. In Telegram, open [@BotFather](https://t.me/BotFather) and send `/newbot`.
 2. Give it a display name (for example "Isnad Dev") and a username that ends in `bot` (for example `my_isnad_dev_bot`).
-3. BotFather answers with the bot's token. Save it in `credentials/telegram.env`:
+3. BotFather answers with the bot's token. Put it in `credentials.env`:
 
    ```
    TELEGRAM_BOT_TOKEN=123456:ABC…
    ```
 
-4. Run `make env`. It copies the token to `worker/.env` and asks Telegram for the bot's username, which it writes to `web/.env.local` for the link on the settings page. Restart `make dev`.
+4. Run `make env` (or the first run below). It copies the token to `worker/.env` and asks Telegram for the bot's username, which it writes to `web/.env.local` for the link on the settings page. Restart `make dev` if it was running.
 5. In Isnad, open **Settings → Channels**, press **Open Telegram** (or scan the code) and press **Start** in the chat. Then send the bot a sentence with a number.
 
 Use a bot made for development, not the production one: locally the bot reads its messages by long polling, which removes the webhook a production server set for the same token. Locally, links to reports appear as text, because Telegram refuses buttons that point to localhost. The bot answers private chats only. Without a token, `make dev` runs everything else and the bot process says Telegram is off.
@@ -70,7 +73,7 @@ Use a bot made for development, not the production one: locally the bot reads it
 ```bash
 make setup      # npm install in web/, uv sync in worker/
 make db         # start local Supabase (the first time downloads its Docker images)
-make env        # write web/.env.local and worker/.env from the running Supabase and ../credentials
+make env        # write web/.env.local and worker/.env from the running Supabase and credentials.env
 make db-reset   # migrations, then the base seed and the demo data (no model calls)
 make dev        # web, worker API, pipeline worker and Telegram bot together; Ctrl+C stops them
 ```
@@ -128,7 +131,7 @@ The other local addresses (Supabase Studio, Postgres, the worker API) are under 
 | `make seed-demo` | Demo data as recorded: accounts, registry with stored documents, checks with clips, alerts, activity, usage, briefs, evaluation runs; idempotent, no model calls |
 | `make seed-export` | Write the demo data (`worker/seed_data/*.json.gz`, `sample-data/documents/discovered/`, `sample-data/README.md`, `sample-data/inputs/`) from the local database |
 | `make seed-showcase` | Demo checks from the test corpus and clips, processed again by the running worker (model calls) |
-| `make env` | Write `web/.env.local` and `worker/.env` (mode 600) from the running Supabase and `../credentials`; keeps a stable `INTERNAL_API_TOKEN`, takes the bot's username from Telegram (`getMe`); prints names only. It rewrites both files, so keys added by hand belong in `../credentials` |
+| `make env` | Write `web/.env.local` and `worker/.env` (mode 600) from the running Supabase and `credentials.env`; keeps a stable `INTERNAL_API_TOKEN`, takes the bot's username from Telegram (`getMe`); prints names only. It rewrites both files, so keys belong in `credentials.env`, not in the env files |
 | `make types` | Regenerate `web/src/lib/database.types.ts` after a schema change (formatted with `oxfmt`) |
 | `make web` | Next.js dev server on :3000 |
 | `make api` | Worker API on :8000 (auto-reload) |

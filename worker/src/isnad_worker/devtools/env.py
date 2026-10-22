@@ -1,8 +1,10 @@
 """Write `web/.env.local` and `worker/.env` for local development.
 
 Reads the running local Supabase (`supabase status`), keeps generated secrets stable across runs,
-and merges provider keys from the credentials folder outside the repo (skipping empty values).
-Prints variable names only, never values. Run with `make env`.
+and merges the API keys from `credentials.env` at the repository root (git-ignored; created from
+`credentials.env.example` on the first run), skipping empty values. `ISNAD_CREDENTIALS_DIR` can name
+a folder of `*.env` files to read the keys from as well. Prints variable names only, never values.
+Run with `make env`.
 """
 
 from __future__ import annotations
@@ -18,10 +20,11 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[4]
 WEB_ENV = REPO / "web" / ".env.local"
 WORKER_ENV = REPO / "worker" / ".env"
-CREDENTIALS = Path(os.environ.get("ISNAD_CREDENTIALS_DIR", REPO.parent / "credentials"))
+CREDENTIALS_FILE = REPO / "credentials.env"
+CREDENTIALS_EXAMPLE = REPO / "credentials.env.example"
+CREDENTIALS_DIR = os.environ.get("ISNAD_CREDENTIALS_DIR")
 
-# The credentials the worker uses; anything else in the folder (other providers, the production
-# Telegram token) stays out of local env files.
+# The keys the worker uses; any other value in those files stays out of the local env files.
 USED = {"GEMINI_API_KEY", "TELEGRAM_BOT_TOKEN"}
 
 
@@ -57,10 +60,13 @@ def read_env_text(text: str) -> dict[str, str]:
 
 
 def credentials() -> dict[str, str]:
+    if not CREDENTIALS_FILE.exists() and CREDENTIALS_EXAMPLE.exists():
+        CREDENTIALS_FILE.write_text(CREDENTIALS_EXAMPLE.read_text())
+        CREDENTIALS_FILE.chmod(0o600)
+        print("Created credentials.env from credentials.env.example: add your keys there.")
+    files = sorted(Path(CREDENTIALS_DIR).glob("*.env")) if CREDENTIALS_DIR else []
     merged: dict[str, str] = {}
-    if not CREDENTIALS.is_dir():
-        return merged
-    for file in sorted(CREDENTIALS.glob("*.env")):
+    for file in [*files, CREDENTIALS_FILE]:
         for key, value in read_env(file).items():
             if value and key in USED:
                 merged[key] = value
@@ -114,7 +120,9 @@ def main() -> None:
     print(f"Wrote {WORKER_ENV.relative_to(REPO)}: {', '.join(worker_values)}")
     print(f"Wrote {WEB_ENV.relative_to(REPO)}: {', '.join(web_values)}")
     if not creds:
-        print(f"No credentials found in {CREDENTIALS} (AI features need GEMINI_API_KEY).")
+        print(
+            "No API keys in credentials.env: new checks need GEMINI_API_KEY (the demo data works without)."
+        )
 
 
 if __name__ == "__main__":

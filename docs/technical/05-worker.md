@@ -80,7 +80,7 @@ Read by `config.py` from the environment (or `worker/.env`):
 | `DISCOVERY_PER_CHECK` | 8 | Searched numbers per check |
 | `WATCH_INTERVAL_HOURS` | 24 | How often sources are re-fetched |
 
-Read directly from the environment by the tools: `ISNAD_CORPUS_DIR` (the corpus for `make corpus` and `make eval`, default `sample-data/`), `ISNAD_ADMIN_PASSWORD` (`seed admin`), `ISNAD_CREDENTIALS_DIR` (`make env`, default `../credentials`).
+Read directly from the environment by the tools: `ISNAD_CORPUS_DIR` (the corpus for `make corpus` and `make eval`, default `sample-data/`), `ISNAD_ADMIN_PASSWORD` (`seed admin`), `ISNAD_CREDENTIALS_DIR` (`make env`: an optional folder of `*.env` files to read the API keys from as well as `credentials.env`).
 
 The worker needs `ffmpeg` and `ffprobe` on the path.
 
@@ -108,7 +108,7 @@ The worker needs `ffmpeg` and `ffprobe` on the path.
 
 | Command | What it does |
 |---|---|
-| `python -m isnad_worker.devtools.env` (`make env`) | Writes `web/.env.local` and `worker/.env` from `supabase status` and the provider keys in `../credentials/*.env`; keeps generated secrets stable; prints names only |
+| `python -m isnad_worker.devtools.env` (`make env`) | Writes `web/.env.local` and `worker/.env` from `supabase status` and the API keys in `credentials.env` at the repository root (created from `credentials.env.example` on the first run); keeps generated secrets stable; prints names only |
 | `python -m isnad_worker.devtools.test_media [--only IDS]` (`make media`) | Downloads the real test clips listed in `sample-data/manifest.json` again (`media` entries with `file_url`) into `sample-data/media/` (the manifest `file`); checks each is a media file with an audio track; skips clips already present |
 
 ---

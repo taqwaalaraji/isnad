@@ -35,7 +35,7 @@ seed-showcase: ## Demo checks from the test corpus and the real clips, processed
 media: ## Download the clips listed in sample-data/manifest.json again from their publishers
 	cd worker && uv run python -m isnad_worker.devtools.test_media
 
-env: ## Write web/.env.local and worker/.env (local Supabase + keys from ../credentials)
+env: ## Write web/.env.local and worker/.env (local Supabase + API keys from credentials.env)
 	cd worker && uv run python -m isnad_worker.devtools.env
 
 types: ## Regenerate TypeScript types from the local database schema
